@@ -6,3 +6,6 @@ scikit-image            # 裂纹线骨架化
 openai                  # GPT Image 2.5 生图
 python-dotenv
 # 另需系统里有 ffmpeg，以及 Liberation Serif 字体（英文字幕）
+faster-whisper
+shapely
+requests

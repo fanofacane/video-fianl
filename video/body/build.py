@@ -21,7 +21,8 @@
     {"type": "bubble", "text": "疼！", "style": "white", "x": 500, "y": 300, "start": 8.6, "end": 10.4}
   ]
 }
-坐标均为 1280x720 画面上的元素中心点（strip 用 top 指定上沿）。
+坐标均为 1280x720 画面上的元素中心点（strip 用 top 指定上沿；photo 为全屏照片，无需坐标）。
+可选 "assets_dir" 指定素材目录（默认 output/<name>/assets）。
 """
 import argparse
 import json
@@ -33,7 +34,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageFilter
 
-from ..config import FPS, H, OUTPUT, W, check_fonts
+from ..config import FPS, H, OUTPUT, ROOT, W, check_fonts
 from ..text import Subtitles, bubble, screen_text, smooth, watermark_layer
 
 FADE = 0.4  # 元素淡入淡出时长（秒）
@@ -96,6 +97,12 @@ class Element:
             hh = int(e["h"])
             im = im.resize((max(1, int(im.width * hh / im.height)), hh), Image.LANCZOS)
             self.pos = (int(e["x"] - im.width / 2), int(e["y"] - im.height / 2))
+        elif t == "photo":  # 全屏照片，铺满画面
+            src = Image.open(assets[e["asset"]]).convert("RGB")
+            sc = max(W / src.width, H / src.height)
+            src = src.resize((math.ceil(src.width * sc), math.ceil(src.height * sc)), Image.LANCZOS)
+            im = src.crop(((src.width - W) // 2, (src.height - H) // 2, (src.width - W) // 2 + W, (src.height - H) // 2 + H)).convert("RGBA")
+            self.pos = (0, 0)
         elif t == "strip":
             im = _torn_strip(assets[e["asset"]], int(e["top"]))
             self.pos = (0, int(e["top"]))
@@ -135,7 +142,9 @@ def build(cfg_path, shots=False):
     check_fonts()
     name = cfg.get("name") or cfg_path.stem
     work = OUTPUT / name
-    assets = _ensure_assets(cfg, OUTPUT / name / "assets")
+    work.mkdir(parents=True, exist_ok=True)
+    adir = Path(cfg["assets_dir"]) if cfg.get("assets_dir") else OUTPUT / name / "assets"
+    assets = _ensure_assets(cfg, adir if adir.is_absolute() else ROOT / adir)
     bg = Image.open(assets[cfg["background"]]).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
     elements = [Element(e, assets) for e in cfg["elements"]]
     subs = Subtitles(cfg.get("subtitles", []))

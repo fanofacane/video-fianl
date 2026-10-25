@@ -8,8 +8,8 @@
 | --- | --- | --- |
 | 碎片开场 | ✅ 完成 | 所有视频统一使用：玻璃碎片从上方坠落，底部先落位、逐渐向上拼合成背景图，配毛笔标题与黄色双语字幕；开场本身无声，配乐与口播在整片阶段加 |
 | 拼贴正文段 | 🚧 进行中 | 场景引擎已可用（图片抠图、底部撕边照片带、屏幕文字、对话气泡，按时间轴淡入淡出）；样片：`episodes/hedgehog/body_sample.json` |
-| 口播 / 配乐 | ⏳ 待做 | |
-| 整片拼接 | ⏳ 待做 | |
+| 口播 / 配乐 | 🚧 进行中 | 配音用 minimax-speech 技能（已复刻音色）；`video/align.py` 用本地 Whisper 把口播对齐到每行字幕；配乐待做 |
+| 整片拼接 | 🚧 进行中 | `python3 -m video.episode episodes/<slug>/episode.json [--shots]`：配音 → 对齐 → 碎片开场 + 正文 → 提亮溶解拼接 + 混音 |
 
 ## 目录
 
@@ -18,6 +18,8 @@ video/                  # 代码
   config.py             # 画面尺寸 1280x720、30fps、字体路径、输出目录
   text.py               # 全片通用文字样式：黄色中英字幕、顶部水印、开场毛笔标题
   imagegen.py           # GPT Image 2.5 生图（背景图、透明底素材）
+  episode.py            # 整期成片入口（配音、对齐、开场、正文、拼接）
+  align.py              # 口播与字幕行对齐（本地 Whisper）
   body/build.py         # 正文段：配置 JSON（素材 + 元素时间轴 + 字幕）→ 正文 mp4 / 关键帧截图
   opening/              # 碎片开场
     build.py            # 入口：配置 JSON → 开场 mp4
@@ -28,7 +30,7 @@ episodes/<slug>/        # 每期内容：逐字稿 script.md、正文配置 body
 examples/               # 示例配置与素材
 scripts/fetch_fonts.sh  # 下载字体
 docs/reference/         # 参考视频拆解
-.claude/.skills/        # 技能：media-parser（解析抖音链接）、openai-image-25（生图）
+.claude/.skills/        # 技能：media-parser（解析/转写抖音链接）、openai-image-25（生图）、minimax-speech（配音）
 output/                 # 成片与渲染缓存（不入库）
 ```
 
