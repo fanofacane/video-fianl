@@ -334,6 +334,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", required=True)
     ap.add_argument("--out", default="opening_demo.mp4")
+    ap.add_argument("--shatter-frames", default="", help="shatter3d.py 渲染出的 3D 碎片帧目录；不给则用 2D 碎片")
     args = ap.parse_args()
     fonts = dict(
         serif=os.path.join(args.fonts, "NotoSerifSC-Black.otf"),
@@ -358,18 +359,26 @@ def main():
         "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", args.out,
     ], stdin=subprocess.PIPE)
     land = max(s["start"] + s["dur"] for s in shards)
+    s3d = sorted(os.listdir(args.shatter_frames)) if args.shatter_frames else []
+    if s3d:
+        land = len(s3d) / FPS
     for fi in range(int(DUR * FPS)):
         t = fi / FPS
         if t < land:
             canvas = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-            draw_shards(canvas, shards, t)
-            ca = 0.3 * smooth(0.8, 1.1, t)
-            canvas.paste((220, 230, 255), (0, 0), cracks.point(lambda v: int(v * ca)))
+            if s3d:
+                canvas = Image.open(os.path.join(args.shatter_frames, s3d[fi])).convert("RGBA")
+                # 最后几帧淡入 2D 背景，保证接缝无跳变
+                canvas = Image.blend(canvas, scene_rgba, smooth(land - 0.3, land, t))
+            else:
+                draw_shards(canvas, shards, t)
+                ca = 0.3 * smooth(0.8, 1.1, t)
+                canvas.paste((220, 230, 255), (0, 0), cracks.point(lambda v: int(v * ca)))
         elif t < 5.6:
             z = 1 + 0.035 * smooth(land, 5.0, t)  # 慢推镜
             sw, shh = int(W / z), int(H / z)
             canvas = scene_rgba.crop(((W - sw) // 2, (H - shh) // 2, (W - sw) // 2 + sw, (H - shh) // 2 + shh)).resize((W, H), Image.BILINEAR)
-            ca = 0.3 * (1 - smooth(land, land + 0.5, t))
+            ca = 0 if s3d else 0.3 * (1 - smooth(land, land + 0.5, t))
             if ca > 0:
                 canvas.paste((220, 230, 255), (0, 0), cracks.point(lambda v: int(v * ca)))
             canvas = Image.blend(canvas, washed, smooth(4.8, 5.25, t))
