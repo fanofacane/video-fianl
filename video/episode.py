@@ -34,12 +34,17 @@ def _audio_len(path):
 def narration(ep, work):
     """配音（MiniMax，已复刻音色）+ 逐行时间。结果缓存在 output/<name>/。"""
     audio = work / "narration.mp3"
+    text = work / "narration.txt"
+    script = "".join(l["zh"] for l in ep["lines"])
+    times = work / "line_times.json"
+    if audio.exists() and (not text.exists() or text.read_text(encoding="utf-8") != script):
+        audio.unlink()            # 逐字稿改过：重新配音、重新对齐
+        audio.with_suffix(".mp3.json").unlink(missing_ok=True)  # 配音技能不覆盖旧的元数据文件
+        times.unlink(missing_ok=True)
     if not audio.exists():
-        text = work / "narration.txt"
-        text.write_text("".join(l["zh"] for l in ep["lines"]), encoding="utf-8")
+        text.write_text(script, encoding="utf-8")
         subprocess.run(["python3", str(SKILL_TTS), "tts", "--text-file", str(text), "--output", str(audio)], check=True)
     total = _audio_len(audio)
-    times = work / "line_times.json"
     if not times.exists():
         from .align import align_lines, char_times
         tl = align_lines([l["zh"] for l in ep["lines"]], char_times(audio), total)

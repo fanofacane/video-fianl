@@ -2,7 +2,7 @@
  "name": "spotlight",
  "title": "聚光灯效应",
  "opening": {
-  "lines": 3,
+  "lines": 2,
   "background": {
    "image": "output/spotlight/cover2/c.png",
    "prompt": "超现实主义艺术时尚摄影，70 年代复古胶片质感，高饱和撞色，16:9 横幅；主体必须位于画面正中央，画面上半部中间留出大面积干净的天空或纯色区域用于放置白色标题；不要任何文字、水印、logo。一片开满红色虞美人的田野，远处是淡蓝色天空和低矮山丘。画面正中站着一个穿浅色风衣的人，他的脸被一圈刺眼的白色光晕和横向的油画笔触涂抹得看不清，像被强光照到过曝，身后拖着轻微的动态残影。"
@@ -10,136 +10,120 @@
  },
  "lines": [
   {
-   "zh": "最在意你出丑的人，其实只有你自己。",
-   "en": "The one who cares most about your embarrassment is you."
+   "zh": "极度自卑的人，其实也是极度自信的人。",
+   "en": "Extreme self-doubt is a kind of extreme self-importance."
   },
   {
-   "zh": "我们总以为，别人都在盯着自己的失误，",
-   "en": "We always think others are watching our mistakes,"
+   "zh": "因为他觉得，所有人都在看着他。",
+   "en": "Because he believes everyone is watching him."
   },
   {
-   "zh": "可大多数人，连你说过什么都记不住。",
-   "en": "but most people can't even remember what you said."
+   "zh": "我们总觉得，别人的目光像一束聚光灯，",
+   "en": "We feel that others' eyes are like a spotlight,"
   },
   {
-   "zh": "开会说错一个词，你一下午都抬不起头；",
-   "en": "Say one wrong word in a meeting, and you can't look up all afternoon;"
+   "zh": "走到哪，就照到哪。",
+   "en": "following us wherever we go."
   },
   {
-   "zh": "朋友圈发完又删，就怕点赞太少；",
-   "en": "you post, then delete, afraid of too few likes;"
+   "zh": "头发没洗，你觉得全世界都看出来了；",
+   "en": "Skip a hair wash, and you think the whole world can tell."
   },
   {
-   "zh": "被人多看一眼，就开始检查自己哪里不对。",
-   "en": "one extra glance, and you start checking what's wrong with you."
+   "zh": "跟人打招呼对方没听见，你举着的手都不知道往哪放；",
+   "en": "Wave at someone who doesn't notice, and your hand freezes in the air."
   },
   {
-   "zh": "心理学里有个概念，叫聚光灯效应，",
-   "en": "Psychology has a name for this: the spotlight effect."
+   "zh": "群里发错一句话，整晚翻来覆去，",
+   "en": "Send one wrong message in the group chat, and you toss all night,"
   },
   {
-   "zh": "简单来说，就是高估别人对自己的关注。",
-   "en": "Simply put, we overestimate how much others notice us."
+   "zh": "仿佛别人正在开会，研究你有多蠢。",
+   "en": "as if others were holding a meeting on how foolish you are."
   },
   {
-   "zh": "心理学家做过一个实验，",
-   "en": "Psychologists once ran an experiment:"
+   "zh": "心理学管这叫聚光灯效应。",
+   "en": "Psychologists call this the spotlight effect."
   },
   {
-   "zh": "让学生穿件尴尬的T恤走进教室。",
-   "en": "students walked into a classroom wearing an embarrassing T-shirt."
+   "zh": "康奈尔大学做过一个实验，",
+   "en": "Cornell University ran an experiment,"
   },
   {
-   "zh": "他们以为，一半的人都注意到了，",
-   "en": "They guessed half the room noticed,"
+   "zh": "让学生穿着印着明星大头照的T恤，走进教室。",
+   "en": "sending students into a classroom in a T-shirt with a celebrity's face."
   },
   {
-   "zh": "结果真正留意的，还不到四分之一。",
+   "zh": "他们猜，至少一半的人会注意到，",
+   "en": "They guessed at least half the room would notice,"
+  },
+  {
+   "zh": "可真正注意到的，还不到四分之一。",
    "en": "but fewer than a quarter actually did."
   },
   {
-   "zh": "我以前也是这样。",
-   "en": "I used to be the same."
+   "zh": "你以为别人盯着你的缺点，",
+   "en": "You think people are staring at your flaws,"
   },
   {
-   "zh": "有一次上台分享，我把一个名字念错了，",
-   "en": "Once, giving a talk, I mispronounced a name."
+   "zh": "其实别人也在盯着自己的缺点。",
+   "en": "but they are busy staring at their own."
   },
   {
-   "zh": "台下有人笑了一声，我后背一下就湿了。",
-   "en": "Someone laughed, and my back broke into a sweat."
+   "zh": "我刚工作时，第一次汇报就翻错了PPT，",
+   "en": "At my first job, I clicked the wrong slide in my first presentation,"
   },
   {
-   "zh": "那天晚上，我把那一秒回放了几十遍，",
-   "en": "That night I replayed that second dozens of times,"
+   "zh": "之后半个月，开会都不敢抬头。",
+   "en": "and for two weeks I couldn't look up in meetings."
   },
   {
-   "zh": "心里只有一句话：完了，社死了。",
-   "en": "with one thought: that's it, I'm socially dead."
+   "zh": "直到同事说：你那次讲得挺好的啊。",
+   "en": "Until a colleague said: you did great that time."
   },
   {
-   "zh": "第二天我问同事，他愣了一下：",
-   "en": "The next day I asked a colleague. He paused:"
+   "zh": "原来我记住的，是自己的狼狈；",
+   "en": "What I remembered was my own embarrassment;"
   },
   {
-   "zh": "啊？你念错了吗？",
-   "en": "\"Huh? You said it wrong?\""
+   "zh": "别人记住的，也许只是那天天气不错。",
+   "en": "what others remembered was maybe just the nice weather."
   },
   {
-   "zh": "那一刻我才发现，",
-   "en": "That's when I realized"
+   "zh": "那束聚光灯，其实是我们自己打的。",
+   "en": "That spotlight is one we aim at ourselves."
   },
   {
-   "zh": "那场审判，只有我一个人在场。",
-   "en": "I was the only one at that trial."
+   "zh": "不是别人在审视你，是你在审判自己。",
+   "en": "It's not others examining you; it's you judging yourself."
   },
   {
-   "zh": "因为在你的故事里，你是主角，",
-   "en": "In your story, you're the lead,"
+   "zh": "世界不是一个审判你的考场，",
+   "en": "The world is not an exam hall that judges you,"
   },
   {
-   "zh": "可在别人的故事里，你只是一个路过的人。",
-   "en": "but in everyone else's, you're just a passer-by."
+   "zh": "它更像一个人来人往的广场。",
+   "en": "it's more like a square where people come and go."
   },
   {
-   "zh": "越在意越放大，越放大越不敢开口。",
-   "en": "The more you care, the bigger it gets; the bigger it gets, the less you dare to speak."
+   "zh": "你可以紧张，但别把紧张当成预言；",
+   "en": "You can be nervous, but don't treat nerves as prophecy;"
   },
   {
-   "zh": "很多紧张，不是来自别人的眼光，",
-   "en": "Much of our nervousness doesn't come from others' eyes,"
+   "zh": "你可以出错，但不必一遍遍回放。",
+   "en": "you can make mistakes, but you don't need to replay them."
   },
   {
-   "zh": "而是来自我们给自己安排的观众。",
-   "en": "but from the audience we arrange for ourselves."
+   "zh": "所谓成长，就是慢慢关掉那束不存在的聚光灯，",
+   "en": "Growing up is slowly switching off a spotlight that never existed,"
   },
   {
-   "zh": "真正松弛的人，并不是不在乎别人，",
-   "en": "Truly relaxed people don't ignore others;"
+   "zh": "然后发现，大家都忙着过自己的日子，",
+   "en": "and finding that everyone is busy living their own lives,"
   },
   {
-   "zh": "而是知道，没人会一直盯着你的缺点。",
-   "en": "they just know no one keeps staring at your flaws."
-  },
-  {
-   "zh": "你可以说错话，可以出丑，可以不完美，",
-   "en": "You can misspeak, look silly, be imperfect,"
-  },
-  {
-   "zh": "但不必把每次失误，都当成公开审判。",
-   "en": "but you don't have to treat every slip as a public trial."
-  },
-  {
-   "zh": "所谓自信，不是确信自己不会出错，",
-   "en": "Confidence isn't being sure you won't make mistakes,"
-  },
-  {
-   "zh": "而是终于明白，",
-   "en": "it's finally understanding"
-  },
-  {
-   "zh": "台下的人，其实都在忙着照亮自己。",
-   "en": "that the audience is busy lighting up their own lives."
+   "zh": "你也可以放心地，去过你的。",
+   "en": "so you can safely go live yours."
   }
  ],
  "assets": {
@@ -147,18 +131,6 @@
    "size": "1536x864",
    "image_from": "output/hedgehog/assets/paper.png",
    "prompt": "米白色旧纸张纹理，16:9，只有纸张本身。"
-  },
-  "clerk": {
-   "transparent": true,
-   "prompt": "一位穿衬衫打领带的年轻男职员坐在会议桌前，单手扶额、低着头，满脸懊恼；人物与桌椅完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "phone_girl": {
-   "transparent": true,
-   "prompt": "一个年轻女孩站着，双手拿着手机盯着屏幕，手指悬在屏幕上方犹豫不决，表情纠结；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "mirror_man": {
-   "transparent": true,
-   "prompt": "一个穿西装的年轻男人举着一面小圆镜，紧张地整理衣领，眉头微皱；半身到膝盖。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
   },
   "lamp": {
    "transparent": true,
@@ -168,50 +140,6 @@
    "transparent": true,
    "prompt": "一位虚构的中年学者，戴圆框眼镜、穿粗花呢西装，手拿笔记本和铅笔，微笑着站立；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
   },
-  "student": {
-   "transparent": true,
-   "prompt": "一个年轻大学生穿着一件印着夸张卡通大头像的鲜艳T恤，脸红、尴尬地挠着后脑勺；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "silhouette": {
-   "transparent": true,
-   "prompt": "一个年轻人的纯黑色剪影，侧身站立、微微低头、双手插兜，剪纸效果，没有面部细节；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "mic": {
-   "transparent": true,
-   "prompt": "一支复古镀铬立式话筒连着金属支架，物件静物。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "sleepless": {
-   "transparent": true,
-   "prompt": "一个人躺在复古木床上盖着格子被子，睁大眼睛盯着天花板睡不着；人物与床完整，侧面视角。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "coworker": {
-   "transparent": true,
-   "prompt": "一个端着咖啡杯的男同事，歪着头一脸茫然、像在说“啊？”；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "speaker": {
-   "transparent": true,
-   "prompt": "一个站在小木台上的人，双手紧张地交握在胸前，正对前方；人物与木台完整，全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "sunbather": {
-   "transparent": true,
-   "prompt": "一个人躺在一块格子野餐布上晒太阳，双手枕在脑后，表情放松惬意；人物与野餐布完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "gavel": {
-   "transparent": true,
-   "prompt": "一把复古深色木质法官槌和圆形底座，物件静物。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
-  },
-  "hall": {
-   "size": "1536x864",
-   "prompt": "复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。白天空荡荡的旧礼堂，阳光从高窗斜射进来，照在舞台中央的一把木椅上，台下一排排空座位，明亮温暖、安静。"
-  },
-  "crowd": {
-   "size": "1536x864",
-   "prompt": "复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。70 年代城市街头熙熙攘攘的人群，人们各自走路、看报、交谈、低头赶路，没有一个人看镜头，饱和暖色。"
-  },
-  "seats": {
-   "size": "1536x864",
-   "prompt": "复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。灯光柔和的礼堂观众席，每个座位上的人都低着头，专注地看着自己手里捧着的一盏发着暖光的小灯，光点星星点点，温暖安静。"
-  },
   "school": {
    "transparent": true,
    "prompt": "一栋复古红砖教学楼的正面，三层楼，白色窗框，门口有台阶，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。"
@@ -220,43 +148,161 @@
    "transparent": true,
    "prompt": "一个复古剧院舞台的台口：深红色丝绒幕布向两侧拉开，金色边框，下面是木地板舞台，正面视角，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。"
   },
-  "hill": {
+  "speaker": {
    "transparent": true,
-   "prompt": "一片翠绿的圆润草坡，坡顶上有一棵枝叶茂盛的大树，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。"
+   "prompt": "一个站在小木台上的人，双手紧张地交握在胸前，正对前方；人物与木台完整，全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "sleepless": {
+   "transparent": true,
+   "prompt": "一个人躺在复古木床上盖着格子被子，睁大眼睛盯着天花板睡不着；人物与床完整，侧面视角。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "clerk": {
+   "transparent": true,
+   "prompt": "一位穿衬衫打领带的年轻男职员坐在会议桌前，单手扶额、低着头，满脸懊恼；人物与桌椅完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "coworker": {
+   "transparent": true,
+   "prompt": "一个端着咖啡杯的男同事，歪着头一脸茫然、像在说“啊？”；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "silhouette": {
+   "transparent": true,
+   "prompt": "一个年轻人的纯黑色剪影，侧身站立、微微低头、双手插兜，剪纸效果，没有面部细节；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "mirror_man": {
+   "transparent": true,
+   "prompt": "一个穿西装的年轻男人举着一面小圆镜，紧张地整理衣领，眉头微皱；半身到膝盖。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
   },
   "courthouse": {
    "transparent": true,
    "prompt": "一座古典法院建筑的门廊：白色石柱、三角形山花、宽大的石阶，正面视角，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "gavel": {
+   "transparent": true,
+   "prompt": "一把复古深色木质法官槌和圆形底座，物件静物。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "hill": {
+   "transparent": true,
+   "prompt": "一片翠绿的圆润草坡，坡顶上有一棵枝叶茂盛的大树，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "sunbather": {
+   "transparent": true,
+   "prompt": "一个人躺在一块格子野餐布上晒太阳，双手枕在脑后，表情放松惬意；人物与野餐布完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "crowd": {
+   "size": "1536x864",
+   "prompt": "复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。70 年代城市街头熙熙攘攘的人群，人们各自走路、看报、交谈、低头赶路，没有一个人看镜头，饱和暖色。"
+  },
+  "hall": {
+   "size": "1536x864",
+   "prompt": "复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。白天空荡荡的旧礼堂，阳光从高窗斜射进来，照在舞台中央的一把木椅上，台下一排排空座位，明亮温暖、安静。"
+  },
+  "messy_hair": {
+   "prompt": "生成一张全新的图片：一个年轻女人站着，一只手尴尬地按住自己乱糟糟、有点油的头发，眼睛紧张地往两边瞟；半身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "waver": {
+   "prompt": "一个年轻男人高高举着一只手在打招呼，笑容僵在脸上，手停在半空不知道往哪放；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "walker_back": {
+   "prompt": "一个穿风衣的路人背对镜头往前走，没有回头；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "meeting": {
+   "prompt": "三个穿西装的中年人围着一张小会议桌，弯腰凑在一起，其中一人拿放大镜仔细研究桌上的一张照片，表情严肃夸张；人物与桌子完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "student2": {
+   "prompt": "一个年轻大学生穿着一件白色T恤，T恤正面印着一张巨大的复古男明星黑白大头照，他脸红、尴尬地挠着后脑勺；全身。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "eye": {
+   "prompt": "一只巨大的人眼特写：睫毛、虹膜、眼白完整，只保留眼睛和周围一圈皮肤，形状像横放的杏仁，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "screen": {
+   "prompt": "一块复古会议室投影幕布，幕布上投着一页画错的图表，旁边一台老式幻灯机，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "handlight": {
+   "prompt": "生成一张全新的图片：一只手握着一支复古金属手电筒，手电光束向上照，物件静物。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "desks": {
+   "prompt": "一排排复古木质考试课桌和椅子，桌上放着试卷和铅笔，斜侧视角，复古 70 年代胶片照片质感的场景抠图素材，饱和暖色、细腻颗粒；沿主体外轮廓精确抠出，保留主体本身，不含天空和远景；透明 alpha 背景，无投影、无白色底板、无棋盘格、无文字。",
+   "transparent": true
+  },
+  "sunny": {
+   "prompt": "晴朗的午后城市街道，蓝天白云，阳光洒在路面和行道树上，几个路人悠闲地走过，明亮、轻松。复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。",
+   "size": "1536x864"
+  },
+  "park": {
+   "prompt": "70 年代城市公园的草坪，阳光明亮，人们各做各的事：有人遛狗、有人看书、有人骑车、有人野餐，没有人看镜头，温暖轻松。复古胶片风格照片，16:9 横幅，低饱和暖色，细腻颗粒，没有文字、水印。",
+   "size": "1536x864"
   }
  },
  "scenes": [
   {
-   "from": 4,
+   "from": 3,
+   "to": 4,
+   "elements": [
+    {
+     "type": "image",
+     "asset": "stage",
+     "x": 760,
+     "y": 430,
+     "w": 900,
+     "border": 6,
+     "at": 3
+    },
+    {
+     "type": "image",
+     "asset": "speaker",
+     "x": 760,
+     "y": 420,
+     "h": 400,
+     "at": 3,
+     "delay": 0.3
+    },
+    {
+     "type": "image",
+     "asset": "lamp",
+     "x": 170,
+     "y": 210,
+     "h": 300,
+     "at": 4,
+     "flip": true
+    }
+   ]
+  },
+  {
+   "from": 5,
    "to": 6,
    "elements": [
     {
      "type": "image",
-     "asset": "clerk",
-     "x": 230,
-     "y": 370,
-     "h": 400,
-     "at": 4
-    },
-    {
-     "type": "image",
-     "asset": "phone_girl",
-     "x": 640,
-     "y": 360,
+     "asset": "messy_hair",
+     "x": 250,
+     "y": 380,
      "h": 440,
      "at": 5
     },
     {
      "type": "image",
-     "asset": "mirror_man",
-     "x": 1050,
-     "y": 360,
-     "h": 440,
+     "asset": "waver",
+     "x": 760,
+     "y": 370,
+     "h": 460,
      "at": 6
+    },
+    {
+     "type": "image",
+     "asset": "walker_back",
+     "x": 1110,
+     "y": 420,
+     "h": 320,
+     "at": 6,
+     "delay": 0.6
     }
    ]
   },
@@ -265,39 +311,73 @@
    "to": 8,
    "elements": [
     {
-     "type": "text",
-     "text": "“聚光灯效应”",
-     "size": 76,
-     "color": "black",
-     "x": 640,
-     "y": 175,
+     "type": "image",
+     "asset": "sleepless",
+     "x": 330,
+     "y": 440,
+     "h": 280,
      "at": 7
     },
     {
-     "type": "image",
-     "asset": "lamp",
-     "x": 640,
-     "y": 440,
-     "h": 260,
+     "type": "bubble",
+     "text": "收到，亲爱的～",
+     "style": "green",
+     "size": 34,
+     "x": 330,
+     "y": 190,
      "at": 7,
-     "delay": 0.6
+     "delay": 0.3
     },
     {
-     "type": "text",
-     "text": "（高估别人对自己的关注）",
+     "type": "image",
+     "asset": "meeting",
+     "x": 930,
+     "y": 400,
+     "h": 400,
+     "at": 8
+    },
+    {
+     "type": "bubble",
+     "text": "这人怎么想的？",
+     "style": "white",
      "size": 30,
-     "color": "red",
-     "x": 640,
-     "y": 250,
+     "x": 1000,
+     "y": 120,
      "at": 8,
-     "typewriter": true,
-     "cps": 9
+     "delay": 0.8
     }
    ]
   },
   {
    "from": 9,
-   "to": 12,
+   "to": 9,
+   "elements": [
+    {
+     "type": "text",
+     "text": "“聚光灯效应”",
+     "size": 80,
+     "color": "black",
+     "x": 640,
+     "y": 260,
+     "at": 9
+    },
+    {
+     "type": "text",
+     "text": "（高估别人对自己的关注）",
+     "size": 32,
+     "color": "red",
+     "x": 640,
+     "y": 360,
+     "at": 9,
+     "delay": 0.4,
+     "typewriter": true,
+     "cps": 13
+    }
+   ]
+  },
+  {
+   "from": 10,
+   "to": 13,
    "elements": [
     {
      "type": "image",
@@ -306,7 +386,7 @@
      "y": 430,
      "w": 560,
      "border": 6,
-     "at": 9
+     "at": 10
     },
     {
      "type": "image",
@@ -314,16 +394,26 @@
      "x": 170,
      "y": 400,
      "h": 470,
-     "at": 9,
+     "at": 10,
      "delay": 0.3
     },
     {
+     "type": "text",
+     "text": "康奈尔大学的实验",
+     "size": 40,
+     "color": "black",
+     "x": 470,
+     "y": 110,
+     "at": 10,
+     "delay": 0.5
+    },
+    {
      "type": "image",
-     "asset": "student",
+     "asset": "student2",
      "x": 880,
      "y": 470,
      "h": 440,
-     "at": 10
+     "at": 11
     },
     {
      "type": "text",
@@ -331,8 +421,8 @@
      "size": 58,
      "color": "red",
      "x": 470,
-     "y": 180,
-     "at": 11
+     "y": 210,
+     "at": 12
     },
     {
      "type": "text",
@@ -340,164 +430,223 @@
      "size": 58,
      "color": "blue",
      "x": 470,
-     "y": 280,
-     "at": 12
+     "y": 310,
+     "at": 13
     }
    ]
   },
   {
-   "from": 13,
+   "from": 14,
    "to": 15,
    "elements": [
     {
      "type": "image",
-     "asset": "stage",
-     "x": 780,
-     "y": 440,
-     "w": 900,
+     "asset": "eye",
+     "x": 640,
+     "y": 330,
+     "w": 980,
      "border": 6,
-     "at": 13,
-     "delay": 0.2
-    },
-    {
-     "type": "image",
-     "asset": "silhouette",
-     "x": 200,
-     "y": 410,
-     "h": 480,
-     "at": 13
-    },
-    {
-     "type": "image",
-     "asset": "mic",
-     "x": 780,
-     "y": 470,
-     "h": 420,
      "at": 14
     },
     {
-     "type": "bubble",
-     "text": "哈哈",
-     "style": "white",
-     "size": 34,
-     "x": 1110,
-     "y": 140,
+     "type": "image",
+     "asset": "mirror_man",
+     "x": 640,
+     "y": 380,
+     "h": 440,
      "at": 15
     }
    ]
   },
   {
    "from": 16,
-   "to": 17,
+   "to": 16,
    "elements": [
     {
      "type": "image",
-     "asset": "sleepless",
-     "x": 640,
-     "y": 420,
-     "h": 300,
+     "asset": "screen",
+     "x": 820,
+     "y": 380,
+     "w": 640,
+     "border": 6,
      "at": 16
     },
     {
-     "type": "bubble",
-     "text": "完了，社死了。",
-     "style": "green",
-     "size": 38,
-     "x": 640,
-     "y": 160,
-     "at": 17
+     "type": "image",
+     "asset": "silhouette",
+     "x": 250,
+     "y": 390,
+     "h": 460,
+     "at": 16,
+     "delay": 0.3
     }
    ]
   },
   {
-   "from": 18,
-   "to": 19,
+   "from": 17,
+   "to": 18,
    "elements": [
     {
      "type": "image",
-     "asset": "silhouette",
-     "x": 300,
-     "y": 370,
-     "h": 440,
-     "at": 18
+     "asset": "clerk",
+     "x": 330,
+     "y": 400,
+     "h": 400,
+     "at": 17
     },
     {
      "type": "image",
      "asset": "coworker",
      "x": 960,
-     "y": 370,
+     "y": 380,
      "h": 440,
-     "at": 18,
-     "delay": 0.3
+     "at": 18
     },
     {
      "type": "bubble",
-     "text": "啊？你念错了吗？",
+     "text": "你那次讲得挺好的啊",
      "style": "white",
-     "size": 32,
+     "size": 30,
      "x": 900,
      "y": 110,
-     "at": 19
+     "at": 18,
+     "delay": 0.4
     }
    ]
   },
   {
-   "from": 20,
-   "to": 21,
+   "from": 19,
+   "to": 20,
    "elements": [
     {
-     "type": "photo",
-     "asset": "hall",
+     "type": "text",
+     "text": "我记住的：狼狈",
+     "size": 56,
+     "color": "red",
+     "x": 640,
+     "y": 150,
+     "at": 19
+    },
+    {
+     "type": "strip",
+     "asset": "sunny",
+     "top": 330,
+     "at": 20
+    },
+    {
+     "type": "text",
+     "text": "别人记住的：天气不错",
+     "size": 56,
+     "color": "blue",
+     "x": 640,
+     "y": 245,
      "at": 20
     }
    ]
   },
   {
-   "from": 22,
-   "to": 23,
+   "from": 21,
+   "to": 22,
    "elements": [
     {
-     "type": "strip",
-     "asset": "crowd",
-     "top": 380,
-     "at": 23
+     "type": "image",
+     "asset": "handlight",
+     "x": 640,
+     "y": 400,
+     "h": 420,
+     "at": 21,
+     "until": 21
+    },
+    {
+     "type": "text",
+     "text": "灯在自己手里",
+     "size": 58,
+     "color": "red",
+     "x": 1010,
+     "y": 300,
+     "at": 21,
+     "delay": 0.6,
+     "until": 21
     },
     {
      "type": "image",
-     "asset": "speaker",
+     "asset": "courthouse",
      "x": 640,
-     "y": 340,
-     "h": 460,
+     "y": 470,
+     "w": 760,
+     "border": 6,
      "at": 22
+    },
+    {
+     "type": "image",
+     "asset": "gavel",
+     "x": 860,
+     "y": 560,
+     "h": 300,
+     "at": 22,
+     "delay": 0.5
+    },
+    {
+     "type": "text",
+     "text": "审视",
+     "size": 60,
+     "color": "blue",
+     "x": 240,
+     "y": 170,
+     "at": 22
+    },
+    {
+     "type": "text",
+     "text": "审判",
+     "size": 60,
+     "color": "red",
+     "x": 1040,
+     "y": 170,
+     "at": 22,
+     "delay": 1.2
     }
    ]
   },
   {
-   "from": 24,
+   "from": 23,
    "to": 24,
    "elements": [
     {
-     "type": "cycle",
+     "type": "image",
+     "asset": "desks",
      "x": 640,
-     "y": 320,
-     "r": 150,
-     "size": 46,
+     "y": 410,
+     "border": 6,
+     "at": 23,
+     "until": 23,
+     "h": 430
+    },
+    {
+     "type": "text",
+     "text": "考场",
+     "size": 70,
+     "color": "red",
+     "x": 640,
+     "y": 110,
+     "at": 23,
+     "delay": 0.3,
+     "until": 23
+    },
+    {
+     "type": "strip",
+     "asset": "crowd",
+     "top": 300,
+     "at": 24
+    },
+    {
+     "type": "text",
+     "text": "广场",
+     "size": 70,
+     "color": "blue",
+     "x": 640,
+     "y": 160,
      "at": 24,
-     "step": 0.9,
-     "items": [
-      {
-       "text": "在意",
-       "color": "black"
-      },
-      {
-       "text": "放大",
-       "color": "red"
-      },
-      {
-       "text": "不敢开口",
-       "color": "blue"
-      }
-     ]
+     "delay": 0.3
     }
    ]
   },
@@ -506,39 +655,13 @@
    "to": 26,
    "elements": [
     {
-     "type": "text",
-     "text": "不是别人的眼光",
-     "size": 60,
-     "color": "blue",
-     "x": 640,
-     "y": 220,
-     "at": 25
-    },
-    {
-     "type": "text",
-     "text": "是你给自己安排的观众",
-     "size": 60,
-     "color": "red",
-     "x": 640,
-     "y": 340,
-     "at": 26,
-     "typewriter": true,
-     "cps": 7
-    }
-   ]
-  },
-  {
-   "from": 27,
-   "to": 28,
-   "elements": [
-    {
      "type": "image",
      "asset": "hill",
      "x": 960,
      "y": 430,
      "w": 560,
      "border": 6,
-     "at": 27
+     "at": 25
     },
     {
      "type": "image",
@@ -546,112 +669,81 @@
      "x": 560,
      "y": 520,
      "h": 250,
-     "at": 27,
+     "at": 25,
      "delay": 0.3
     },
     {
      "type": "text",
-     "text": "没人会一直盯着你",
-     "size": 58,
-     "color": "black",
-     "x": 420,
-     "y": 170,
-     "at": 28
-    }
-   ]
-  },
-  {
-   "from": 29,
-   "to": 30,
-   "elements": [
-    {
-     "type": "image",
-     "asset": "courthouse",
-     "x": 640,
-     "y": 470,
-     "w": 760,
-     "border": 6,
-     "at": 29
-    },
-    {
-     "type": "text",
-     "text": "说错话",
+     "text": "紧张≠预言",
      "size": 56,
      "color": "red",
-     "x": 240,
-     "y": 160,
-     "at": 29,
-     "delay": 0.2
+     "x": 380,
+     "y": 150,
+     "at": 25,
+     "delay": 0.6
     },
     {
      "type": "text",
-     "text": "出丑",
+     "text": "出错≠回放",
      "size": 56,
      "color": "blue",
-     "x": 640,
-     "y": 110,
-     "at": 29,
-     "delay": 0.8
-    },
-    {
-     "type": "text",
-     "text": "不完美",
-     "size": 56,
-     "color": "gold",
-     "x": 1040,
-     "y": 160,
-     "at": 29,
-     "delay": 1.4
-    },
-    {
-     "type": "image",
-     "asset": "gavel",
-     "x": 860,
-     "y": 560,
-     "h": 300,
-     "at": 30
+     "x": 380,
+     "y": 250,
+     "at": 26
     }
    ]
   },
   {
-   "from": 31,
-   "to": 33,
+   "from": 27,
+   "to": 27,
    "elements": [
     {
      "type": "strip",
-     "asset": "seats",
-     "top": 340,
-     "at": 31
+     "asset": "hall",
+     "top": 300,
+     "at": 27
     },
     {
      "type": "text",
-     "text": "所谓自信，不是确信自己不会出错",
-     "size": 44,
+     "text": "关掉那束不存在的聚光灯",
+     "size": 52,
      "color": "black",
      "x": 640,
-     "y": 110,
-     "at": 31,
+     "y": 170,
+     "at": 27,
      "typewriter": true,
-     "cps": 8
+     "cps": 7
+    }
+   ]
+  },
+  {
+   "from": 28,
+   "to": 29,
+   "elements": [
+    {
+     "type": "strip",
+     "asset": "park",
+     "top": 330,
+     "at": 28
     },
     {
      "type": "text",
-     "text": "台下的人，其实都在忙着照亮自己",
-     "size": 46,
+     "text": "去过你的日子",
+     "size": 58,
      "color": "red",
      "x": 640,
      "y": 200,
-     "at": 33,
+     "at": 29,
      "typewriter": true,
-     "cps": 8
+     "cps": 6
     }
    ]
   }
  ],
  "publish": {
-  "title": "最在意你出丑的人，其实只有你自己",
+  "title": "极度自卑的人，其实也是极度自信的人",
   "alternatives": [
-   "台下的人，其实都在忙着照亮自己",
+   "世界不是一个审判你的考场，它更像一个人来人往的广场",
    "为什么你总觉得，所有人都在看你？"
   ],
   "hashtags": [
