@@ -15,7 +15,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from ..config import FPS, H, OUTPUT, ROOT, W, check_fonts
+from ..config import WATERMARK, FPS, H, OUTPUT, ROOT, W, check_fonts
 from ..text import Subtitles, Title, smooth, watermark_layer
 from .cuts import DEFAULT_MASK
 
@@ -85,7 +85,7 @@ def build(cfg_path, shots=False, samples=48):
     scene = Image.open(bg).convert("RGBA")
     land = SHATTER_FRAMES / FPS
     title = Title(cfg["title"], fade_out=duration - 0.6)
-    wm = watermark_layer(cfg.get("watermark", ""))
+    wm = watermark_layer(cfg.get("watermark", WATERMARK))
     subs = Subtitles(cfg.get("subtitles", []))
 
     if shots:  # 只渲染 8 个关键帧（0.3–1.7 秒），拼成一张对照图

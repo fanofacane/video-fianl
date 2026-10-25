@@ -14,7 +14,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from .config import OUTPUT, ROOT
+from .config import OUTPUT, ROOT, WATERMARK
 
 XFADE = 0.5   # 开场到正文的提亮溶解时长
 TAIL = 1.2    # 配音结束后画面多停留的秒数
@@ -57,7 +57,7 @@ def plan(ep, work, tl, total):
     n_open = ep["opening"]["lines"]
     open_dur = round(tl[n_open - 1][1] + 0.25, 2)
     opening = {
-        "name": f"{ep['name']}_opening", "title": ep["title"], "watermark": ep.get("watermark", ""),
+        "name": f"{ep['name']}_opening", "title": ep["title"], "watermark": ep.get("watermark", WATERMARK),
         "duration": open_dur, "background": ep["opening"]["background"],
         "subtitles": _subs(ep, tl, range(n_open)),
     }
@@ -75,7 +75,7 @@ def plan(ep, work, tl, total):
             elements.append(e)
         shots.append(round(tl[last][1] - t0 - 0.2, 2))   # 每个场景元素到齐时
     body = {
-        "name": f"{ep['name']}_body", "duration": body_dur, "watermark": ep.get("watermark", ""),
+        "name": f"{ep['name']}_body", "duration": body_dur, "watermark": ep.get("watermark", WATERMARK),
         "background": "paper", "assets_dir": str((work / "assets").relative_to(ROOT)),
         "assets": ep["assets"], "subtitles": _subs(ep, tl, range(n_open, len(tl)), offset=t0),
         "elements": elements, "shots": shots,

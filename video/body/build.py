@@ -33,7 +33,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageFilter
 
-from ..config import FPS, H, OUTPUT, ROOT, W, check_fonts
+from ..config import WATERMARK, FPS, H, OUTPUT, ROOT, W, check_fonts
 from ..text import Subtitles, bubble, screen_text, smooth, watermark_layer
 
 FADE = 0.4  # 元素淡入淡出时长（秒）
@@ -151,7 +151,7 @@ def build(cfg_path, shots=False):
     bg = Image.open(assets[cfg["background"]]).convert("RGB").resize((W, H), Image.LANCZOS).convert("RGBA")
     elements = [Element(e, assets) for e in cfg["elements"]]
     subs = Subtitles(cfg.get("subtitles", []))
-    wm = watermark_layer(cfg.get("watermark", ""))
+    wm = watermark_layer(cfg.get("watermark", WATERMARK))
     duration = float(cfg["duration"])
 
     def frame(t):

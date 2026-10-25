@@ -6,6 +6,7 @@ OUTPUT = ROOT / "output"            # 成片与缓存（已在 .gitignore 中忽
 FONT_DIR = ROOT / "assets" / "fonts"  # 由 scripts/fetch_fonts.sh 下载（不入库）
 
 W, H, FPS = 1280, 720, 30
+WATERMARK = "@好想一口吃掉"  # 顶部居中账号水印；配置里写 "watermark": "" 可关闭
 
 FONTS = {
     "serif": FONT_DIR / "NotoSerifSC-Black.otf",   # 中文字幕、水印：粗宋
