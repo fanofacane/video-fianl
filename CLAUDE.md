@@ -7,6 +7,7 @@
 - 顶部水印统一为 `@好想一口吃掉`（`video/config.py` 的 WATERMARK，默认自动加）。
 - 所有视频的开场统一用碎片开场（`video/opening/`）；画面 1280x720、30fps；字幕、标题、水印样式统一走 `video/text.py`。
 - 画面素材用生图工具（`video/imagegen.py`）每期临时生成，不用代码手绘、不维护固定素材库；主题意象只在寓言段出现，其余场景素材要多样。
-- 参考视频只学手法和节奏，不复制原作者的画面、文案和水印；对标视频完整转写稿不入库。
+- 参考视频只学手法和节奏，不复制原作者的画面、文案和水印；对标视频完整转写稿只存本地 `output/library/`，不入库。
+- 写正文前先读 `docs/body-writing.md` 的检查清单。
 - 生成物放 `output/`（不入库）；字体由 `scripts/fetch_fonts.sh` 下载到 `assets/fonts/`（不入库）。
 - 做完一个模块就更新 README 的“进度”表；做完一期把新经验补进 `docs/lessons.md`。

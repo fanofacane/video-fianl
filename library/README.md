@@ -1,6 +1,6 @@
 # 参考库与成品库
 
-**做任何一期视频之前，必须先读完 `reference/` 下与本期话题最接近的 2 个对标视频的 `meta.md`、`breakdown.md`、`frames.jpg`。**
+**做任何一期视频之前，必须先读 [docs/body-writing.md](../docs/body-writing.md)，再读完 `reference/` 下与本期话题最接近的 2 个对标视频的 `meta.md`、`breakdown.md`、`frames.jpg`（中版有逐秒帧 `frames_1s_p*.jpg`，优先参考）。**
 
 ## reference/ 对标视频（按视频分类）
 
@@ -10,6 +10,8 @@
 | [jdl-guanxi-zhiliang](reference/jdl-guanxi-zhiliang/) | 江东陵 | 人其实需要的不是形式，而是关系的质量。 | 202s | 长版 | 情感回应 |
 | [jdl-qiwu-mimang](reference/jdl-qiwu-mimang/) | 江东陵 | 早上会起雾，所以迷茫是很正常的 | 218s | 长版 | 原因论 |
 | [jdl-yanchi-manzu](reference/jdl-yanchi-manzu/) | 江东陵 | 为什么聪明的人，都在延迟吗满足？ | 197s | 长版 | 延迟满足 |
+| [jdl-paolu-jineng](reference/jdl-paolu-jineng/) | 江东陵 | 跑路是人这一生最重要的技能 | 113s | 中版 | 认知解离（逐秒拆解） |
+| [jdl-renzhi-bihe](reference/jdl-renzhi-bihe/) | 江东陵 | 共勉 | 136s | 中版 | 认知闭合（逐秒拆解） |
 | [deyi-zhenxin-zunzhong](reference/deyi-zhenxin-zunzhong/) | 得一. | 你的真心待人为什么总是不被尊重？ | 68s | 短版 | 破窗效应 |
 | [deyi-rensheng-rongcuolv](reference/deyi-rensheng-rongcuolv/) | 得一. | 为什么曾以为天大的事后来却提都懒得提？ | 64s | 短版 | 人生容错率 |
 

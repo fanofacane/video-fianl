@@ -14,6 +14,7 @@
        写逐字稿时学结构和手法，不照搬原句。
 """
 import argparse
+import math
 import json
 import re
 import subprocess
@@ -125,7 +126,7 @@ def add_ours(ep_path):
     print(f"已归档 {d}")
 
 
-import math  # noqa: E402  (frames_sheet 使用)
+
 
 
 def main():
