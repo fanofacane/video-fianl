@@ -2,7 +2,7 @@
 
 示例依据[图像指南](https://developers.openai.com/api/docs/guides/image-generation)和[图像工具指南](https://developers.openai.com/api/docs/guides/tools-image-generation)整理，默认使用 Flare。以下是可适配的 Python 示例，不是已执行的生成结果。运行环境需要支持这些参数的 `openai` SDK 和 `python-dotenv`；透明度验证需要 Pillow。从项目根目录运行，示例读取该目录 `.env`，不覆盖进程中已设置的环境变量；OpenAI SDK 使用 `OPENAI_API_KEY` 和 `OPENAI_BASE_URL`。从其他目录执行时，将 dotenv 路径改为项目 `.env` 的绝对路径。
 
-本项目基址为用户指定的第三方兼容接口 `https://hk.ergouzi.life/v1`。模型名称和参数支持尚未在该服务验证；不能把官方能力说明当作第三方服务的兼容保证。服务器部署时从 `.env.example` 创建本地 `.env` 并通过部署环境注入密钥。
+本项目基址为用户指定的第三方兼容接口 `https://hk.ergouzi.life/v1`。模型名称和参数支持尚未在该服务验证；不能把官方能力说明当作第三方服务的兼容保证。项目根目录 `.env` 提供配置；部署环境可通过同名环境变量覆盖文件中的值。
 
 ## 生成透明底 PNG
 
