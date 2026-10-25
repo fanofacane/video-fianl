@@ -331,6 +331,7 @@ def make_audio(path, shards):
 
 
 def main():
+    global DUR
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", required=True)
     ap.add_argument("--out", default="opening_demo.mp4")
@@ -343,7 +344,6 @@ def main():
         title=os.path.join(args.fonts, "MaShanZheng.ttf"),
         en="/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
     )
-    global DUR
     DUR = args.duration
     scene = night_scene()
     if args.bg:
