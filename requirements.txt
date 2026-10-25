@@ -1,0 +1,8 @@
+bpy==5.2.3              # Blender 3D 渲染（碎片开场），需 Python 3.13
+numpy
+pillow
+opencv-python-headless  # 裂纹遮罩分块
+scikit-image            # 裂纹线骨架化
+openai                  # GPT Image 2.5 生图
+python-dotenv
+# 另需系统里有 ffmpeg，以及 Liberation Serif 字体（英文字幕）
