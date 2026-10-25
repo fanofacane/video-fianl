@@ -9,7 +9,7 @@ from mathutils import Vector, Euler
 
 W_PX, H_PX = 1280, 720
 PW, PH = 16.0, 9.0          # 板子尺寸（Blender 单位）
-THICK = 0.045
+THICK = 0.03
 FPS = 30
 
 
@@ -120,7 +120,15 @@ def front_material(img, back=False):
     gloss = nt.nodes.new("ShaderNodeBsdfGlossy")
     gloss.inputs["Roughness"].default_value = 0.03
     gloss.inputs["Color"].default_value = (0.75, 0.85, 1.0, 1)
+    nz = nt.nodes.new("ShaderNodeTexNoise")
+    nz.inputs["Scale"].default_value = 3.0
+    nz.inputs["Detail"].default_value = 6.0
+    bump = nt.nodes.new("ShaderNodeBump")
+    bump.inputs["Strength"].default_value = 0.12
+    nt.links.new(nz.outputs["Fac"], bump.inputs["Height"])
+    nt.links.new(bump.outputs["Normal"], gloss.inputs["Normal"])
     lw = nt.nodes.new("ShaderNodeLayerWeight")
+    nt.links.new(bump.outputs["Normal"], lw.inputs["Normal"])
     lw.inputs["Blend"].default_value = 0.35
     black = nt.nodes.new("ShaderNodeBsdfTransparent")
     black.inputs["Color"].default_value = (0, 0, 0, 1)
@@ -142,7 +150,7 @@ def edge_material():
     gloss.inputs["Color"].default_value = (0.8, 0.9, 1.0, 1)
     emit = nt.nodes.new("ShaderNodeEmission")
     emit.inputs["Color"].default_value = (0.78, 0.85, 1.0, 1)
-    emit.inputs["Strength"].default_value = 1.3
+    emit.inputs["Strength"].default_value = 1.0
     add = nt.nodes.new("ShaderNodeAddShader")
     nt.links.new(gloss.outputs[0], add.inputs[0])
     nt.links.new(emit.outputs[0], add.inputs[1])
@@ -185,6 +193,16 @@ def main():
     bg = wn.nodes["Background"]
     bg.inputs["Color"].default_value = (0.012, 0.022, 0.06, 1)
     bg.inputs["Strength"].default_value = 1.0
+    wnz = wn.nodes.new("ShaderNodeTexNoise")
+    wnz.inputs["Scale"].default_value = 2.5
+    wnz.inputs["Detail"].default_value = 4.0
+    ramp = wn.nodes.new("ShaderNodeValToRGB")
+    ramp.color_ramp.elements[0].position = 0.45
+    ramp.color_ramp.elements[0].color = (0.004, 0.008, 0.02, 1)
+    ramp.color_ramp.elements[1].position = 0.7
+    ramp.color_ramp.elements[1].color = (0.12, 0.18, 0.35, 1)
+    wn.links.new(wnz.outputs["Fac"], ramp.inputs["Fac"])
+    wn.links.new(ramp.outputs["Color"], bg.inputs["Color"])
     lp = wn.nodes.new("ShaderNodeLightPath")
     blk = wn.nodes.new("ShaderNodeBackground")
     blk.inputs["Color"].default_value = (0, 0, 0, 1)
@@ -243,11 +261,11 @@ def main():
             d = Vector((rnd.uniform(-1, 1), rnd.uniform(-1, 1), 0))
         d.normalize()
         near = rnd.random() < 0.25  # 少数碎片贴着镜头飞过，景深虚化
-        off = d * rnd.uniform(5, 12) + Vector((0, 0, rnd.uniform(12, 17) if near else rnd.uniform(3, 10)))
+        off = d * rnd.uniform(3, 8) + Vector((0, 0, rnd.uniform(12, 17) if near else rnd.uniform(3, 10)))
         # 绕各轴多转几圈，翻滚中经常侧对镜头，呈刀片状
         rot0 = Vector([rnd.choice([-1, 1]) * rnd.uniform(3.0, 9.0) for _ in range(3)])
-        start = rnd.uniform(7, 16)       # 帧：0.23–0.53s 陆续出现
-        dur = rnd.uniform(26, 38)        # 约 1.1–1.8s 落位
+        start = rnd.uniform(7, 12)       # 帧：0.23–0.4s 集中出现
+        dur = rnd.uniform(30, 40)        # 约 1.2–1.7s 落位
         for f in range(1, args.frames + 2):
             p = (f - start) / dur
             if p < 0:
