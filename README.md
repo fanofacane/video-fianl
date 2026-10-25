@@ -16,7 +16,7 @@
 ```
 video/                  # 代码
   config.py             # 画面尺寸 1280x720、30fps、字体路径、输出目录
-  text.py               # 全片通用文字样式：黄色中英字幕、顶部水印、开场毛笔标题
+  text.py               # 全片通用文字样式：黄色中英字幕、开场毛笔标题
   imagegen.py           # GPT Image 2.5 生图（背景图、透明底素材）
   episode.py            # 整期成片入口（配音、对齐、开场、正文、拼接）
   align.py              # 口播与字幕行对齐（本地 Whisper）

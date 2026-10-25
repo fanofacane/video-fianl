@@ -7,7 +7,6 @@
 {
   "name": "hedgehog_sample",           # 输出到 output/<name>/
   "duration": 15,
-  "watermark": "@示例账号",
   "background": "paper",               # 背景素材 id（纸纹底）
   "assets": {                          # 素材：没有就按 prompt 生图，生成后复用
     "paper":    {"prompt": "...", "size": "1536x864"},

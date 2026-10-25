@@ -1,15 +1,29 @@
 {
-  "name": "solitude",
-  "title": "独处的能力",
-  "watermark": "@示例账号",
-  "duration": 4.6,
-  "background": {
-    "image": "examples/assets/night_beach.jpg",
-    "prompt": "电影感写实摄影，16:9 横幅。蓝调时刻的夜晚海边：深蓝色天空占画面上方三分之二，天空正中偏上有一弯明亮的半月，少量微弱星光；远处是一条平直的海平线，浅色细浪轻轻拍上沙滩；前景是暗色湿润沙滩。画面正中下方远处站着一个很小的孤独人影背对镜头望向大海。整体冷蓝色调，低饱和，安静、孤独、空旷，细腻的胶片颗粒。画面中央上部留出干净的天空用于放置标题文字。不要任何文字、水印、logo。"
+ "name": "solitude",
+ "title": "独处的能力",
+ "duration": 4.6,
+ "background": {
+  "image": "examples/assets/night_beach.jpg",
+  "prompt": "电影感写实摄影，16:9 横幅。蓝调时刻的夜晚海边：深蓝色天空占画面上方三分之二，天空正中偏上有一弯明亮的半月，少量微弱星光；远处是一条平直的海平线，浅色细浪轻轻拍上沙滩；前景是暗色湿润沙滩。画面正中下方远处站着一个很小的孤独人影背对镜头望向大海。整体冷蓝色调，低饱和，安静、孤独、空旷，细腻的胶片颗粒。画面中央上部留出干净的天空用于放置标题文字。不要任何文字、水印、logo。"
+ },
+ "subtitles": [
+  {
+   "start": 0.25,
+   "end": 1.1,
+   "zh": "一个人越能独处",
+   "en": "The better you can be alone,"
   },
-  "subtitles": [
-    {"start": 0.25, "end": 1.10, "zh": "一个人越能独处", "en": "The better you can be alone,"},
-    {"start": 1.10, "end": 2.50, "zh": "就越不怕失去", "en": "the less you fear losing."},
-    {"start": 2.50, "end": 4.60, "zh": "能安静陪伴自己的人往往更自由", "en": "Those who keep themselves company are often freer."}
-  ]
+  {
+   "start": 1.1,
+   "end": 2.5,
+   "zh": "就越不怕失去",
+   "en": "the less you fear losing."
+  },
+  {
+   "start": 2.5,
+   "end": 4.6,
+   "zh": "能安静陪伴自己的人往往更自由",
+   "en": "Those who keep themselves company are often freer."
+  }
+ ]
 }
