@@ -1,6 +1,6 @@
 # video-fianl
 
-用代码批量制作“哲学 / 心理学知识类”横屏短视频。风格参考见 [开场拆解](docs/reference/jiangdongling-opening-style.md)、[正文段拆解](docs/reference/body-collage-style.md)。
+用代码批量制作“哲学 / 心理学知识类”横屏短视频。风格参考见 [开场拆解](docs/reference/jiangdongling-opening-style.md)、[正文段拆解](docs/reference/body-collage-style.md)、[多视频风格共性](docs/reference/common-style.md)。
 
 ## 进度
 
