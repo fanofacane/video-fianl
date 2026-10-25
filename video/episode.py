@@ -70,6 +70,16 @@ def plan(ep, work, tl, total):
             e = dict(e)
             at, until = e.pop("at") - 1, e.pop("until", sc["to"]) - 1
             e["start"] = round(tl[at][0] + e.pop("delay", 0) - t0, 3)
+            if e.get("items"):  # 清单 / 循环图：每一项可用 at/delay 指定出现的行，默认依次跟随元素出现
+                items = []
+                for k, it in enumerate(e["items"]):
+                    it = dict(it)
+                    if "at" in it:
+                        it["t"] = round(tl[it.pop("at") - 1][0] + it.pop("delay", 0) - t0, 3)
+                    else:
+                        it["t"] = round(e["start"] + k * float(e.get("step", 0.8)), 3)
+                    items.append(it)
+                e["items"] = items
             end = tl[until][1] - t0 + 0.15
             e["end"] = round(body_dur + 1 if until == len(tl) - 1 else end, 3)
             elements.append(e)

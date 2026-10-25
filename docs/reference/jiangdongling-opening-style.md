@@ -1,5 +1,7 @@
 # 参考拆解：江东陵《人格越独立 爱就越单纯》
 
+> **说明**：本文是项目早期的分析（基于最初几个对标视频）。如与 [script-style.md](../script-style.md)、[hooks.md](../hooks.md)、[body-writing.md](../body-writing.md) 冲突，以这三份为准；画面元素以 `video/body/build.py` 实际支持的类型为准。
+
 来源：抖音 @江东陵，video_id 7692862968282778914，1280×720 横屏，约 3:05，30fps。
 重点：前 10 秒的开场动画、叙述方式、字幕风格。
 

@@ -34,7 +34,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 from ..config import WATERMARK, FPS, H, OUTPUT, ROOT, W, check_fonts
-from ..text import Subtitles, bubble, screen_text, smooth, watermark_layer
+from ..text import Subtitles, bubble, concept_list, cycle_diagram, screen_text, smooth, watermark_layer
 
 FADE = 0.4  # 元素淡入淡出时长（秒）
 
@@ -112,6 +112,20 @@ class Element:
         elif t == "text":
             im = screen_text(e["text"], e.get("size", 56), e.get("color", "red"))
             self.pos = (int(e["x"] - im.width / 2), int(e["y"] - im.height / 2))
+            if e.get("typewriter"):  # 逐字打出：按 cps 字/秒出现
+                n = len(e["text"].replace("\n", ""))
+                cps = float(e.get("cps", 8))
+                self.stages = [(self.start + i / cps, screen_text(e["text"], e.get("size", 56), e.get("color", "red"), reveal=i))
+                               for i in range(1, n + 1)]
+        elif t in ("list", "cycle"):
+            items = e["items"]
+            if t == "list":  # 概念清单：x, y 为左上角
+                render = lambda k: concept_list(items, k, e.get("size", 44))
+            else:            # 循环图：x, y 为圆心
+                render = lambda k: cycle_diagram(items, k, e.get("r", 150), e.get("size", 44))
+            self.stages = [(float(it.get("t", self.start)), render(k + 1)) for k, it in enumerate(items)]
+            im = self.stages[-1][1]
+            self.pos = (int(e["x"]), int(e["y"])) if t == "list" else (int(e["x"] - im.width / 2), int(e["y"] - im.height / 2))
         elif t == "bubble":
             im = bubble(e["text"], e.get("style", "green"), e.get("size", 30))
             if e.get("rotate"):
@@ -120,18 +134,29 @@ class Element:
         else:
             raise SystemExit(f"未知元素类型 {t}")
         self.im = im
-        self._alpha = im.split()[3]
+        self.stages = getattr(self, "stages", None)  # 分步出现的元素：[(出现时刻, 图)]
+
+    def _image_at(self, t):
+        if not self.stages:
+            return self.im
+        cur = None
+        for ts, im in self.stages:
+            if t >= ts:
+                cur = im
+        return cur
 
     def draw(self, canvas, t):
         if not (self.start <= t < self.end):
             return
-        a = smooth(self.start, self.start + FADE, t) * (1 - smooth(self.end - FADE, self.end, t))
-        if a <= 0:
+        # 分步元素自带逐步出现，只在结尾淡出；普通元素首尾淡入淡出
+        a_in = 1.0 if self.stages else smooth(self.start, self.start + FADE, t)
+        a = a_in * (1 - smooth(self.end - FADE, self.end, t))
+        im = self._image_at(t)
+        if a <= 0 or im is None:
             return
-        im = self.im
         if a < 1:
             im = im.copy()
-            im.putalpha(self._alpha.point(lambda v: int(v * a)))
+            im.putalpha(im.split()[3].point(lambda v: int(v * a)))
         x, y = self.pos
         x0, y0, x1, y1 = max(0, x), max(0, y), min(W, x + im.width), min(H, y + im.height)
         if x1 > x0 and y1 > y0:

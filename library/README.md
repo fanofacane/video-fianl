@@ -1,6 +1,6 @@
 # 参考库与成品库
 
-**做任何一期视频之前，必须先读 [docs/body-writing.md](../docs/body-writing.md)，再读完 `reference/` 下与本期话题最接近的 2 个对标视频的 `meta.md`、`breakdown.md`、`frames.jpg`（中版有逐秒帧 `frames_1s_p*.jpg`，优先参考）。**
+**做任何一期视频之前，必须先读 [docs/hooks.md](../docs/hooks.md) 和 [docs/body-writing.md](../docs/body-writing.md)，再读完 `reference/` 下与本期话题最接近的 2 个对标视频的 `meta.md`、`breakdown.md`、`frames.jpg`（中版有逐秒帧 `frames_1s_p*.jpg`，优先参考）。**
 
 ## reference/ 对标视频（按视频分类）
 
