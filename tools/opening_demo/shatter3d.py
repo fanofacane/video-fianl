@@ -9,7 +9,7 @@ from mathutils import Vector, Euler
 
 W_PX, H_PX = 1280, 720
 PW, PH = 16.0, 9.0          # 板子尺寸（Blender 单位）
-THICK = 0.07
+THICK = 0.045
 FPS = 30
 
 
@@ -28,30 +28,43 @@ def clip_poly(poly, a, b, c):
     return out
 
 
-def voronoi_cells(seed):
+def jagged_cells(seed, n_pieces=26):
+    """像真实碎玻璃一样：用带折角的裂纹线反复切分画面，得到少量大块、细长、尖锐的碎片。"""
+    from shapely.geometry import Polygon, LineString
+    from shapely.ops import split
     rnd = random.Random(seed)
-    pts = []
-    gx, gy = 7, 4
-    for j in range(gy):
-        for i in range(gx):
-            pts.append(((i + 0.5 + rnd.uniform(-.4, .4)) / gx * PW - PW / 2,
-                        (j + 0.5 + rnd.uniform(-.4, .4)) / gy * PH - PH / 2))
-    for _ in range(10):  # 中心区域多切几块小碎片
-        pts.append((rnd.uniform(-4, 4), rnd.uniform(-2.2, 2.2)))
-    rect = [(-PW / 2, -PH / 2), (PW / 2, -PH / 2), (PW / 2, PH / 2), (-PW / 2, PH / 2)]
+    pieces = [Polygon([(-PW / 2, -PH / 2), (PW / 2, -PH / 2), (PW / 2, PH / 2), (-PW / 2, PH / 2)])]
+    tries = 0
+    while len(pieces) < n_pieces and tries < 500:
+        tries += 1
+        pieces.sort(key=lambda g: g.area)
+        big = pieces[-1] if rnd.random() < 0.55 else pieces[rnd.randrange(len(pieces))]
+        c = big.representative_point()
+        ang = rnd.uniform(0, math.pi)
+        dx, dy = math.cos(ang), math.sin(ang)
+        L = 30
+        k = rnd.randint(3, 5)  # 裂纹折点数
+        pts = []
+        for i in range(k + 2):
+            u = -L + 2 * L * i / (k + 1)
+            j = 0 if i in (0, k + 1) else rnd.uniform(-0.6, 0.6)
+            pts.append((c.x + dx * u - dy * j, c.y + dy * u + dx * j))
+        # 把中段折点压到碎片范围内，让折角真正落在碎片上
+        mid = []
+        for i in range(k + 2):
+            u = (i / (k + 1) - 0.5) * 2 * math.sqrt(big.area) * 1.2
+            j = 0 if i in (0, k + 1) else rnd.uniform(-0.45, 0.45)
+            mid.append((c.x + dx * u - dy * j, c.y + dy * u + dx * j))
+        line = LineString([pts[0]] + mid[1:-1] + [pts[-1]])
+        parts = [g for g in split(big, line).geoms if g.geom_type == "Polygon"]
+        if len(parts) < 2 or min(g.area for g in parts) < 0.5:
+            continue
+        pieces.remove(big)
+        pieces.extend(parts)
     cells = []
-    for i, p in enumerate(pts):
-        poly = rect
-        for j, q in enumerate(pts):
-            if i == j:
-                continue
-            a, b = q[0] - p[0], q[1] - p[1]
-            c = (q[0] ** 2 + q[1] ** 2 - p[0] ** 2 - p[1] ** 2) / 2
-            poly = clip_poly(poly, a, b, c)
-            if not poly:
-                break
-        if len(poly) >= 3:
-            cells.append(poly)
+    for g in pieces:
+        g = g.simplify(0.01)
+        cells.append(list(g.exterior.coords)[:-1])
     return cells
 
 
@@ -105,10 +118,10 @@ def front_material(img, back=False):
     nt.links.new(tex.outputs["Color"], emit.inputs["Color"])
     emit.inputs["Strength"].default_value = 0.35 if back else 1.0
     gloss = nt.nodes.new("ShaderNodeBsdfGlossy")
-    gloss.inputs["Roughness"].default_value = 0.05
+    gloss.inputs["Roughness"].default_value = 0.03
     gloss.inputs["Color"].default_value = (0.75, 0.85, 1.0, 1)
     lw = nt.nodes.new("ShaderNodeLayerWeight")
-    lw.inputs["Blend"].default_value = 0.6
+    lw.inputs["Blend"].default_value = 0.35
     black = nt.nodes.new("ShaderNodeBsdfTransparent")
     black.inputs["Color"].default_value = (0, 0, 0, 1)
     mix = nt.nodes.new("ShaderNodeMixShader")
@@ -128,8 +141,8 @@ def edge_material():
     gloss.inputs["Roughness"].default_value = 0.15
     gloss.inputs["Color"].default_value = (0.8, 0.9, 1.0, 1)
     emit = nt.nodes.new("ShaderNodeEmission")
-    emit.inputs["Color"].default_value = (0.55, 0.7, 1.0, 1)
-    emit.inputs["Strength"].default_value = 0.9
+    emit.inputs["Color"].default_value = (0.78, 0.85, 1.0, 1)
+    emit.inputs["Strength"].default_value = 1.3
     add = nt.nodes.new("ShaderNodeAddShader")
     nt.links.new(gloss.outputs[0], add.inputs[0])
     nt.links.new(emit.outputs[0], add.inputs[1])
@@ -170,7 +183,7 @@ def main():
     # 相机直接看到的是纯黑；碎片反射到的是蓝色环境
     wn = world.node_tree
     bg = wn.nodes["Background"]
-    bg.inputs["Color"].default_value = (0.05, 0.1, 0.25, 1)
+    bg.inputs["Color"].default_value = (0.012, 0.022, 0.06, 1)
     bg.inputs["Strength"].default_value = 1.0
     lp = wn.nodes.new("ShaderNodeLightPath")
     blk = wn.nodes.new("ShaderNodeBackground")
@@ -198,10 +211,11 @@ def main():
     sc.camera = cam
 
     # 反光用的灯：几块大面光，碎片转到某个角度时闪白
-    for loc, rot, size, power, col in [
-        ((-14, 9, 16), (math.radians(-30), math.radians(-40), 0), 10, 9000, (0.8, 0.9, 1.0)),
-        ((15, -6, 14), (math.radians(25), math.radians(45), 0), 8, 7000, (0.75, 0.85, 1.0)),
-        ((0, 14, 6), (math.radians(-70), 0, 0), 14, 6000, (0.6, 0.75, 1.0)),
+    # 灯放在画面镜像反射范围之外：板子平躺时看不到灯的倒影，碎片翻转时才闪光
+    for loc, size, power, col in [
+        ((-34, 20, 12), 12, 30000, (0.8, 0.9, 1.0)),
+        ((36, -16, 14), 10, 26000, (0.75, 0.85, 1.0)),
+        ((6, 30, 8), 16, 24000, (0.6, 0.75, 1.0)),
     ]:
         ld = bpy.data.lights.new("L", "AREA")
         ld.shape = "RECTANGLE"
@@ -210,32 +224,57 @@ def main():
         ld.color = col
         lo = bpy.data.objects.new("L", ld)
         lo.location = loc
-        lo.rotation_euler = rot
+        lo.rotation_euler = (-Vector(loc)).to_track_quat("-Z", "Y").to_euler()
         lo.visible_camera = False
         sc.collection.objects.link(lo)
 
     bpy.context.preferences.edit.keyframe_new_interpolation_type = "LINEAR"
     rnd = random.Random(11)
-    cells = voronoi_cells(5)
+    cells = jagged_cells(12)
+
+    def ease5(p):
+        return 1 - (1 - p) ** 4
+
     for i, poly in enumerate(cells):
         ob = make_shard(f"s{i}", poly, mats)
         rest = ob.location.copy()
-        d = Vector((rest.x + rnd.uniform(-1, 1), rest.y + rnd.uniform(-1, 1), 0))
+        d = Vector((rest.x + rnd.uniform(-1.5, 1.5), rest.y + rnd.uniform(-1.5, 1.5), 0))
         if d.length < 0.5:
             d = Vector((rnd.uniform(-1, 1), rnd.uniform(-1, 1), 0))
         d.normalize()
-        near = rnd.random() < 0.2  # 少数碎片贴着镜头飞过，景深虚化
-        off = d * rnd.uniform(9, 16) + Vector((0, 0, rnd.uniform(14, 19) if near else rnd.uniform(2, 12)))
-        rot0 = Vector([rnd.choice([-1, 1]) * rnd.uniform(1.6, 4.4) for _ in range(3)])
-        start = rnd.uniform(6, 21)       # 帧
-        dur = rnd.uniform(15, 24)
+        near = rnd.random() < 0.25  # 少数碎片贴着镜头飞过，景深虚化
+        off = d * rnd.uniform(5, 12) + Vector((0, 0, rnd.uniform(12, 17) if near else rnd.uniform(3, 10)))
+        # 绕各轴多转几圈，翻滚中经常侧对镜头，呈刀片状
+        rot0 = Vector([rnd.choice([-1, 1]) * rnd.uniform(3.0, 9.0) for _ in range(3)])
+        start = rnd.uniform(7, 16)       # 帧：0.23–0.53s 陆续出现
+        dur = rnd.uniform(26, 38)        # 约 1.1–1.8s 落位
         for f in range(1, args.frames + 2):
-            p = min(1.0, max(0.0, (f - start) / dur))
-            rem = 1 - ease_out(p)
+            p = (f - start) / dur
+            if p < 0:
+                ob.scale = (0, 0, 0)
+                p = 0
+            else:
+                ob.scale = (1, 1, 1)
+            p = min(1.0, p)
+            rem = 1 - ease5(p)
             ob.location = rest + off * rem
-            ob.rotation_euler = Euler(rot0 * rem)
-            ob.keyframe_insert("location", frame=f)
-            ob.keyframe_insert("rotation_euler", frame=f)
+            ob.rotation_euler = Euler(rot0 * (1 - ease_out(p)))
+            for k in ("location", "rotation_euler", "scale"):
+                ob.keyframe_insert(k, frame=f)
+
+    # 4) 第一下：一片细长碎片侧着身横穿标题，带一道亮光
+    blade = make_shard("blade", [(-1.9, -0.06), (1.7, 0.0), (1.9, 0.08), (-0.4, 0.16)], mats)
+    for f in range(1, args.frames + 2):
+        p = (f - 5) / 10
+        if p < 0 or p > 1:
+            blade.scale = (0, 0, 0)
+        else:
+            blade.scale = (1, 1, 1)
+        p = min(1, max(0, p))
+        blade.location = (-11 + 22 * p, 1.1 + 0.3 * p, 7)
+        blade.rotation_euler = (math.radians(70 + 40 * p), math.radians(8), math.radians(-6 + 10 * p))
+        for k in ("location", "rotation_euler", "scale"):
+            blade.keyframe_insert(k, frame=f)
 
     os.makedirs(args.out, exist_ok=True)
     frames = [args.only] if args.only else range(1, args.frames + 1)
