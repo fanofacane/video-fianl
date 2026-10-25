@@ -53,7 +53,7 @@ export async function callApi(config, route, body, fetcher = fetch) {
 
 async function inputText(values) {
   const sources = [values.url !== undefined, values['input-file'] !== undefined, values.stdin === true].filter(Boolean).length;
-  if (sources !== 1) throw new ClientError('USAGE_ERROR', 'parse 必须且只能选择 --url、--input-file 或 --stdin', undefined, 2);
+  if (sources !== 1) throw new ClientError('USAGE_ERROR', '此命令必须且只能选择 --url、--input-file 或 --stdin', undefined, 2);
   let text = values.url;
   if (values['input-file']) {
     try {
@@ -82,21 +82,36 @@ export async function main(argv = process.argv.slice(2)) {
     try {
       parsed = parseArgs({ args: argv, allowPositionals: true, options: {
         url: { type: 'string' }, 'input-file': { type: 'string' }, stdin: { type: 'boolean' },
+        'wait-seconds': {type:'string'}, kind:{type:'string'}, index:{type:'string'}, output:{type:'string'},
         'base-url': { type: 'string' }, timeout: { type: 'string' }, help: { type: 'boolean' },
       } });
     } catch { throw new ClientError('USAGE_ERROR', '参数无效，使用 --help 查看命令', undefined, 2); }
     const { values, positionals } = parsed;
     if (values.help) {
-      console.log('node scripts/client.mjs <parse|health|platforms|schema> [--base-url URL] [--timeout 110]\nparse: --url TEXT | --input-file UTF8_FILE | --stdin\n默认服务器来自技能目录 service.json，可用 MEDIA_PARSER_BASE_URL 覆盖。');
+      console.log('node scripts/client.mjs <parse|transcribe|download|health|platforms|schema> [--base-url URL] [--timeout 110]\nparse/transcribe/download: --url TEXT | --input-file UTF8_FILE | --stdin\ntranscribe: --wait-seconds 600（最大 3600）；download: --kind video|audio|cover|image|images --output FILE [--index 清单索引]\n默认服务器来自技能目录 service.json，可用 MEDIA_PARSER_BASE_URL 覆盖。');
       return 0;
     }
-    const routes = { parse: '/api/parse', health: '/api/health', platforms: '/api/platforms', schema: '/api/openapi.json' };
+    const routes = { parse: '/api/parse', health: '/api/health', platforms: '/api/platforms', schema: '/api/openapi.json', transcribe:null, download:null };
     const command = positionals[0];
-    if (positionals.length !== 1 || !Object.hasOwn(routes, command)) throw new ClientError('USAGE_ERROR', '命令应为 parse、health、platforms 或 schema', undefined, 2);
-    if (command !== 'parse' && (values.url !== undefined || values['input-file'] !== undefined || values.stdin)) throw new ClientError('USAGE_ERROR', '分享文本参数只用于 parse', undefined, 2);
+    if (positionals.length !== 1 || !Object.hasOwn(routes, command)) throw new ClientError('USAGE_ERROR', '命令应为 parse、transcribe、download、health、platforms 或 schema', undefined, 2);
+    if (!['parse','transcribe','download'].includes(command) && (values.url !== undefined || values['input-file'] !== undefined || values.stdin)) throw new ClientError('USAGE_ERROR', '分享文本参数只用于 parse/transcribe/download', undefined, 2);
     const config = await loadConfig(values);
-    const body = command === 'parse' ? { text: await inputText(values) } : undefined;
-    const payload = await callApi(config, routes[command], body);
+    if((command!=='transcribe' && values['wait-seconds']!==undefined) || (command!=='download' && ['kind','index','output'].some(k=>values[k]!==undefined))) throw new ClientError('USAGE_ERROR','选项不适用于当前命令',undefined,2);
+    let payload;
+    if(command==='transcribe') {
+      const wait=Number(values['wait-seconds'] ?? 600);
+      if(!Number.isFinite(wait)||wait<1||wait>3600)throw new ClientError('USAGE_ERROR','等待时间必须为 1–3600 秒',undefined,2);
+      const {transcribe}=await import('./workflows.mjs');
+      payload=await transcribe(config,await inputText(values),wait);
+    } else if(command==='download') {
+      const index=values.index===undefined?undefined:Number(values.index);
+      if(!['video','audio','cover','image','images'].includes(values.kind)||!values.output||(index!==undefined&&(!Number.isInteger(index)||index<0))||(values.kind==='images'&&index!==undefined))throw new ClientError('USAGE_ERROR','下载需指定有效 --kind 与 --output；--index 是清单索引，整组图片不接受索引',undefined,2);
+      const {download}=await import('./workflows.mjs');
+      payload=await download(config,await inputText(values),{kind:values.kind,index,output:values.output});
+    } else {
+      const body = command === 'parse' ? { text: await inputText(values) } : undefined;
+      payload = await callApi(config, routes[command], body);
+    }
     console.log(JSON.stringify(payload, null, 2));
     return 0;
   } catch (error) {
