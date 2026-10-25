@@ -108,14 +108,58 @@ def extract_red_lines(src, out_mask):
     Image.fromarray((red * 255).astype(np.uint8)).save(out_mask)
 
 
+def close_line_gaps(lines, max_ext=140, back=18):
+    """手绘裂纹线的末端往往差一点没碰到别的线或画面边缘。
+    把每个线头顺着走向延长，碰到其他线或边缘就停，让每块区域真正封闭。"""
+    import cv2
+    import numpy as np
+    from skimage.morphology import skeletonize
+    h, w = lines.shape
+    # 去掉零星噪点（例如字幕描边被误识别的小点）
+    n, lab, stats, _ = cv2.connectedComponentsWithStats(lines, connectivity=8)
+    keep = np.zeros_like(lines)
+    for i in range(1, n):
+        if stats[i, cv2.CC_STAT_AREA] >= 120:
+            keep[lab == i] = 1
+    sk = skeletonize(keep > 0).astype(np.uint8)
+    nb = cv2.filter2D(sk, -1, np.ones((3, 3), np.float32), borderType=cv2.BORDER_CONSTANT) - sk
+    ends = np.argwhere((sk == 1) & (nb == 1))
+    out = keep.copy()
+    _, sklab = cv2.connectedComponents(sk, connectivity=8)
+    for y, x in ends:
+        # 用线头附近同一条线上的点估计走向
+        y0, y1, x0, x1 = max(0, y - back), min(h, y + back + 1), max(0, x - back), min(w, x + back + 1)
+        win = np.argwhere(sklab[y0:y1, x0:x1] == sklab[y, x]) + [y0, x0]
+        if len(win) < 4:
+            continue
+        d = np.array([y, x], float) - win.mean(0)
+        if np.linalg.norm(d) < 1e-3:
+            continue
+        d /= np.linalg.norm(d)
+        last = (x, y)
+        for t in range(3, max_ext):
+            py, px = int(round(y + d[0] * t)), int(round(x + d[1] * t))
+            if px < 0 or py < 0 or px >= w or py >= h:
+                last = (min(max(px, 0), w - 1), min(max(py, 0), h - 1))
+                cv2.line(out, (int(x), int(y)), last, 1, 2)
+                break
+            if t > 6 and keep[py, px] and sklab[py, px] != sklab[y, x]:
+                cv2.line(out, (int(x), int(y)), (px, py), 1, 2)
+                break
+            if t > 12 and keep[py, px]:
+                cv2.line(out, (int(x), int(y)), (px, py), 1, 2)
+                break
+    return out
+
+
 def cells_from_mask(mask_path, min_area_px=1500):
     """按遮罩里的白线把画面分区，每个封闭区域就是一块碎片。"""
     import cv2
     import numpy as np
     m = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
     m = cv2.resize(m, (W_PX, H_PX), interpolation=cv2.INTER_NEAREST)
-    lines = (m > 127).astype(np.uint8)
-    lines = cv2.dilate(lines, np.ones((7, 7), np.uint8))  # 补上手绘线的小断口
+    lines = close_line_gaps((m > 127).astype(np.uint8))
+    lines = cv2.dilate(lines, np.ones((5, 5), np.uint8))
     free = (1 - lines).astype(np.uint8)
     n, lab = cv2.connectedComponents(free, connectivity=4)
     markers = np.zeros((H_PX, W_PX), np.int32)
