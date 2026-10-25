@@ -334,6 +334,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", required=True)
     ap.add_argument("--out", default="opening_demo.mp4")
+    ap.add_argument("--bg", default="", help="开场背景图（如生图工具生成的照片）；不给则用代码画的夜景")
+    ap.add_argument("--duration", type=float, default=DUR, help="只渲染前 N 秒")
     ap.add_argument("--shatter-frames", default="", help="shatter3d.py 渲染出的 3D 碎片帧目录；不给则用 2D 碎片")
     args = ap.parse_args()
     fonts = dict(
@@ -341,7 +343,11 @@ def main():
         title=os.path.join(args.fonts, "MaShanZheng.ttf"),
         en="/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
     )
+    global DUR
+    DUR = args.duration
     scene = night_scene()
+    if args.bg:
+        scene = Image.open(args.bg).convert("RGB").resize((W, H), Image.LANCZOS)
     paper = paper_texture().convert("RGBA")
     cage, fig, flowers = birdcage(), figure(), flower_patch()
     shards, lab = make_shards(scene)
