@@ -48,6 +48,10 @@ def _ensure_assets(cfg, adir):
     jobs = {}
     for aid, a in cfg.get("assets", {}).items():
         p = adir / f"{aid}.png"
+        src = ROOT / a["image_from"] if a.get("image_from") else None
+        if not p.exists() and src and src.exists():  # 复用已有图片（例如开场封面）
+            import shutil
+            shutil.copy(src, p)
         if not p.exists():
             jobs[aid] = (a["prompt"], p, a.get("size", "1024x1024"), "transparent" if a.get("transparent") else "opaque")
     if jobs:

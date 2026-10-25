@@ -32,8 +32,15 @@ def generate(prompt, out, size="1536x864", background="opaque", quality="high"):
         data = base64.b64decode(item.b64_json, validate=True)
     elif item and item.url:  # 第三方兼容接口有时只返回图片链接
         import urllib.request
-        with urllib.request.urlopen(item.url, timeout=120) as r:
-            data = r.read()
+        for attempt in range(4):  # 只重试下载，不重新生图（不重复计费）
+            try:
+                with urllib.request.urlopen(item.url, timeout=120) as r:
+                    data = r.read()
+                break
+            except OSError:
+                if attempt == 3:
+                    raise
+                time.sleep(2 * 2 ** attempt)
     else:
         raise RuntimeError(f"API 未返回图片：{str(res)[:300]}")
     out = Path(out)
