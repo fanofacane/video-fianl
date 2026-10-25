@@ -11,7 +11,7 @@
 | 模块 | 状态 | 说明 |
 | --- | --- | --- |
 | 碎片开场 | ✅ 完成 | 所有视频统一使用：玻璃碎片从上方坠落，底部先落位、逐渐向上拼合成背景图，配毛笔标题与黄色双语字幕；开场本身无声，配乐与口播在整片阶段加 |
-| 参考库 / 成品库 | ✅ 完成 | `library/`：6 个对标视频（标题、话题、文案拆解、场景帧）；成品按发布标题归档 |
+| 参考库 / 成品库 | ✅ 完成 | `library/`：8 个对标视频（标题、话题、文案拆解、场景帧，中版有逐秒帧）；成品按发布标题归档 |
 | 拼贴正文段 | 🚧 进行中 | 场景引擎已可用（图片抠图、底部撕边照片带、屏幕文字、对话气泡，按时间轴淡入淡出）；样片：`episodes/hedgehog/body_sample.json` |
 | 口播 / 配乐 | 🚧 进行中 | 配音用 minimax-speech 技能（已复刻音色）；`video/align.py` 用本地 Whisper 把口播对齐到每行字幕；配乐待做 |
 | 整片拼接 | 🚧 进行中 | `python3 -m video.episode episodes/<slug>/episode.json [--shots]`：配音 → 对齐 → 碎片开场 + 正文 → 提亮溶解拼接 + 混音 |
@@ -34,7 +34,8 @@ video/                  # 代码
     assets/cuts_mask.png# 默认切法：中间一大块托住标题，四周逐渐变小
 episodes/<slug>/        # 每期内容：episode.json（逐字稿、开场、场景、素材、发布标题）
 library/                # 参考库 reference/（对标视频）与成品库 ours/（按发布标题）
-docs/script-style.md    # 逐字稿、标题、简介写作规范
+docs/script-style.md    # 逐字稿、标题、封面、简介写作规范
+docs/body-writing.md    # 正文写法与画面配合（对标逐秒拆解总结）
 docs/lessons.md         # 制作经验沉淀
 examples/               # 示例配置与素材
 scripts/fetch_fonts.sh  # 下载字体
@@ -46,11 +47,11 @@ output/                 # 成片与渲染缓存（不入库）
 ## 每期制作流程（必须按顺序，每个审核点等用户确认）
 
 1. **用户给话题**。
-2. **读参考库**：挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、`frames.jpg`。
+2. **读规范和参考库**：先读 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及本地完整转写稿 `output/library/<slug>/transcript.txt`。
 3. **交第一稿（审核点 1）**：
    - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（400–440 字，不含标点），原创；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；
-   - 开场封面 3 张（生图 + 标题合成）。
+   - 开场封面 3 张（生图 + 概念词大字 + 第一句字幕合成）。
 4. **用户确认后**：写 `episodes/<slug>/episode.json`（逐字稿、开场、场景、素材、`publish`），配音一次，然后
    `python3 -m video.episode episodes/<slug>/episode.json --shots` 出**正文场景截图**（不渲染视频），**审核点 2**。
    等待审核时可在后台先渲染碎片开场（开场不依赖正文）。
