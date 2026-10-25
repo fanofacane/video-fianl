@@ -2,6 +2,7 @@
 
 碎片有厚度、3D 翻转、玻璃反光、景深与动态模糊；从画面上方坠落，
 底部先落位、逐渐向上补齐，最后一帧拼回完整背景图。
+碎片侧边显示图片本身颜色、相邻碎片略有重叠，全程不出现白边和拼缝。
 """
 import math
 import os
@@ -63,20 +64,24 @@ def _face_material(img, back=False):
     return m
 
 
-def _edge_material():
-    """玻璃侧边：银白亮边。"""
+def _edge_material(img):
+    """玻璃侧边：显示边缘处图片本身的颜色（略暗），不出现白边。"""
     m, nt, out = _node_mat("edge")
-    gloss = nt.nodes.new("ShaderNodeBsdfGlossy")
-    gloss.inputs["Roughness"].default_value = 0.15
-    gloss.inputs["Color"].default_value = (0.8, 0.9, 1.0, 1)
+    tex = nt.nodes.new("ShaderNodeTexImage")
+    tex.image = img
     emit = nt.nodes.new("ShaderNodeEmission")
-    emit.inputs["Color"].default_value = (0.78, 0.85, 1.0, 1)
-    emit.inputs["Strength"].default_value = 1.0
-    add = nt.nodes.new("ShaderNodeAddShader")
-    nt.links.new(gloss.outputs[0], add.inputs[0])
-    nt.links.new(emit.outputs[0], add.inputs[1])
-    nt.links.new(add.outputs[0], out.inputs["Surface"])
+    nt.links.new(tex.outputs["Color"], emit.inputs["Color"])
+    emit.inputs["Strength"].default_value = 0.7
+    nt.links.new(emit.outputs[0], out.inputs["Surface"])
     return m
+
+
+def _inflate(poly, d=0.03):
+    """把碎片向外扩一点点（约 2 像素），相邻碎片落位时互相重叠，拼缝自然融合。"""
+    from shapely.geometry import Polygon
+
+    g = Polygon(poly).buffer(d, join_style=2, mitre_limit=2.0)
+    return list(g.exterior.coords)[:-1]
 
 
 def _make_shard(name, poly, mats):
@@ -184,16 +189,16 @@ def _key(ob, f, loc, rot, visible):
 
 
 def render_frames(image, out_dir, cuts=None, frames=60, samples=48, seed=11, only=None):
-    """渲染碎片聚合帧到 out_dir/0001.png...；返回每片碎片的落位时间（秒），供音效使用。"""
+    """渲染碎片聚合帧到 out_dir/0001.png...；返回每片碎片的落位时间（秒）。"""
     sc = _setup_scene(samples, frames)
     img = bpy.data.images.load(os.path.abspath(str(image)))
-    mats = [_face_material(img), _face_material(img, back=True), _edge_material()]
+    mats = [_face_material(img), _face_material(img, back=True), _edge_material(img)]
     rnd = random.Random(seed)
     lands = []
 
     # 下坠式聚合：每片从画面上方掉下来落回原位；底部先落位，逐渐向上补齐
     for i, poly in enumerate(cells_from_mask(cuts) if cuts else cells_from_mask()):
-        ob = _make_shard(f"s{i}", poly, mats)
+        ob = _make_shard(f"s{i}", _inflate(poly), mats)
         rest = ob.location.copy()
         h = (rest.y + PH / 2) / PH                         # 0=底部, 1=顶部
         fall = (PH / 2 - rest.y) + rnd.uniform(2.0, 6.0)  # 从画面顶部之上开始掉

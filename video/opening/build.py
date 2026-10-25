@@ -4,7 +4,7 @@
     python3 -m video.opening.build examples/opening_solitude.json --shots    # 只出关键帧截图，先确认效果
 
 流程：背景图（没有就按 prompt 生图）→ Blender 渲染碎片帧（按内容缓存，改文字不用重渲）
-     → 叠加标题 / 水印 / 双语字幕 → 混入音效 → 输出 output/<name>/opening.mp4
+     → 叠加标题 / 水印 / 双语字幕 → 输出 output/<name>/opening.mp4（无声，配乐与口播在整片阶段加）
 """
 import argparse
 import hashlib
@@ -17,11 +17,10 @@ from PIL import Image
 
 from ..config import FPS, H, OUTPUT, ROOT, W, check_fonts
 from ..text import Subtitles, Title, smooth, watermark_layer
-from .audio import make_opening_sfx
 from .cuts import DEFAULT_MASK
 
 SHATTER_FRAMES = 60   # 碎片段 2 秒；约 1.5 秒全部落位
-SHATTER_VERSION = "v1"  # 改动 shatter.py 的效果后加一，旧缓存自动失效
+SHATTER_VERSION = "v2"  # 改动 shatter.py 的效果后加一，旧缓存自动失效
 
 
 def _resolve_background(cfg, work):
@@ -103,14 +102,12 @@ def build(cfg_path, shots=False, samples=48):
         print(f"关键帧截图 {out}")
         return out
 
-    shatter_dir, lands = _shatter_frames(bg, cuts, samples)
-    wav = work / "sfx.wav"
-    make_opening_sfx(wav, duration, lands)
+    shatter_dir, _ = _shatter_frames(bg, cuts, samples)
     out = work / "opening.mp4"
     ff = subprocess.Popen([
         "ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
-        "-i", "-", "-i", str(wav), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "medium",
-        "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(out),
+        "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "medium",
+        "-movflags", "+faststart", str(out),
     ], stdin=subprocess.PIPE)
     for fi in range(int(duration * FPS)):
         ff.stdin.write(_frame(fi, fi / FPS, shatter_dir, scene, land, duration, title, wm, subs).tobytes())
