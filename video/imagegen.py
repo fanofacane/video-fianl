@@ -27,11 +27,18 @@ def generate(prompt, out, size="1536x864", background="opaque", quality="high"):
         output_format="png",
         n=1,
     )
-    if not res.data or not res.data[0].b64_json:
-        raise RuntimeError("API 未返回图片")
+    item = res.data[0] if res.data else None
+    if item and item.b64_json:
+        data = base64.b64decode(item.b64_json, validate=True)
+    elif item and item.url:  # 第三方兼容接口有时只返回图片链接
+        import urllib.request
+        with urllib.request.urlopen(item.url, timeout=120) as r:
+            data = r.read()
+    else:
+        raise RuntimeError(f"API 未返回图片：{str(res)[:300]}")
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_bytes(base64.b64decode(res.data[0].b64_json, validate=True))
+    out.write_bytes(data)
     print(f"生图完成 {out}（{time.time() - t0:.0f}s，gpt-image-2.5-flare，{size}，{background}）")
     return out
 
