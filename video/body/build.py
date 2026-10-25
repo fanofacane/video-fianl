@@ -15,6 +15,7 @@
   "subtitles": [{"start": 0, "end": 1.6, "zh": "...", "en": "..."}],
   "elements": [                        # 按顺序叠加；每个元素在 [start, end) 内显示，首尾淡入淡出
     {"type": "image",  "asset": "hedgehog", "x": 900, "y": 500, "h": 260, "start": 4, "end": 6, "flip": false},
+    {"type": "image",  "asset": "mountain", "x": 900, "y": 560, "w": 900, "border": 6, ...},  # 场景抠图：按宽度缩放、白色剪纸边，可超出画框
     {"type": "strip",  "asset": "snow", "top": 380, "start": 6, "end": 15},     # 底部撕边照片带
     {"type": "text",   "text": "“刺猬法则”", "size": 64, "color": "black", "x": 640, "y": 150, "start": 3.4, "end": 6.2},
     {"type": "bubble", "text": "疼！", "style": "white", "x": 500, "y": 300, "start": 8.6, "end": 10.4}
@@ -60,6 +61,18 @@ def _ensure_assets(cfg, adir):
     return {aid: adir / f"{aid}.png" for aid in cfg.get("assets", {})}
 
 
+def _paper_border(im, px):
+    """沿抠图外轮廓加一圈白边，像从杂志上剪下来的。"""
+    pad = px + 2
+    src = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad))
+    src.paste(im, (pad, pad), im)
+    grown = src.split()[3].point(lambda v: 255 if v > 40 else 0).filter(ImageFilter.MaxFilter(px * 2 + 1))
+    out = Image.new("RGBA", src.size)
+    out.paste((250, 248, 242, 255), (0, 0), grown.filter(ImageFilter.GaussianBlur(0.8)))
+    out.alpha_composite(src)
+    return out
+
+
 def _load_cutout(path):
     """透明底素材：裁掉四周透明区域，并去掉过淡的半透明杂边。"""
     im = Image.open(path).convert("RGBA")
@@ -97,8 +110,14 @@ class Element:
             im = _load_cutout(assets[e["asset"]])
             if e.get("flip"):
                 im = im.transpose(Image.FLIP_LEFT_RIGHT)
-            hh = int(e["h"])
-            im = im.resize((max(1, int(im.width * hh / im.height)), hh), Image.LANCZOS)
+            if e.get("w"):   # 按宽度缩放（场景抠图常用），否则按高度
+                ww = int(e["w"])
+                im = im.resize((ww, max(1, int(im.height * ww / im.width))), Image.LANCZOS)
+            else:
+                hh = int(e["h"])
+                im = im.resize((max(1, int(im.width * hh / im.height)), hh), Image.LANCZOS)
+            if e.get("border"):  # 白色剪纸边
+                im = _paper_border(im, int(e["border"]))
             self.pos = (int(e["x"] - im.width / 2), int(e["y"] - im.height / 2))
         elif t == "photo":  # 全屏照片，铺满画面
             src = Image.open(assets[e["asset"]]).convert("RGB")
