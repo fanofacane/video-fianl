@@ -11,7 +11,7 @@
   reference/<slug>/breakdown.md 文案结构拆解（人工撰写：结构、手法、短句摘录）
   ours/<发布标题>/              我们的成片：meta.md、script.md、cover.jpg、frames.jpg
 不入库：对标视频完整转写稿放在 output/library/<slug>/transcript.txt，只作本地参考，
-       写逐字稿时学结构和手法，不照搬原句。
+       写逐字稿时可以学结构和手法，也可以引用、化用合适的句子。
 """
 import argparse
 import math

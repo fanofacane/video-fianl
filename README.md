@@ -50,7 +50,7 @@ output/                 # 成片与渲染缓存（不入库）
 1. **用户给话题**。
 2. **读规范和参考库**：先读 [docs/hooks.md](docs/hooks.md) 和 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及本地完整转写稿 `output/library/<slug>/transcript.txt`。
 3. **交第一稿（审核点 1）**：
-   - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（400–440 字，不含标点），原创；
+   - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（400–440 字，不含标点），可适当引用、化用对标视频的好句子；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；
    - 开场封面 3 张（生图 + 概念词大字 + 第一句字幕合成）。
 4. **用户确认后**：写 `episodes/<slug>/episode.json`（逐字稿、开场、场景、素材、`publish`），配音一次，然后

@@ -23,7 +23,7 @@
 - `frames.jpg`：场景帧截图（每 3 秒一帧），看画面元素、构图和节奏
 - `breakdown.md`：文案结构拆解（段落作用、手法、标题写法、可学之处）
 
-完整转写稿不入库（避免照搬原句），需要时运行 `python3 -m video.library ref <slug> <链接>`，会生成到 `output/library/<slug>/transcript.txt` 供本地参考。
+完整转写稿不入库，需要时运行 `python3 -m video.library ref <slug> <链接>`，会生成到 `output/library/<slug>/transcript.txt` 供本地参考；写稿时可以直接引用、化用其中合适的句子。
 
 新增对标视频：`python3 -m video.library ref <slug> <分享链接>`，然后手写 `breakdown.md`，并在上表加一行。
 
