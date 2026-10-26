@@ -1,7 +1,8 @@
-"""整期成片：逐字稿配置 → 配音 → 对齐字幕 → 碎片开场 + 正文 → 拼接混音。
+"""分阶段制作：稿件确认 → 显式配音 → 截图确认 → 成片。
 
-    python3 -m video.episode episodes/hedgehog/episode.json --shots   # 先出正文各场景截图（开场看封面即可）
-    python3 -m video.episode episodes/hedgehog/episode.json           # 出完整视频 output/<name>/final.mp4
+    python3 -m video.episode episodes/hedgehog/episode.json --status  # 查看当前阶段和稿件ID
+    python3 -m video.episode episodes/hedgehog/episode.json --shots   # 确认稿件、显式配音后出正文截图
+    python3 -m video.episode episodes/hedgehog/episode.json           # 截图确认后出完整视频
 
 配置见 episodes/hedgehog/episode.json：
 - lines：每条字幕一行（zh 带标点用于配音，显示时去掉句末标点；en 为英文字幕）
@@ -11,10 +12,13 @@
 """
 import argparse
 import json
+import math
 import subprocess
+import sys
 from pathlib import Path
 
 from .config import OUTPUT, ROOT, WATERMARK
+from . import review
 
 XFADE = 0.5   # 开场到正文的提亮溶解时长
 TAIL = 1.2    # 配音结束后画面多停留的秒数
@@ -31,25 +35,81 @@ def _audio_len(path):
     return float(out)
 
 
-def narration(ep, work):
-    """配音（MiniMax，已复刻音色）+ 逐行时间。结果缓存在 output/<name>/。"""
-    audio = work / "narration.mp3"
-    text = work / "narration.txt"
-    script = "".join(l["zh"] for l in ep["lines"])
-    times = work / "line_times.json"
-    if audio.exists() and (not text.exists() or text.read_text(encoding="utf-8") != script):
-        audio.unlink()            # 逐字稿改过：重新配音、重新对齐
-        audio.with_suffix(".mp3.json").unlink(missing_ok=True)  # 配音技能不覆盖旧的元数据文件
-        times.unlink(missing_ok=True)
-    if not audio.exists():
-        text.write_text(script, encoding="utf-8")
-        subprocess.run(["python3", str(SKILL_TTS), "tts", "--text-file", str(text), "--output", str(audio)], check=True)
+def generate_voice(ep, work):
+    """唯一会调用付费 TTS 的整期制作入口；不删除旧版本。"""
+    review.require_script(ep, work)
+    settings = review.voice_settings()
+    folder, audio, receipt = review.voice_paths(ep, work, settings)
+    if receipt.exists():
+        review.require_voice(ep, work, settings)
+        print(f"复用已完成配音 {audio}")
+        return audio
+    folder.mkdir(parents=True, exist_ok=True)
+    pending = folder / 'request.json'
+    if pending.exists() or audio.exists():
+        raise ValueError(f'该配音存在未完成请求，禁止自动重试。先核实服务端结果及 {folder} 内文件，再人工清理失败记录或恢复完成记录。')
+    text = folder / 'narration.txt'
+    script = ''.join(line['zh'] for line in ep['lines'])
+    text.write_text(script, encoding='utf-8')
+    # Exclusive creation prevents two local processes from starting the same paid request.
+    with pending.open('x', encoding='utf-8') as file:
+        json.dump({'text': script, 'settings': settings}, file, ensure_ascii=False, indent=2)
+    subprocess.run([sys.executable, str(SKILL_TTS), 'tts', '--text-file', str(text),
+                    '--output', str(audio), '--voice-id', settings['voice_id'],
+                    '--model', settings['model'], '--speed', str(settings['speed']),
+                    '--vol', str(settings['vol']), '--pitch', str(settings['pitch'])], check=True)
     total = _audio_len(audio)
+    if not math.isfinite(total) or total <= 0:
+        raise ValueError('生成音频时长无效；保留请求记录，请检查。')
+    review.write_json(receipt, {'voice_id': review.voice_id(ep, settings),
+                               'audio_sha256': review.file_digest(audio), 'duration': total})
+    print(f'配音已生成 {audio}（{total:.2f} 秒），可试听后执行 --shots。')
+    return audio
+
+
+def narration(ep, work):
+    """仅读取匹配的配音并做本地字幕对齐，绝不调用 TTS。"""
+    settings = review.voice_settings()
+    folder, audio = review.require_voice(ep, work, settings)
+    total = _audio_len(audio)
+    # Line splitting affects alignment even when concatenated narration stays identical.
+    key = review.digest({'lines': [line['zh'] for line in ep['lines']],
+                         'audio': review.file_digest(audio)})
+    times = folder / f'line_times-{key}.json'
     if not times.exists():
         from .align import align_lines, char_times
-        tl = align_lines([l["zh"] for l in ep["lines"]], char_times(audio), total)
-        times.write_text(json.dumps(tl))
-    return audio, total, json.loads(times.read_text())
+        tl = align_lines([line['zh'] for line in ep['lines']], char_times(audio), total)
+        review.write_json(times, tl)
+    return audio, total, review.read_json(times)
+
+
+def load_episode(path):
+    ep = review.read_json(path)
+    name = ep.get('name', '')
+    if not name or '/' in name or '\\' in name or name in ('.', '..'):
+        raise ValueError('episode.name 必须是单层目录名。')
+    work = (OUTPUT / name).resolve()
+    if not work.is_relative_to(OUTPUT.resolve()):
+        raise ValueError('输出目录必须位于 output 内。')
+    if not ep.get('lines') or any(not isinstance(line.get('zh'), str) or not line['zh'].strip() for line in ep['lines']):
+        raise ValueError('lines 必须包含非空中文逐字稿。')
+    return ep, work
+
+
+def status(ep, work):
+    result = {'script_id': review.script_id(ep),
+              'script_approved': review.is_approved(work, 'script', review.script_id(ep)),
+              'voice_ready': False, 'shots_ready': False, 'shots_approved': False}
+    try:
+        settings = review.voice_settings()
+        _, audio = review.require_voice(ep, work, settings)
+        result.update(voice_ready=True, audio=str(audio))
+        revision = review.shots_revision(ep, work, settings)
+        result.update(shots_ready=True, shots_id=revision,
+                      shots_approved=review.is_approved(work, 'shots', revision))
+    except ValueError as exc:
+        result['next_step'] = str(exc)
+    return result
 
 
 def _subs(ep, tl, idx, offset=0.0):
@@ -99,8 +159,12 @@ def plan(ep, work, tl, total):
 
 
 def build(path, shots=False):
-    ep = json.loads(Path(path).read_text(encoding="utf-8"))
-    work = OUTPUT / ep["name"]
+    ep, work = load_episode(path)
+    review.require_script(ep, work)
+    if not shots:
+        revision = review.shots_revision(ep, work, review.voice_settings())
+        if not review.is_approved(work, 'shots', revision):
+            raise ValueError('当前正文截图尚未确认。展示截图并等待用户确认，再执行 --approve-shots 截图ID。')
     work.mkdir(parents=True, exist_ok=True)
     audio, total, tl = narration(ep, work)
     opening, body, open_dur = plan(ep, work, tl, total)
@@ -109,7 +173,15 @@ def build(path, shots=False):
 
     from .body.build import build as build_body
     if shots:
-        return build_body(work / "body_gen.json", shots=True)
+        preview = Path(build_body(work / "body_gen.json", shots=True)).resolve()
+        revision = review.visual_id(ep, work, audio)
+        review.write_json(work / 'reviews' / 'shots-produced.json',
+                          {'revision': revision, 'preview': str(preview),
+                           'preview_sha256': review.file_digest(preview)})
+        # Every newly produced preview must be reviewed, including regenerated pixels.
+        (work / 'reviews' / 'shots.json').unlink(missing_ok=True)
+        print(f'截图待确认，审核ID：{revision}')
+        return preview
     from .opening.build import build as build_opening
     op = build_opening(work / "opening_gen.json")
     bd = build_body(work / "body_gen.json")
@@ -127,9 +199,30 @@ def build(path, shots=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("config")
-    ap.add_argument("--shots", action="store_true", help="只出正文各场景截图")
+    actions = ap.add_mutually_exclusive_group()
+    actions.add_argument('--status', action='store_true', help='查看内容ID、审核与配音状态，不调用接口')
+    actions.add_argument('--approve-script', metavar='ID', help='用户确认后记录对应稿件ID；不生成配音')
+    actions.add_argument('--voice', action='store_true', help='为已确认稿件显式生成配音（可能计费）')
+    actions.add_argument('--approve-shots', metavar='ID', help='用户确认后记录对应截图ID；不渲染')
+    actions.add_argument("--shots", action="store_true", help="读取已完成配音，出正文截图；不调用TTS")
     a = ap.parse_args()
-    build(a.config, shots=a.shots)
+    try:
+        ep, work = load_episode(a.config)
+        if a.status:
+            print(json.dumps(status(ep, work), ensure_ascii=False, indent=2))
+        elif a.approve_script:
+            review.approve(work, 'script', a.approve_script, review.script_id(ep))
+            print('当前稿件确认已记录；尚未生成配音。')
+        elif a.voice:
+            generate_voice(ep, work)
+        elif a.approve_shots:
+            revision = review.shots_revision(ep, work, review.voice_settings())
+            review.approve(work, 'shots', a.approve_shots, revision)
+            print('当前截图确认已记录；尚未渲染成片。')
+        else:
+            build(a.config, shots=a.shots)
+    except ValueError as exc:
+        ap.exit(1, f'{exc}\n')
 
 
 if __name__ == "__main__":
