@@ -53,7 +53,7 @@ output/                 # 成片与渲染缓存（不入库）
 1. **用户给话题**。
 2. **读规范和参考库**：先读 [docs/hooks.md](docs/hooks.md) 和 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及完整转写稿（`library/four_transcripts.md` 必读，其余见各对标目录下的 `transcript.txt`）。
 3. **交第一稿（审核点 1）**：
-   - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（400–440 字，不含标点），可适当引用、化用对标视频的好句子；
+   - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（约 400–440 字，不含标点，允许上下浮动），可适当引用、化用对标视频的好句子；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；
    - 开场封面 3 张（生图 + 概念词大字 + 第一句字幕合成）。
 4. **用户确认稿件后**：将已展示的准确逐字稿、标题和发布信息写入 `episodes/<slug>/episode.json`。先执行 `--status` 得到 `script_id`，仅在用户确实确认了这版内容后执行 `--approve-script <script_id>`。该操作只记录确认，不生成配音。修改逐字稿、标题或发布信息后必须重新确认，不能拿旧确认套新内容。
