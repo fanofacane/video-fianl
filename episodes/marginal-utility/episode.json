@@ -1,0 +1,149 @@
+{
+ "name": "marginal-utility",
+ "title": "边际效用",
+ "opening": {
+  "lines": 2,
+  "background": {
+   "image": "output/marginal-utility/cover/c.png",
+   "prompt": "电影感写实摄影，16:9 横幅，蓝调时刻，柔和冷色调，低饱和，空旷安静，细腻胶片颗粒；主体必须位于画面正中央，画面上半部中间留出大面积干净的天空区域用于放置白色标题；不要任何文字、水印、logo。蓝调时刻的空旷雪原，远处是低矮的山影。画面正中下部有两个很小的人影：前面一人背对镜头向远处走去，后面一人提着一盏发出暖黄光的灯笼，伸手追向他，两人之间隔着一段雪地。"
+  }
+ },
+ "lines": [
+  {
+   "zh": "如果你总是随叫随到，就会慢慢变得可有可无。",
+   "en": "If you are always on call, you slowly become optional."
+  },
+  {
+   "zh": "《人间失格》里也说过类似的话。",
+   "en": "No Longer Human says something similar."
+  },
+  {
+   "zh": "我们总以为，真心能换来真心，",
+   "en": "We always believe sincerity earns sincerity,"
+  },
+  {
+   "zh": "可现实却是，你给得越多，别人越觉得理所当然。",
+   "en": "but the more you give, the more others take it for granted."
+  },
+  {
+   "zh": "消息你秒回，对方隔天才回一个“嗯”；",
+   "en": "You reply in seconds; they answer a day later with \"ok\";"
+  },
+  {
+   "zh": "朋友随口说想吃什么，你下班绕路去买；",
+   "en": "a friend mentions a craving, and you detour after work to buy it;"
+  },
+  {
+   "zh": "聚会你订位、张罗、买单，最后连句谢谢都没有。",
+   "en": "you book, organize and pay for the dinner, and no one even says thanks."
+  },
+  {
+   "zh": "你开始怀疑，自己是不是在热脸贴冷屁股。",
+   "en": "You start to wonder if you're just trying too hard for nothing."
+  },
+  {
+   "zh": "经济学里有个概念，叫边际效用递减。",
+   "en": "Economics has a concept: diminishing marginal utility."
+  },
+  {
+   "zh": "简单来说，给得越多，每一份就越不值钱。",
+   "en": "Simply put, the more you give, the less each piece is worth."
+  },
+  {
+   "zh": "第一颗糖最甜，第十颗只剩下腻。",
+   "en": "The first candy is the sweetest; the tenth is just too much."
+  },
+  {
+   "zh": "你以为对方变冷淡了，其实他只是习惯了；",
+   "en": "You think they've gone cold, but they've simply gotten used to it;"
+  },
+  {
+   "zh": "你以为再多给一点就会被看见，",
+   "en": "you think a little more will finally get you noticed,"
+  },
+  {
+   "zh": "其实给得越多，你越像空气，",
+   "en": "but the more you give, the more you become like air."
+  },
+  {
+   "zh": "人离不开空气，却从来不会感谢空气。",
+   "en": "People can't live without air, yet no one ever thanks it."
+  },
+  {
+   "zh": "我大学时，每天给室友带早饭，带了整整一学期。",
+   "en": "In college, I brought my roommate breakfast every day for a whole term."
+  },
+  {
+   "zh": "有一天我起晚了，空着手进门，",
+   "en": "One day I overslept and walked in empty-handed,"
+  },
+  {
+   "zh": "她头都没抬：“今天怎么没带啊？”",
+   "en": "she didn't even look up: \"Why didn't you bring it today?\""
+  },
+  {
+   "zh": "那一刻我站在门口，脸一下烫了。",
+   "en": "I stood at the door, my face burning."
+  },
+  {
+   "zh": "原来我的好，早就从礼物变成了义务。",
+   "en": "My kindness had long turned from a gift into a duty."
+  },
+  {
+   "zh": "太宰治还写过一句：",
+   "en": "Dazai also wrote:"
+  },
+  {
+   "zh": "倘若没有过度的欢喜，便不会有极度的悲伤。",
+   "en": "Without excessive joy, there would be no extreme sorrow."
+  },
+  {
+   "zh": "太过热情的背后，往往藏着一份没说出口的期待：",
+   "en": "Behind too much warmth there is often an unspoken expectation:"
+  },
+  {
+   "zh": "我对你这么好，你也该这样对我。",
+   "en": "I've been so good to you, so you should be the same to me."
+  },
+  {
+   "zh": "期待越满，落空时就越疼。",
+   "en": "The fuller the expectation, the more it hurts when it falls through."
+  },
+  {
+   "zh": "那些糖看似给了别人，其实是在替自己讨一点甜。",
+   "en": "That candy seems to be for others, but you're asking for a little sweetness yourself."
+  },
+  {
+   "zh": "你可以热情，但别一次把整罐糖倒空；",
+   "en": "You can be warm, but don't empty the whole jar at once;"
+  },
+  {
+   "zh": "你可以真心，但要给自己留一颗。",
+   "en": "you can be sincere, but keep one piece for yourself."
+  },
+  {
+   "zh": "所谓珍惜，从来不是给得最多，",
+   "en": "Cherishing was never about giving the most,"
+  },
+  {
+   "zh": "而是给得刚刚好，对方才尝得出甜。",
+   "en": "but giving just enough that the other can still taste the sweetness."
+  }
+ ],
+ "assets": {},
+ "scenes": [],
+ "publish": {
+  "title": "如果你总是随叫随到，就会慢慢变得可有可无",
+  "alternatives": [
+   "所谓珍惜，不是给得最多，而是给得刚刚好",
+   "为什么你对别人越好，越不被珍惜？"
+  ],
+  "hashtags": [
+   "哲学",
+   "心理学",
+   "边际效用",
+   "人际关系",
+   "人间失格"
+  ]
+ }
+}
