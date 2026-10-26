@@ -88,7 +88,7 @@ pip install -r requirements.txt   # bpy 需要 Python 3.13
 bash scripts/fetch_fonts.sh       # 下载字体到 assets/fonts/
 ```
 
-另需 `ffmpeg`。项目根目录 `.env`：生图 `OPENAI_API_KEY`、`OPENAI_BASE_URL`；配音 `MINIMAX_API_KEY`、`MINIMAX_VOICE_ID` 等（见 minimax-speech 技能）。
+另需 `ffmpeg`。项目根目录 `.env`：生图 `OPENAI_API_KEY`、`OPENAI_BASE_URL`；配音 `MINIMAX_API_KEY`、`MINIMAX_VOICE_ID`（当前 `video_narrator_20261026`）、`MINIMAX_SPEED`（当前 0.9）等（见 minimax-speech 技能）。
 
 ## 附：单独做一个开场
 
