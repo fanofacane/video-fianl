@@ -4,3 +4,5 @@ node_modules/
 !/.env
 *.log
 output/
+__pycache__/
+assets/fonts/

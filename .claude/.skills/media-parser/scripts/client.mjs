@@ -121,4 +121,5 @@ export async function main(argv = process.argv.slice(2)) {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) process.exitCode = await main();
+// 不用顶层 await：workflows.mjs 会反向 import 本文件，顶层 await 会让两者互相等待而退出（exit 13）。
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().then((code) => { process.exitCode = code; });

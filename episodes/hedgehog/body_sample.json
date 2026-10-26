@@ -1,0 +1,292 @@
+{
+ "name": "hedgehog_sample",
+ "duration": 15,
+ "background": "paper",
+ "assets": {
+  "paper": {
+   "size": "1536x864",
+   "prompt": "一张平铺的米白色旧纸张纹理特写，16:9，均匀柔和的光线，细腻的纸张纤维与轻微斑驳，颜色约为暖灰米白 #ECE7DC，整张画面只有纸张本身，没有折痕、没有阴影、没有文字、没有任何物体，适合作为视频背景。"
+  },
+  "snow": {
+   "size": "1536x864",
+   "prompt": "复古胶片风格的冬日雪原风景照片，16:9 横幅：画面下半部是平坦的白色雪地，远处有一排稀疏的光秃树林和低矮山丘，上半部是灰白色阴天天空。低饱和、冷色调、细腻颗粒，安静寒冷。没有人物、没有动物、没有文字。"
+  },
+  "couple": {
+   "transparent": true,
+   "prompt": "复古 1960 年代彩色照片风格的抠图素材：一对年轻夫妻背对背坐在一张木质长椅两端，各自双臂交叉、表情冷淡、望向相反方向，男人穿灰色西装，女人穿红色连衣裙。人物与长椅完整、居中、四周留白。低饱和、胶片颗粒、印刷质感。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "hedgehog": {
+   "transparent": true,
+   "prompt": "一只真实的刺猬，复古自然图鉴照片风格，侧身朝右站立，全身完整，刺清晰，低饱和暖棕色调，胶片颗粒与轻微印刷网点质感。主体居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  }
+ },
+ "subtitles": [
+  {
+   "start": 0.0,
+   "end": 1.6,
+   "zh": "为什么关系越近",
+   "en": "Why is it that the closer we get,"
+  },
+  {
+   "start": 1.6,
+   "end": 3.4,
+   "zh": "越容易互相伤害？",
+   "en": "the more we hurt each other?"
+  },
+  {
+   "start": 3.4,
+   "end": 4.8,
+   "zh": "心理学里有个概念",
+   "en": "There's a concept in psychology"
+  },
+  {
+   "start": 4.8,
+   "end": 6.2,
+   "zh": "叫刺猬法则",
+   "en": "called the hedgehog's dilemma."
+  },
+  {
+   "start": 6.2,
+   "end": 8.6,
+   "zh": "寒冬里，两只刺猬想靠在一起取暖",
+   "en": "In the cold, two hedgehogs huddle for warmth,"
+  },
+  {
+   "start": 8.6,
+   "end": 10.4,
+   "zh": "可一靠近，就被对方的刺扎疼了",
+   "en": "but up close, their spines hurt each other;"
+  },
+  {
+   "start": 10.4,
+   "end": 11.8,
+   "zh": "离远一点，又冷得发抖",
+   "en": "farther apart, they shiver."
+  },
+  {
+   "start": 11.8,
+   "end": 13.4,
+   "zh": "它们试了很多次",
+   "en": "They try again and again,"
+  },
+  {
+   "start": 13.4,
+   "end": 15.0,
+   "zh": "终于找到一个刚好的距离",
+   "en": "until they find just the right distance."
+  }
+ ],
+ "elements": [
+  {
+   "type": "image",
+   "asset": "couple",
+   "x": 760,
+   "y": 360,
+   "h": 400,
+   "start": 0.05,
+   "end": 3.4
+  },
+  {
+   "type": "text",
+   "text": "亲密",
+   "size": 66,
+   "color": "red",
+   "x": 270,
+   "y": 210,
+   "start": 1.7,
+   "end": 3.4
+  },
+  {
+   "type": "text",
+   "text": "伤害",
+   "size": 66,
+   "color": "blue",
+   "x": 400,
+   "y": 330,
+   "start": 2.2,
+   "end": 3.4
+  },
+  {
+   "type": "text",
+   "text": "“刺猬法则”",
+   "size": 76,
+   "color": "black",
+   "x": 640,
+   "y": 175,
+   "start": 3.45,
+   "end": 6.25
+  },
+  {
+   "type": "text",
+   "text": "（亲密，需要保持合适的距离）",
+   "size": 30,
+   "color": "red",
+   "x": 640,
+   "y": 250,
+   "start": 4.8,
+   "end": 6.25
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 640,
+   "y": 440,
+   "h": 250,
+   "start": 4.0,
+   "end": 6.25
+  },
+  {
+   "type": "strip",
+   "asset": "snow",
+   "top": 360,
+   "start": 6.2,
+   "end": 16
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 400,
+   "y": 515,
+   "h": 170,
+   "start": 6.5,
+   "end": 8.6
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 880,
+   "y": 515,
+   "h": 170,
+   "flip": true,
+   "start": 6.7,
+   "end": 8.6
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 565,
+   "y": 515,
+   "h": 170,
+   "start": 8.6,
+   "end": 10.4
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 715,
+   "y": 515,
+   "h": 170,
+   "flip": true,
+   "start": 8.6,
+   "end": 10.4
+  },
+  {
+   "type": "bubble",
+   "text": "疼！",
+   "style": "white",
+   "size": 34,
+   "x": 660,
+   "y": 360,
+   "start": 8.9,
+   "end": 10.4
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 300,
+   "y": 515,
+   "h": 170,
+   "start": 10.4,
+   "end": 11.8
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 980,
+   "y": 515,
+   "h": 170,
+   "flip": true,
+   "start": 10.4,
+   "end": 11.8
+  },
+  {
+   "type": "bubble",
+   "text": "好冷……",
+   "style": "green",
+   "size": 28,
+   "x": 320,
+   "y": 395,
+   "start": 10.6,
+   "end": 11.8
+  },
+  {
+   "type": "bubble",
+   "text": "好冷……",
+   "style": "green",
+   "size": 28,
+   "x": 960,
+   "y": 395,
+   "start": 10.8,
+   "end": 11.8
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 505,
+   "y": 515,
+   "h": 170,
+   "start": 11.8,
+   "end": 16
+  },
+  {
+   "type": "image",
+   "asset": "hedgehog",
+   "x": 775,
+   "y": 515,
+   "h": 170,
+   "flip": true,
+   "start": 11.8,
+   "end": 16
+  },
+  {
+   "type": "text",
+   "text": "太近",
+   "size": 60,
+   "color": "red",
+   "x": 330,
+   "y": 170,
+   "start": 11.9,
+   "end": 16
+  },
+  {
+   "type": "text",
+   "text": "太远",
+   "size": 60,
+   "color": "blue",
+   "x": 950,
+   "y": 170,
+   "start": 12.4,
+   "end": 16
+  },
+  {
+   "type": "text",
+   "text": "←  刚好  →",
+   "size": 60,
+   "color": "gold",
+   "x": 640,
+   "y": 170,
+   "start": 13.4,
+   "end": 16
+  }
+ ],
+ "shots": [
+  1.0,
+  2.9,
+  4.4,
+  5.9,
+  7.6,
+  9.6,
+  11.3,
+  14.5
+ ]
+}
