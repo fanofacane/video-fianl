@@ -31,6 +31,7 @@ def voice_settings():
     speed = env.get('MINIMAX_SPEED')
     if speed:
         speed = float(speed)
+        speed = int(speed) if speed.is_integer() else speed
         if not 0.5 <= speed <= 2:
             raise ValueError('MINIMAX_SPEED 须在 0.5–2 之间。')
     else:
