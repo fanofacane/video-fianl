@@ -2,7 +2,7 @@
  "name": "marginal-utility",
  "title": "边际效用",
  "opening": {
-  "lines": 2,
+  "lines": 3,
   "background": {
    "image": "output/marginal-utility/cover/c.png",
    "prompt": "电影感写实摄影，16:9 横幅，蓝调时刻，柔和冷色调，低饱和，空旷安静，细腻胶片颗粒；主体必须位于画面正中央，画面上半部中间留出大面积干净的天空区域用于放置白色标题；不要任何文字、水印、logo。蓝调时刻的空旷雪原，远处是低矮的山影。画面正中下部有两个很小的人影：前面一人背对镜头向远处走去，后面一人提着一盏发出暖黄光的灯笼，伸手追向他，两人之间隔着一段雪地。"
@@ -10,12 +10,16 @@
  },
  "lines": [
   {
-   "zh": "如果你总是随叫随到，就会慢慢变得可有可无。",
-   "en": "If you are always on call, you slowly become optional."
+   "zh": "为什么你越真心待人，越得不到对方的尊重呢？",
+   "en": "Why is it that the more sincerely you treat people, the less respect you get?"
   },
   {
-   "zh": "《人间失格》里也说过类似的话。",
-   "en": "No Longer Human says something similar."
+   "zh": "太宰治在《人间失格》里给过答案：",
+   "en": "Dazai gave the answer in No Longer Human:"
+  },
+  {
+   "zh": "无论对谁太过热情，就增加了不被珍惜的概率。",
+   "en": "Be too warm to anyone, and you raise the odds of not being cherished."
   },
   {
    "zh": "我们总以为，真心能换来真心，",
@@ -231,15 +235,15 @@
  },
  "scenes": [
   {
-   "from": 3,
-   "to": 4,
+   "from": 4,
+   "to": 5,
    "elements": [
     {
      "type": "image",
      "asset": "scale",
      "x": 840,
      "y": 430,
-     "at": 3,
+     "at": 4,
      "w": 620,
      "border": 6
     },
@@ -248,7 +252,7 @@
      "asset": "heart_giver",
      "x": 260,
      "y": 400,
-     "at": 3,
+     "at": 4,
      "h": 430,
      "delay": 0.3
     },
@@ -259,9 +263,9 @@
      "color": "blue",
      "x": 840,
      "y": 110,
-     "at": 3,
+     "at": 4,
      "delay": 0.5,
-     "until": 3
+     "until": 4
     },
     {
      "type": "text",
@@ -270,22 +274,22 @@
      "color": "red",
      "x": 840,
      "y": 110,
-     "at": 4,
+     "at": 5,
      "typewriter": true,
      "cps": 6
     }
    ]
   },
   {
-   "from": 5,
-   "to": 6,
+   "from": 6,
+   "to": 7,
    "elements": [
     {
      "type": "image",
      "asset": "phone_girl",
      "x": 250,
      "y": 410,
-     "at": 5,
+     "at": 6,
      "h": 400
     },
     {
@@ -295,7 +299,7 @@
      "size": 30,
      "x": 300,
      "y": 150,
-     "at": 5,
+     "at": 6,
      "delay": 0.2
     },
     {
@@ -305,7 +309,7 @@
      "size": 34,
      "x": 560,
      "y": 250,
-     "at": 5,
+     "at": 6,
      "delay": 1.6
     },
     {
@@ -313,7 +317,7 @@
      "asset": "snack_shop",
      "x": 940,
      "y": 400,
-     "at": 6,
+     "at": 7,
      "w": 520,
      "border": 6
     },
@@ -322,22 +326,22 @@
      "asset": "errand_man",
      "x": 1010,
      "y": 450,
-     "at": 6,
+     "at": 7,
      "h": 360,
      "delay": 0.3
     }
    ]
   },
   {
-   "from": 7,
-   "to": 8,
+   "from": 8,
+   "to": 9,
    "elements": [
     {
      "type": "image",
      "asset": "dinner_table",
      "x": 640,
      "y": 400,
-     "at": 7,
+     "at": 8,
      "w": 600,
      "border": 6
     },
@@ -346,7 +350,7 @@
      "asset": "host",
      "x": 1080,
      "y": 390,
-     "at": 7,
+     "at": 8,
      "h": 400,
      "delay": 0.3
     },
@@ -357,7 +361,7 @@
      "color": "red",
      "x": 140,
      "y": 170,
-     "at": 7,
+     "at": 8,
      "delay": 0.3
     },
     {
@@ -367,7 +371,7 @@
      "color": "blue",
      "x": 140,
      "y": 270,
-     "at": 7,
+     "at": 8,
      "delay": 1.0
     },
     {
@@ -377,7 +381,7 @@
      "color": "gold",
      "x": 140,
      "y": 370,
-     "at": 7,
+     "at": 8,
      "delay": 1.7
     },
     {
@@ -387,13 +391,13 @@
      "size": 30,
      "x": 830,
      "y": 130,
-     "at": 8
+     "at": 9
     }
    ]
   },
   {
-   "from": 9,
-   "to": 10,
+   "from": 10,
+   "to": 11,
    "elements": [
     {
      "type": "text",
@@ -402,7 +406,7 @@
      "color": "black",
      "x": 640,
      "y": 250,
-     "at": 9
+     "at": 10
     },
     {
      "type": "text",
@@ -411,22 +415,22 @@
      "color": "red",
      "x": 640,
      "y": 370,
-     "at": 10,
+     "at": 11,
      "typewriter": true,
      "cps": 10
     }
    ]
   },
   {
-   "from": 11,
-   "to": 11,
+   "from": 12,
+   "to": 12,
    "elements": [
     {
      "type": "image",
      "asset": "candy_jar",
      "x": 640,
      "y": 420,
-     "at": 11,
+     "at": 12,
      "h": 380
     },
     {
@@ -436,7 +440,7 @@
      "color": "red",
      "x": 300,
      "y": 200,
-     "at": 11,
+     "at": 12,
      "delay": 0.2
     },
     {
@@ -446,21 +450,21 @@
      "color": "blue",
      "x": 980,
      "y": 200,
-     "at": 11,
+     "at": 12,
      "delay": 1.2
     }
    ]
   },
   {
-   "from": 12,
-   "to": 13,
+   "from": 13,
+   "to": 14,
    "elements": [
     {
      "type": "image",
      "asset": "lounger",
      "x": 920,
      "y": 430,
-     "at": 12,
+     "at": 13,
      "h": 320
     },
     {
@@ -470,8 +474,8 @@
      "color": "blue",
      "x": 320,
      "y": 170,
-     "at": 12,
-     "until": 12
+     "at": 13,
+     "until": 13
     },
     {
      "type": "text",
@@ -480,29 +484,29 @@
      "color": "red",
      "x": 320,
      "y": 280,
-     "at": 12,
+     "at": 13,
      "delay": 1.5,
-     "until": 12
+     "until": 13
     },
     {
      "type": "image",
      "asset": "tiptoe",
      "x": 330,
      "y": 400,
-     "at": 13,
+     "at": 14,
      "h": 440
     }
    ]
   },
   {
-   "from": 14,
-   "to": 15,
+   "from": 15,
+   "to": 16,
    "elements": [
     {
      "type": "strip",
      "asset": "sky",
      "top": 330,
-     "at": 14
+     "at": 15
     },
     {
      "type": "text",
@@ -511,7 +515,7 @@
      "color": "black",
      "x": 640,
      "y": 160,
-     "at": 14,
+     "at": 15,
      "delay": 0.3
     },
     {
@@ -521,22 +525,22 @@
      "color": "red",
      "x": 640,
      "y": 260,
-     "at": 15,
+     "at": 16,
      "typewriter": true,
      "cps": 8
     }
    ]
   },
   {
-   "from": 16,
-   "to": 16,
+   "from": 17,
+   "to": 17,
    "elements": [
     {
      "type": "image",
      "asset": "dorm",
      "x": 840,
      "y": 390,
-     "at": 16,
+     "at": 17,
      "w": 540,
      "border": 6
     },
@@ -545,7 +549,7 @@
      "asset": "me_breakfast",
      "x": 300,
      "y": 400,
-     "at": 16,
+     "at": 17,
      "h": 440,
      "delay": 0.3
     },
@@ -556,21 +560,21 @@
      "color": "red",
      "x": 880,
      "y": 90,
-     "at": 16,
+     "at": 17,
      "delay": 0.8
     }
    ]
   },
   {
-   "from": 17,
-   "to": 18,
+   "from": 18,
+   "to": 19,
    "elements": [
     {
      "type": "image",
      "asset": "me_empty",
      "x": 300,
      "y": 400,
-     "at": 17,
+     "at": 18,
      "h": 440
     },
     {
@@ -578,7 +582,7 @@
      "asset": "roommate",
      "x": 900,
      "y": 430,
-     "at": 17,
+     "at": 18,
      "h": 360,
      "delay": 0.5
     },
@@ -589,22 +593,22 @@
      "size": 32,
      "x": 960,
      "y": 150,
-     "at": 18
+     "at": 19
     }
    ]
   },
   {
-   "from": 19,
-   "to": 20,
+   "from": 20,
+   "to": 21,
    "elements": [
     {
      "type": "image",
      "asset": "me_empty",
      "x": 640,
      "y": 400,
-     "at": 19,
+     "at": 20,
      "h": 440,
-     "until": 19
+     "until": 20
     },
     {
      "type": "bubble",
@@ -613,16 +617,16 @@
      "size": 30,
      "x": 830,
      "y": 180,
-     "at": 19,
+     "at": 20,
      "delay": 0.6,
-     "until": 19
+     "until": 20
     },
     {
      "type": "image",
      "asset": "gift",
      "x": 300,
      "y": 400,
-     "at": 20,
+     "at": 21,
      "h": 280
     },
     {
@@ -632,7 +636,7 @@
      "color": "blue",
      "x": 300,
      "y": 150,
-     "at": 20
+     "at": 21
     },
     {
      "type": "text",
@@ -641,7 +645,7 @@
      "color": "gold",
      "x": 640,
      "y": 400,
-     "at": 20,
+     "at": 21,
      "delay": 0.6
     },
     {
@@ -649,7 +653,7 @@
      "asset": "chain",
      "x": 980,
      "y": 400,
-     "at": 20,
+     "at": 21,
      "h": 260,
      "delay": 1.0
     },
@@ -660,21 +664,21 @@
      "color": "red",
      "x": 980,
      "y": 150,
-     "at": 20,
+     "at": 21,
      "delay": 1.0
     }
    ]
   },
   {
-   "from": 21,
-   "to": 22,
+   "from": 22,
+   "to": 23,
    "elements": [
     {
      "type": "image",
      "asset": "old_book",
      "x": 640,
      "y": 450,
-     "at": 21,
+     "at": 22,
      "w": 620,
      "border": 6
     },
@@ -685,8 +689,8 @@
      "color": "black",
      "x": 640,
      "y": 110,
-     "at": 21,
-     "until": 21
+     "at": 22,
+     "until": 22
     },
     {
      "type": "text",
@@ -695,22 +699,22 @@
      "color": "red",
      "x": 640,
      "y": 140,
-     "at": 22,
+     "at": 23,
      "typewriter": true,
      "cps": 7
     }
    ]
   },
   {
-   "from": 23,
-   "to": 25,
+   "from": 24,
+   "to": 26,
    "elements": [
     {
      "type": "image",
      "asset": "ledger_person",
      "x": 320,
      "y": 430,
-     "at": 23,
+     "at": 24,
      "h": 360
     },
     {
@@ -720,7 +724,7 @@
      "size": 28,
      "x": 400,
      "y": 140,
-     "at": 24
+     "at": 25
     },
     {
      "type": "cycle",
@@ -728,36 +732,36 @@
      "y": 330,
      "r": 150,
      "size": 44,
-     "at": 23,
+     "at": 24,
      "items": [
       {
        "text": "付出",
-       "at": 23
+       "at": 24
       },
       {
        "text": "期待",
-       "at": 23,
+       "at": 24,
        "delay": 1.5
       },
       {
        "text": "落空",
        "color": "red",
-       "at": 25
+       "at": 26
       }
      ]
     }
    ]
   },
   {
-   "from": 26,
-   "to": 26,
+   "from": 27,
+   "to": 27,
    "elements": [
     {
      "type": "image",
      "asset": "kid_palm",
      "x": 920,
      "y": 420,
-     "at": 26,
+     "at": 27,
      "h": 420
     },
     {
@@ -767,7 +771,7 @@
      "color": "blue",
      "x": 340,
      "y": 200,
-     "at": 26
+     "at": 27
     },
     {
      "type": "text",
@@ -776,20 +780,20 @@
      "color": "red",
      "x": 340,
      "y": 300,
-     "at": 26,
+     "at": 27,
      "delay": 1.5
     }
    ]
   },
   {
-   "from": 27,
-   "to": 28,
+   "from": 28,
+   "to": 29,
    "elements": [
     {
      "type": "strip",
      "asset": "meadow",
      "top": 360,
-     "at": 27
+     "at": 28
     },
     {
      "type": "text",
@@ -798,14 +802,14 @@
      "color": "blue",
      "x": 400,
      "y": 150,
-     "at": 27
+     "at": 28
     },
     {
      "type": "image",
      "asset": "candy_hand",
      "x": 1060,
      "y": 200,
-     "at": 28,
+     "at": 29,
      "h": 260
     },
     {
@@ -815,19 +819,19 @@
      "color": "red",
      "x": 400,
      "y": 250,
-     "at": 28
+     "at": 29
     }
    ]
   },
   {
-   "from": 29,
-   "to": 30,
+   "from": 30,
+   "to": 31,
    "elements": [
     {
      "type": "strip",
      "asset": "snow",
      "top": 330,
-     "at": 29
+     "at": 30
     },
     {
      "type": "text",
@@ -836,8 +840,8 @@
      "color": "blue",
      "x": 640,
      "y": 170,
-     "at": 29,
-     "until": 29
+     "at": 30,
+     "until": 30
     },
     {
      "type": "text",
@@ -846,7 +850,7 @@
      "color": "red",
      "x": 640,
      "y": 170,
-     "at": 30,
+     "at": 31,
      "typewriter": true,
      "cps": 5
     }
@@ -854,7 +858,7 @@
   }
  ],
  "publish": {
-  "title": "如果你总是随叫随到，就会慢慢变得可有可无",
+  "title": "为什么你越真心待人，越得不到对方的尊重呢？",
   "alternatives": [
    "所谓珍惜，不是给得最多，而是给得刚刚好",
    "为什么你对别人越好，越不被珍惜？"
