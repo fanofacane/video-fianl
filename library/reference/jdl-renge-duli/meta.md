@@ -13,4 +13,4 @@
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）
 - 文案拆解：[breakdown.md](breakdown.md)
-- 完整转写稿（不入库）：`output/library/jdl-renge-duli/transcript.txt`，需要时用本命令重新生成
+- 完整转写稿：尚未入库，运行 `python3 -m video.library ref jdl-renge-duli <链接>` 生成到本目录 `transcript.txt`

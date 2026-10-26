@@ -1,5 +1,6 @@
 # 项目约定
 
+- **写逐字稿前，必须仔细阅读 `library/four_transcripts.md`（4 篇对标口播全文）学习文笔**；对标转写稿入库，放在 `library/`。
 - **做任何一期视频前，必须先读参考库 `library/`（README 有索引）中最接近的对标视频**，再写逐字稿；经验见 `docs/lessons.md`。
 - 每期严格按 README“每期制作流程”：话题 → 读参考库 → 逐字稿 + 3 个标题 + 3 张封面（审核点 1）→ 正文场景截图，不渲染视频（审核点 2）→ 完整视频 → 归档到 `library/ours/<发布标题>/`。
 - 文案确认后才可记录 `--approve-script <当前ID>`，再显式 `--voice` 生成配音；`--shots` 和成片入口禁止隐式配音。截图展示并获用户确认后才记录 `--approve-shots <当前ID>`。不得自行代替用户确认；改稿/改图后以当前内容重新审核，禁止为跑通命令自动批准。
@@ -8,7 +9,7 @@
 - 顶部水印统一为 `@好想一口吃掉`（`video/config.py` 的 WATERMARK，默认自动加）。
 - 所有视频的开场统一用碎片开场（`video/opening/`）；画面 1280x720、30fps；字幕、标题、水印样式统一走 `video/text.py`。
 - 画面素材用生图工具（`video/imagegen.py`）每期临时生成，不用代码手绘、不维护固定素材库；主题意象只在寓言段出现，其余场景素材要多样。
-- 参考视频的手法、节奏、句子都可以借鉴；只是不用对方的水印和账号标识。对标视频完整转写稿存在本地 `output/library/`。
+- 参考视频的手法、节奏、句子都可以借鉴；只是不用对方的水印和账号标识。对标视频完整转写稿在 `library/four_transcripts.md` 和各对标目录的 `transcript.txt`。
 - 写稿前先读 `docs/hooks.md`（开头与前 30%）和 `docs/body-writing.md` 的检查清单。
 - 生成物放 `output/`（不入库）；字体由 `scripts/fetch_fonts.sh` 下载到 `assets/fonts/`（不入库）。
 - 做完一个模块就更新 README 的“进度”表；做完一期把新经验补进 `docs/lessons.md`。

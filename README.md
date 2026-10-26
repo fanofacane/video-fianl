@@ -2,6 +2,8 @@
 
 用代码批量制作“哲学 / 心理学知识类”横屏短视频（默认 90 秒，顶部水印 @好想一口吃掉）。
 
+> **写逐字稿前，必须逐篇仔细阅读 [library/four_transcripts.md](library/four_transcripts.md)（4 个对标视频的口播全文），重点揣摩它们的文笔**：句子长短和节奏、口语化的说法、“你以为……其实……”式的转折、比喻怎么落到具体小事、结尾怎么收。我们的稿子要写出同样的语感，不能只照搬结构。
+>
 > **制作任何一期之前，必须先阅读参考库 [library/](library/README.md) 中与本期话题最接近的对标视频**（`meta.md` 标题与话题、`breakdown.md` 文案拆解、`frames.jpg` 场景帧），再动笔写逐字稿。经验沉淀见 [docs/lessons.md](docs/lessons.md)。
 
 风格参考见 [开场拆解](docs/reference/jiangdongling-opening-style.md)、[正文段拆解](docs/reference/body-collage-style.md)、[多视频风格共性](docs/reference/common-style.md)。逐字稿写作规范见 [docs/script-style.md](docs/script-style.md)。
@@ -34,7 +36,7 @@ video/                  # 代码
     cuts.py             # 碎片切分（按裂纹遮罩图分块；可从红线标注图生成遮罩）
     assets/cuts_mask.png# 默认切法：中间一大块托住标题，四周逐渐变小
 episodes/<slug>/        # 每期内容：episode.json（逐字稿、开场、场景、素材、发布标题）
-library/                # 参考库 reference/（对标视频）与成品库 ours/（按发布标题）
+library/                # 参考库 reference/（对标视频，含转写稿）、成品库 ours/（按发布标题）、four_transcripts.md（4 篇对标口播全文，写稿必读）
 docs/script-style.md    # 逐字稿、标题、封面、简介写作规范
 docs/hooks.md           # 开头与前 30% 的写法（10 个对标总结）
 docs/body-writing.md    # 正文写法与画面配合（对标逐秒拆解总结）
@@ -49,7 +51,7 @@ output/                 # 成片与渲染缓存（不入库）
 ## 每期制作流程（必须按顺序，每个审核点等用户确认）
 
 1. **用户给话题**。
-2. **读规范和参考库**：先读 [docs/hooks.md](docs/hooks.md) 和 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及本地完整转写稿 `output/library/<slug>/transcript.txt`。
+2. **读规范和参考库**：先读 [docs/hooks.md](docs/hooks.md) 和 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及完整转写稿（`library/four_transcripts.md` 必读，其余见各对标目录下的 `transcript.txt`）。
 3. **交第一稿（审核点 1）**：
    - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（400–440 字，不含标点），可适当引用、化用对标视频的好句子；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；

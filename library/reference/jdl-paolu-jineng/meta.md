@@ -13,4 +13,4 @@
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）；逐秒帧：[frames_1s_p1.jpg](frames_1s_p1.jpg)、[frames_1s_p2.jpg](frames_1s_p2.jpg)（每秒一帧，每页 60 秒）
 - 文案拆解：[breakdown.md](breakdown.md)
-- 完整转写稿（不入库）：`output/library/jdl-paolu-jineng/transcript.txt`，需要时用本命令重新生成
+- 完整转写稿：尚未入库，运行 `python3 -m video.library ref jdl-paolu-jineng <链接>` 生成到本目录 `transcript.txt`

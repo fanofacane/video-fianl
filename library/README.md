@@ -22,8 +22,11 @@
 - `meta.md`：发布标题、简介（都是“标题 + 话题”）、话题、时长、字数、语速、链接
 - `frames.jpg`：场景帧截图（每 3 秒一帧），看画面元素、构图和节奏
 - `breakdown.md`：文案结构拆解（段落作用、手法、标题写法、可学之处）
+- `transcript.txt`：完整转写稿（语音自动转写，未校对；部分尚未生成）
 
-完整转写稿不入库，需要时运行 `python3 -m video.library ref <slug> <链接>`，会生成到 `output/library/<slug>/transcript.txt` 供本地参考；写稿时可以直接引用、化用其中合适的句子。
+完整转写稿入库：
+- **[four_transcripts.md](four_transcripts.md)：4 个对标视频的口播全文，写逐字稿前必须逐篇仔细阅读，学它们的文笔**（句子节奏、口语说法、转折、比喻落地、收尾）。
+- 其余对标的转写稿在各自目录的 `transcript.txt`；没有的运行 `python3 -m video.library ref <slug> <链接>` 生成并提交。写稿时可以直接引用、化用其中合适的句子。
 
 新增对标视频：`python3 -m video.library ref <slug> <分享链接>`，然后手写 `breakdown.md`，并在上表加一行。
 

@@ -3,7 +3,7 @@
 每期写稿严格按本文执行。依据：参考库 10 个对标视频（两个账号）的口播与逐秒画面分析，以及江东陵作品列表的封面与标题。
 本文总结写法规律；写稿时可以引用、化用对标视频里合适的句子和段落。
 
-**动笔前**：先读 [hooks.md](hooks.md)（开头与前 30%）和 [body-writing.md](body-writing.md)（正文写法与画面配合），再读参考库 `library/reference/` 中与本期话题最接近的 1–2 个对标视频（`breakdown.md` + 逐秒帧）。
+**动笔前**：先逐篇仔细读 [library/four_transcripts.md](../library/four_transcripts.md)，学对标的文笔；再读 [hooks.md](hooks.md)（开头与前 30%）和 [body-writing.md](body-writing.md)（正文写法与画面配合），再读参考库 `library/reference/` 中与本期话题最接近的 1–2 个对标视频（`breakdown.md` + 逐秒帧）。
 
 ## 1. 规格
 

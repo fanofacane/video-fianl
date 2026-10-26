@@ -13,4 +13,4 @@
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）
 - 文案拆解：[breakdown.md](breakdown.md)
-- 完整转写稿（不入库）：`output/library/deyi-zhenxin-zunzhong/transcript.txt`，需要时用本命令重新生成
+- 完整转写稿：[transcript.txt](transcript.txt)（语音自动转写，未校对）

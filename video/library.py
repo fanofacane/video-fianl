@@ -9,9 +9,10 @@
   reference/<slug>/meta.md      标题、简介、话题、作者、链接、时长、字数、语速
   reference/<slug>/frames.jpg   场景帧截图（每 3 秒一帧）
   reference/<slug>/breakdown.md 文案结构拆解（人工撰写：结构、手法、短句摘录）
+  reference/<slug>/transcript.txt 完整转写稿（语音自动转写，未校对）：写逐字稿时学文笔、结构和手法，
+                                 也可以引用、化用合适的句子
   ours/<发布标题>/              我们的成片：meta.md、script.md、cover.jpg、frames.jpg
-不入库：对标视频完整转写稿放在 output/library/<slug>/transcript.txt，只作本地参考，
-       写逐字稿时可以学结构和手法，也可以引用、化用合适的句子。
+视频和转写原始 JSON 缓存在 output/library/<slug>/（不入库）。
 """
 import argparse
 import math
@@ -66,7 +67,7 @@ def add_reference(slug, link):
         res = _run_json(["node", str(PARSER), "transcribe", "--url", link, "--wait-seconds", "900", "--timeout", "300"])
         tr.write_text(json.dumps(res, ensure_ascii=False))
     job = json.loads(tr.read_text())["data"]["jobs"][0]
-    (local / "transcript.txt").write_text(job["text"], encoding="utf-8")
+    (d / "transcript.txt").write_text(job["text"], encoding="utf-8")
     dur = _duration(video)
     chars = len(re.sub(r"[\s，。？！；：、,.?!;:“”\"'（）()…]", "", job["text"]))
     title, tags = _split_hashtags(info.get("desc") or info.get("title", ""))
@@ -86,7 +87,7 @@ def add_reference(slug, link):
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）
 - 文案拆解：[breakdown.md](breakdown.md)
-- 完整转写稿（不入库）：`output/library/{slug}/transcript.txt`，需要时用本命令重新生成
+- 完整转写稿：[transcript.txt](transcript.txt)（语音自动转写，未校对）
 """, encoding="utf-8")
     print(f"已入参考库 {d}（{title}，{dur:.0f}s，{chars} 字）")
 
