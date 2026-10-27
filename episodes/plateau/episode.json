@@ -199,81 +199,71 @@
   "bench_alone": {
    "transparent": true,
    "prompt": "生成一张全新的图片：一个人独自坐在一张旧木长椅的一端，双手放在膝上，安静地望着前方；人物与长椅完整。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
+  },
+  "gazer": {
+   "transparent": true,
+   "prompt": "生成一张全新的图片：一个穿长大衣的人背对镜头站着，望向远方，双手插在口袋里；全身背影。复古 1960 年代彩色照片风格的抠图素材，低饱和、胶片颗粒、印刷质感；主体完整、居中、四周留白。透明 alpha 背景，无地面、无投影、无白色底板、无棋盘格、无文字。"
   }
  },
  "scenes": [
   {
    "from": 3,
-   "to": 3,
+   "to": 5,
    "elements": [
     {
      "type": "image",
      "asset": "desk_night",
      "x": 380,
-     "y": 410,
+     "y": 430,
      "at": 3,
-     "h": 400
+     "h": 620
     },
     {
      "type": "image",
      "asset": "calendar",
-     "x": 950,
-     "y": 330,
+     "x": 1130,
+     "y": 250,
      "at": 3,
-     "h": 360,
-     "delay": 0.4
+     "h": 320,
+     "delay": 0.6
     },
     {
      "type": "text",
      "text": "毫无变化",
-     "size": 56,
+     "size": 64,
      "color": "blue",
-     "x": 950,
+     "x": 760,
      "y": 110,
      "at": 3,
-     "delay": 1.0
-    }
-   ]
-  },
-  {
-   "from": 4,
-   "to": 5,
-   "elements": [
-    {
-     "type": "image",
-     "asset": "valley",
-     "x": 820,
-     "y": 355,
-     "at": 4,
-     "w": 540,
-     "border": 6
-    },
-    {
-     "type": "image",
-     "asset": "shouter",
-     "x": 640,
-     "y": 330,
-     "at": 4,
-     "h": 300,
-     "delay": 0.3
+     "delay": 1.2
     },
     {
      "type": "text",
      "text": "辛苦",
-     "size": 54,
-     "color": "blue",
-     "x": 220,
-     "y": 170,
+     "size": 56,
+     "color": "black",
+     "x": 800,
+     "y": 330,
      "at": 4
     },
     {
      "type": "text",
      "text": "没有回应",
-     "size": 60,
+     "size": 72,
      "color": "red",
-     "x": 220,
-     "y": 290,
+     "x": 800,
+     "y": 440,
      "at": 5
+    },
+    {
+     "type": "bubble",
+     "text": "有人在吗？",
+     "style": "white",
+     "size": 30,
+     "x": 640,
+     "y": 230,
+     "at": 5,
+     "delay": 0.8
     }
    ]
   },
@@ -284,39 +274,39 @@
     {
      "type": "text",
      "text": "“高原现象”",
-     "size": 80,
+     "size": 88,
      "color": "black",
      "x": 640,
-     "y": 230,
+     "y": 250,
      "at": 6,
      "until": 7
     },
     {
      "type": "text",
      "text": "（练习到某个阶段，进步突然停滞）",
-     "size": 34,
+     "size": 36,
      "color": "red",
      "x": 640,
-     "y": 350,
+     "y": 370,
      "at": 7,
      "typewriter": true,
      "cps": 10,
      "until": 7
     },
     {
-     "type": "strip",
+     "type": "photo",
      "asset": "plateau_photo",
-     "top": 330,
      "at": 8
     },
     {
-     "type": "text",
-     "text": "像走上一片平坦的高原",
-     "size": 50,
-     "color": "black",
-     "x": 640,
-     "y": 170,
-     "at": 8
+     "type": "image",
+     "asset": "hiker_down",
+     "x": 900,
+     "y": 430,
+     "at": 8,
+     "h": 600,
+     "flip": true,
+     "delay": 0.3
     }
    ]
   },
@@ -328,57 +318,64 @@
      "type": "image",
      "asset": "operator",
      "x": 300,
-     "y": 410,
+     "y": 420,
      "at": 9,
-     "h": 420
+     "h": 640
     },
     {
      "type": "image",
      "asset": "telegraph",
-     "x": 780,
-     "y": 470,
+     "x": 620,
+     "y": 560,
      "at": 9,
-     "h": 200,
-     "delay": 0.5,
-     "until": 10
+     "h": 220,
+     "delay": 0.6
     },
     {
      "type": "text",
-     "text": "1897 · 布赖恩 & 哈特",
-     "size": 40,
+     "text": "1897",
+     "size": 72,
      "color": "black",
-     "x": 780,
-     "y": 120,
+     "x": 760,
+     "y": 110,
      "at": 9,
-     "delay": 0.3,
-     "until": 10
+     "delay": 0.3
+    },
+    {
+     "type": "text",
+     "text": "布赖恩 & 哈特",
+     "size": 36,
+     "color": "black",
+     "x": 760,
+     "y": 190,
+     "at": 9,
+     "delay": 0.9
     },
     {
      "type": "text",
      "text": "停滞",
-     "size": 60,
+     "size": 72,
      "color": "blue",
-     "x": 780,
-     "y": 250,
-     "at": 10,
-     "until": 10
+     "x": 1080,
+     "y": 120,
+     "at": 10
     },
     {
      "type": "image",
      "asset": "stairs",
-     "x": 900,
-     "y": 390,
+     "x": 1040,
+     "y": 560,
      "at": 11,
-     "w": 520,
+     "w": 620,
      "border": 6
     },
     {
      "type": "text",
      "text": "跃升",
-     "size": 64,
+     "size": 80,
      "color": "red",
-     "x": 900,
-     "y": 140,
+     "x": 1080,
+     "y": 250,
      "at": 11
     }
    ]
@@ -390,50 +387,58 @@
     {
      "type": "image",
      "asset": "brain",
-     "x": 640,
-     "y": 330,
+     "x": 360,
+     "y": 380,
      "at": 12,
-     "h": 380,
-     "until": 13
+     "h": 560
     },
     {
      "type": "text",
      "text": "悄悄重组",
-     "size": 56,
+     "size": 64,
      "color": "red",
-     "x": 1030,
-     "y": 200,
-     "at": 13,
-     "until": 13
-    },
-    {
-     "type": "text",
-     "text": "D · O · G",
-     "size": 70,
-     "color": "blue",
-     "x": 400,
-     "y": 250,
-     "at": 14
-    },
-    {
-     "type": "text",
-     "text": "→",
-     "size": 80,
-     "color": "gold",
-     "x": 640,
-     "y": 250,
-     "at": 14,
+     "x": 930,
+     "y": 150,
+     "at": 12,
      "delay": 0.6
     },
     {
      "type": "text",
-     "text": "DOG",
-     "size": 90,
-     "color": "red",
-     "x": 880,
-     "y": 250,
+     "text": "一个字母一个字母",
+     "size": 40,
+     "color": "black",
+     "x": 930,
+     "y": 300,
+     "at": 13
+    },
+    {
+     "type": "text",
+     "text": "D · O · G",
+     "size": 72,
+     "color": "blue",
+     "x": 930,
+     "y": 390,
+     "at": 14
+    },
+    {
+     "type": "text",
+     "text": "↓",
+     "size": 60,
+     "color": "gold",
+     "x": 930,
+     "y": 470,
      "at": 14,
-     "delay": 1.2
+     "delay": 0.5
+    },
+    {
+     "type": "text",
+     "text": "DOG",
+     "size": 96,
+     "color": "red",
+     "x": 930,
+     "y": 550,
+     "at": 14,
+     "delay": 1.0
     }
    ]
   },
@@ -445,28 +450,38 @@
      "type": "image",
      "asset": "iceberg",
      "x": 640,
-     "y": 345,
+     "y": 400,
      "at": 15,
-     "h": 420,
+     "h": 700,
      "border": 6
     },
     {
      "type": "text",
      "text": "看得见的",
-     "size": 44,
+     "size": 56,
      "color": "blue",
-     "x": 1020,
-     "y": 150,
+     "x": 280,
+     "y": 140,
      "at": 15
     },
     {
      "type": "text",
      "text": "看不见的",
-     "size": 50,
+     "size": 64,
      "color": "red",
-     "x": 1020,
-     "y": 450,
+     "x": 1000,
+     "y": 430,
      "at": 16
+    },
+    {
+     "type": "text",
+     "text": "变化在这里",
+     "size": 36,
+     "color": "black",
+     "x": 1000,
+     "y": 520,
+     "at": 16,
+     "delay": 0.8
     }
    ]
   },
@@ -477,56 +492,76 @@
     {
      "type": "image",
      "asset": "doubter",
-     "x": 330,
-     "y": 410,
+     "x": 320,
+     "y": 430,
      "at": 17,
-     "h": 400,
+     "h": 620
+    },
+    {
+     "type": "text",
+     "text": "用结果确认努力",
+     "size": 48,
+     "color": "blue",
+     "x": 1000,
+     "y": 110,
+     "at": 17,
      "until": 18
     },
     {
      "type": "bubble",
      "text": "是不是方向错了？",
      "style": "white",
-     "size": 30,
-     "x": 470,
-     "y": 140,
+     "size": 32,
+     "x": 600,
+     "y": 120,
      "at": 18,
      "until": 18
     },
     {
      "type": "text",
-     "text": "用结果确认努力",
-     "size": 46,
-     "color": "blue",
-     "x": 900,
-     "y": 220,
-     "at": 17,
+     "text": "怀疑方向",
+     "size": 48,
+     "color": "black",
+     "x": 820,
+     "y": 260,
+     "at": 18,
+     "until": 18
+    },
+    {
+     "type": "text",
+     "text": "怀疑自己",
+     "size": 48,
+     "color": "black",
+     "x": 1080,
+     "y": 260,
+     "at": 18,
+     "delay": 0.8,
      "until": 18
     },
     {
      "type": "image",
      "asset": "mountain",
-     "x": 820,
-     "y": 370,
+     "x": 960,
+     "y": 520,
      "at": 19,
-     "w": 520,
+     "w": 640,
      "border": 6
     },
     {
      "type": "image",
      "asset": "hiker_down",
-     "x": 380,
-     "y": 420,
+     "x": 760,
+     "y": 480,
      "at": 19,
-     "h": 380,
+     "h": 440,
      "delay": 0.4
     },
     {
      "type": "text",
      "text": "就差一点",
-     "size": 52,
+     "size": 60,
      "color": "red",
-     "x": 820,
+     "x": 960,
      "y": 110,
      "at": 19
     }
@@ -539,36 +574,15 @@
     {
      "type": "photo",
      "asset": "quiet_photo",
-     "at": 20,
-     "until": 20
-    },
-    {
-     "type": "text",
-     "text": "不是累",
-     "size": 56,
-     "color": "blue",
-     "x": 320,
-     "y": 170,
-     "at": 21
-    },
-    {
-     "type": "text",
-     "text": "是安静",
-     "size": 64,
-     "color": "red",
-     "x": 320,
-     "y": 280,
-     "at": 21,
-     "delay": 1.0
+     "at": 20
     },
     {
      "type": "image",
      "asset": "bench_alone",
      "x": 900,
-     "y": 440,
+     "y": 470,
      "at": 21,
-     "h": 320,
-     "flip": false
+     "h": 520
     }
    ]
   },
@@ -579,87 +593,118 @@
     {
      "type": "image",
      "asset": "map_person",
-     "x": 320,
-     "y": 410,
+     "x": 300,
+     "y": 420,
      "at": 22,
-     "h": 420
+     "h": 640
     },
     {
      "type": "image",
      "asset": "compass",
-     "x": 900,
-     "y": 290,
+     "x": 1120,
+     "y": 330,
      "at": 22,
-     "h": 260,
-     "delay": 0.4
+     "h": 300,
+     "delay": 0.5
     },
     {
      "type": "text",
-     "text": "调整，而不是硬撑",
-     "size": 46,
+     "text": "不是所有停滞都是突破",
+     "size": 40,
+     "color": "black",
+     "x": 800,
+     "y": 90,
+     "at": 22,
+     "delay": 1.0
+    },
+    {
+     "type": "text",
+     "text": "调整 ≠ 硬撑",
+     "size": 56,
      "color": "red",
-     "x": 900,
-     "y": 110,
+     "x": 760,
+     "y": 260,
      "at": 23
     },
     {
      "type": "text",
      "text": "原地打转",
-     "size": 44,
+     "size": 48,
      "color": "blue",
-     "x": 900,
-     "y": 500,
+     "x": 720,
+     "y": 400,
      "at": 24
     },
     {
      "type": "text",
      "text": "积蓄力量",
-     "size": 44,
+     "size": 48,
      "color": "red",
-     "x": 1120,
+     "x": 720,
      "y": 500,
      "at": 24,
-     "delay": 1.2
+     "delay": 1.0
     }
    ]
   },
   {
    "from": 25,
-   "to": 27,
+   "to": 26,
    "elements": [
     {
      "type": "strip",
      "asset": "fog",
-     "top": 330,
-     "at": 25,
-     "until": 26
+     "top": 300,
+     "at": 25
     },
     {
      "type": "text",
      "text": "不必急着要答案",
-     "size": 52,
+     "size": 60,
      "color": "black",
      "x": 640,
-     "y": 170,
-     "at": 25,
-     "until": 26
+     "y": 160,
+     "at": 25
     },
+    {
+     "type": "image",
+     "asset": "gazer",
+     "x": 960,
+     "y": 440,
+     "h": 580,
+     "at": 25,
+     "delay": 0.5
+    }
+   ]
+  },
+  {
+   "from": 27,
+   "to": 27,
+   "elements": [
     {
      "type": "strip",
      "asset": "sunrise",
-     "top": 330,
+     "top": 300,
      "at": 27
     },
     {
      "type": "text",
      "text": "一个新的地方",
-     "size": 64,
+     "size": 72,
      "color": "red",
      "x": 640,
-     "y": 170,
+     "y": 160,
      "at": 27,
      "typewriter": true,
      "cps": 5
+    },
+    {
+     "type": "image",
+     "asset": "gazer",
+     "x": 980,
+     "y": 470,
+     "h": 500,
+     "at": 27
     }
    ]
   }
