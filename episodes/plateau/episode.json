@@ -1,0 +1,137 @@
+{
+ "name": "plateau",
+ "title": "高原现象",
+ "opening": {
+  "lines": 2,
+  "background": {
+   "image": "output/plateau/cover/c.png",
+   "prompt": "生成一张全新的图片：16:9 横幅，不要任何文字、水印、logo。黑白低饱和的电影画面，冷峻安静。浓雾笼罩着一片辽阔平坦的高原，远处隐约是更高的山峰。前景右侧一个失焦模糊的人物侧身剪影，低着头，雾气流动，有胶片颗粒。"
+  }
+ },
+ "lines": [
+  {
+   "zh": "为什么很多人付出了努力，却迟迟等不来改变呢？",
+   "en": "Why do so many people put in the effort, yet change never seems to come?"
+  },
+  {
+   "zh": "因为很多成长不是一点一点发生的，而是在某一天突然发生的。",
+   "en": "Because much of growth doesn't happen bit by bit; it happens suddenly, one day."
+  },
+  {
+   "zh": "只是在那之前，你要先熬过一段毫无变化的日子。",
+   "en": "But before that, you have to endure a stretch where nothing seems to change."
+  },
+  {
+   "zh": "而人最难承受的，往往不是辛苦，",
+   "en": "And what's hardest to bear is often not the hard work,"
+  },
+  {
+   "zh": "而是付出之后，看不到任何回应。",
+   "en": "but giving everything and seeing no response at all."
+  },
+  {
+   "zh": "心理学中有一个概念，叫做高原现象。",
+   "en": "Psychology has a concept called the learning plateau."
+  },
+  {
+   "zh": "它指的是练习到某个阶段，进步会突然停滞，",
+   "en": "It means that at some stage of practice, progress suddenly stalls,"
+  },
+  {
+   "zh": "像走上了一片平坦的高原。",
+   "en": "as if you've walked onto a flat plateau."
+  },
+  {
+   "zh": "1897年，布赖恩和哈特研究电报员学发电码，",
+   "en": "In 1897, Bryan and Harter studied telegraph operators learning Morse code,"
+  },
+  {
+   "zh": "发现他们的速度会长时间停滞不前，",
+   "en": "and found their speed stalled for a long time,"
+  },
+  {
+   "zh": "然后在某一天，突然跃升到一个新的水平。",
+   "en": "then one day suddenly jumped to a new level."
+  },
+  {
+   "zh": "原来高原期并不是没有进步，",
+   "en": "It turned out the plateau was not a lack of progress,"
+  },
+  {
+   "zh": "而是大脑正在悄悄重组：",
+   "en": "but the brain quietly reorganizing:"
+  },
+  {
+   "zh": "从一个字母一个字母地听，变成整个单词地听。",
+   "en": "from hearing letter by letter to hearing whole words."
+  },
+  {
+   "zh": "也就是说，你看不到变化，不是因为什么都没发生，",
+   "en": "In other words, you see no change not because nothing is happening,"
+  },
+  {
+   "zh": "而是变化正发生在你看不见的地方。",
+   "en": "but because change is happening where you can't see it."
+  },
+  {
+   "zh": "可我们太习惯用结果来确认努力，",
+   "en": "But we are too used to judging effort by results;"
+  },
+  {
+   "zh": "看不到回报，就开始怀疑方向，怀疑自己，",
+   "en": "when no reward shows, we start doubting the direction, and ourselves,"
+  },
+  {
+   "zh": "于是很多人，恰恰停在了快要越过高原的时候。",
+   "en": "so many people stop just as they are about to cross the plateau."
+  },
+  {
+   "zh": "我一直觉得，高原期最难熬的地方不是累，",
+   "en": "I've always felt the hardest part of a plateau isn't the fatigue,"
+  },
+  {
+   "zh": "而是安静，安静到让你以为，自己被世界忘记了。",
+   "en": "but the silence, so quiet you think the world has forgotten you."
+  },
+  {
+   "zh": "当然，不是所有停滞都意味着突破，",
+   "en": "Of course, not every stall means a breakthrough is coming;"
+  },
+  {
+   "zh": "有时方向真的错了，需要的是调整，而不是硬撑。",
+   "en": "sometimes the direction is wrong, and you need to adjust, not grit your teeth."
+  },
+  {
+   "zh": "真正重要的，是分清自己在原地打转，还是在积蓄力量。",
+   "en": "What matters is telling whether you're going in circles or building strength."
+  },
+  {
+   "zh": "如果是后者，就不必急着向这段日子要答案。",
+   "en": "If it's the latter, don't rush these days for an answer."
+  },
+  {
+   "zh": "它也许不会立刻奖励你，",
+   "en": "They may not reward you right away,"
+  },
+  {
+   "zh": "但总有一天，会把你送到一个新的地方。",
+   "en": "but one day, they will carry you somewhere new."
+  }
+ ],
+ "assets": {},
+ "scenes": [],
+ "publish": {
+  "title": "很多成长不是一点一点发生的，而是在某一天突然发生的",
+  "alternatives": [
+   "为什么很多人付出了努力，却迟迟等不来改变呢？",
+   "你看不到变化，不是因为什么都没发生"
+  ],
+  "hashtags": [
+   "哲学",
+   "心理学",
+   "高原现象",
+   "自我成长",
+   "抖音精选"
+  ]
+ }
+}
