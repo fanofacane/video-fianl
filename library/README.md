@@ -20,6 +20,8 @@
 | [jdl-jieshou-wenti](reference/jdl-jieshou-wenti/) | 江东陵 | 人生很多问题不是用来解决的，而是用来接受的 | 156s | 长版 | 强迫性思维 |
 | [jdl-xingwei-daan](reference/jdl-xingwei-daan/) | 江东陵 | 行为就是答案，接受就继续，不接受就离开 | 173s | 长版 | 行动化 |
 | [jdl-chilai-aishang](reference/jdl-chilai-aishang/) | 江东陵 | 接住迟来的哀伤，人生才算真正开始愈合 | 185s | 长版 | 迟发性哀伤 |
+| [deyi-shengming-changdu](reference/deyi-shengming-changdu/) | 得一. | 生命的长度，足以稀释错误的浓度，生命的广度，也会淡化那些让你耿耿于怀的记忆 | 128s | 中版 | 斯多葛学派（视角翻篇） |
+| [deyi-zhishi-zuzhou](reference/deyi-zhishi-zuzhou/) | 得一. | 知识诅咒：知道的越多，就很难回到无知的状态 | 113s | 中版 | 知识诅咒 |
 
 每个目录：
 - `meta.md`：发布标题、简介（都是“标题 + 话题”）、话题、时长、字数、语速、链接

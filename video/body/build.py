@@ -19,6 +19,7 @@
     {"type": "strip",  "asset": "snow", "top": 380, "start": 6, "end": 15},     # 底部撕边照片带
     {"type": "text",   "text": "“刺猬法则”", "size": 64, "color": "black", "x": 640, "y": 150, "start": 3.4, "end": 6.2},
     {"type": "bubble", "text": "疼！", "style": "white", "x": 500, "y": 300, "start": 8.6, "end": 10.4}
+    # 通用可选：image 的 "rotate": 度数（逆时针）；任意元素 "exit": "down"（默认，向下移动淡出）/ "fade"（照片、照片带默认）
   ]
 }
 坐标均为 1280x720 画面上的元素中心点（strip 用 top 指定上沿；photo 为全屏照片，无需坐标）。
@@ -38,6 +39,7 @@ from ..config import WATERMARK, FPS, H, OUTPUT, ROOT, W, check_fonts
 from ..text import Subtitles, bubble, concept_list, cycle_diagram, screen_text, smooth, watermark_layer
 
 FADE = 0.4  # 元素淡入淡出时长（秒）
+EXIT_DY = 70  # 退场时向下移动的像素（"exit": "down"，默认）
 
 
 # ---------- 素材 ----------
@@ -118,6 +120,8 @@ class Element:
                 im = im.resize((max(1, int(im.width * hh / im.height)), hh), Image.LANCZOS)
             if e.get("border"):  # 白色剪纸边
                 im = _paper_border(im, int(e["border"]))
+            if e.get("rotate"):  # 旋转（逆时针，度）：做斜切进画面的场景层
+                im = im.rotate(float(e["rotate"]), resample=Image.BICUBIC, expand=True)
             self.pos = (int(e["x"] - im.width / 2), int(e["y"] - im.height / 2))
         elif t == "photo":  # 全屏照片，铺满画面
             src = Image.open(assets[e["asset"]]).convert("RGB")
@@ -153,7 +157,9 @@ class Element:
         else:
             raise SystemExit(f"未知元素类型 {t}")
         self.im = im
-        self.stages = getattr(self, "stages", None)  # 分步出现的元素：[(出现时刻, 图)]
+        self.stages = getattr(self, "stages", None)
+        # 退场方式：down = 向下移动并淡出（抠图、文字等默认）；fade = 原地淡出（照片、照片带默认）
+        self.exit = e.get("exit", "fade" if t in ("photo", "strip") else "down")  # 分步出现的元素：[(出现时刻, 图)]
 
     def _image_at(self, t):
         if not self.stages:
@@ -169,7 +175,8 @@ class Element:
             return
         # 分步元素自带逐步出现，只在结尾淡出；普通元素首尾淡入淡出
         a_in = 1.0 if self.stages else smooth(self.start, self.start + FADE, t)
-        a = a_in * (1 - smooth(self.end - FADE, self.end, t))
+        out = smooth(self.end - FADE, self.end, t)
+        a = a_in * (1 - out)
         im = self._image_at(t)
         if a <= 0 or im is None:
             return
@@ -177,6 +184,8 @@ class Element:
             im = im.copy()
             im.putalpha(im.split()[3].point(lambda v: int(v * a)))
         x, y = self.pos
+        if self.exit == "down":
+            y += int(EXIT_DY * out)
         x0, y0, x1, y1 = max(0, x), max(0, y), min(W, x + im.width), min(H, y + im.height)
         if x1 > x0 and y1 > y0:
             canvas.alpha_composite(im.crop((x0 - x, y0 - y, x1 - x, y1 - y)), (x0, y0))

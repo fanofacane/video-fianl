@@ -10,6 +10,8 @@
 - 所有视频的开场统一用碎片开场（`video/opening/`）；画面 1280x720、30fps；字幕、标题、水印样式统一走 `video/text.py`。
 - 画面素材用生图工具（`video/imagegen.py`）每期临时生成，不用代码手绘、不维护固定素材库；主题意象只在寓言段出现，其余场景素材要多样。
 - 参考视频的手法、节奏、句子都可以借鉴；只是不用对方的水印和账号标识。对标视频完整转写稿在 `library/four_transcripts.md` 和各对标目录的 `transcript.txt`。
-- 写稿前先读 `docs/hooks.md`（开头与前 30%）和 `docs/body-writing.md` 的检查清单。
+- 写稿严格按 `docs/script-style.md`：动笔前读转写稿、**写仿写对照表**（每段对应一篇对标的某一步）并随稿交给用户；文笔要像江东陵 / 得一，不写段子式三连、网络梗气泡、编的亲历。开头见 `docs/hooks.md`。
+- 封面按本期主题原创（找视觉隐喻、三张三种处理、每张附一句“它在说什么”），`docs/reference/covers/` 只看质感，**不得临摹**。
+- 正文画面见 `docs/body-writing.md` 第二节：场景层 + 大元素贴边出画 + 逐句叠加，审图附逐句截图。
 - 生成物放 `output/`（不入库）；字体由 `scripts/fetch_fonts.sh` 下载到 `assets/fonts/`（不入库）。
 - 做完一个模块就更新 README 的“进度”表；做完一期把新经验补进 `docs/lessons.md`。

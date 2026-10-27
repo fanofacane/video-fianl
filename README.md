@@ -13,7 +13,7 @@
 | 模块 | 状态 | 说明 |
 | --- | --- | --- |
 | 碎片开场 | ✅ 完成 | 所有视频统一使用：玻璃碎片从上方坠落，底部先落位、逐渐向上拼合成背景图，配毛笔标题与黄色双语字幕；开场本身无声，配乐与口播在整片阶段加 |
-| 参考库 / 成品库 | ✅ 完成 | `library/`：14 个对标视频（标题、话题、文案拆解、场景帧，中版有逐秒帧）；成品按发布标题归档 |
+| 参考库 / 成品库 | ✅ 完成 | `library/`：16 个对标视频（标题、话题、文案拆解、场景帧，中版有逐秒帧）；成品按发布标题归档 |
 | 拼贴正文段 | 🚧 进行中 | 场景引擎已可用：抠图、底部撕边照片带、全屏照片、屏幕文字（可逐字打出）、对话气泡、概念清单、循环图，按口播时间轴出现；元素说明见 `docs/script-style.md` 第 5 节 |
 | 口播 / 配乐 | 🚧 进行中 | 配音用 minimax-speech 技能（已复刻音色）；`video/align.py` 用本地 Whisper 把口播对齐到每行字幕；配乐待做 |
 | 整片拼接 | 🚧 进行中 | 已拆分文案确认、显式配音、正文截图确认、成片；截图和成片入口不再自动配音 |
@@ -38,8 +38,8 @@ video/                  # 代码
 episodes/<slug>/        # 每期内容：episode.json（逐字稿、开场、场景、素材、发布标题）
 library/                # 参考库 reference/（对标视频，含转写稿）、成品库 ours/（按发布标题）、four_transcripts.md（4 篇对标口播全文，写稿必读）
 docs/script-style.md    # 逐字稿、标题、封面、简介写作规范
-docs/hooks.md           # 开头与前 30% 的写法（10 个对标总结）
-docs/body-writing.md    # 正文写法与画面配合（对标逐秒拆解总结）
+docs/hooks.md           # 开头 2 句与前 30% 的写法（对标原句对照）
+docs/body-writing.md    # 正文画面：场景层、大元素、逐句叠加、退场（对标逐秒拆解总结）
 docs/lessons.md         # 制作经验沉淀
 examples/               # 示例配置与素材
 scripts/fetch_fonts.sh  # 下载字体
@@ -51,9 +51,9 @@ output/                 # 成片与渲染缓存（不入库）
 ## 每期制作流程（必须按顺序，每个审核点等用户确认）
 
 1. **用户给话题**。
-2. **读规范和参考库**：先读 [docs/hooks.md](docs/hooks.md) 和 [docs/body-writing.md](docs/body-writing.md)，再挑 1–2 个最接近的对标视频，读 `meta.md`、`breakdown.md`、逐秒帧 `frames_1s_p*.jpg`，以及完整转写稿（`library/four_transcripts.md` 必读，其余见各对标目录下的 `transcript.txt`）。
+2. **读规范和参考库**：先读 [docs/script-style.md](docs/script-style.md)（第 0 节必做）、[docs/hooks.md](docs/hooks.md)、[docs/body-writing.md](docs/body-writing.md)；再读 `library/four_transcripts.md` 和 2 个最接近对标的 `transcript.txt`、逐秒帧，**写出仿写对照表**。
 3. **交第一稿（审核点 1）**：
-   - 逐字稿：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（约 370–410 字，不含标点，允许上下浮动），可适当引用、化用对标视频的好句子；
+   - 逐字稿 + 仿写对照表：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（约 370–410 字，不含标点，允许上下浮动），可适当引用、化用对标视频的好句子；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；
    - 开场封面 3–4 张，**每张一种不同风格**（风格库见 docs/script-style.md 第 7 节，样张在 docs/reference/covers/）：生图 + 概念词大字 + 第一句字幕合成。
 4. **用户确认稿件后**：将已展示的准确逐字稿、标题和发布信息写入 `episodes/<slug>/episode.json`。先执行 `--status` 得到 `script_id`，仅在用户确实确认了这版内容后执行 `--approve-script <script_id>`。该操作只记录确认，不生成配音。修改逐字稿、标题或发布信息后必须重新确认，不能拿旧确认套新内容。
