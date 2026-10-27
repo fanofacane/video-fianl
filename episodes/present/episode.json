@@ -1,0 +1,133 @@
+{
+ "name": "present",
+ "title": "活在当下",
+ "opening": {
+  "lines": 2,
+  "background": {
+   "image": "output/present/cover/a.png",
+   "prompt": "失焦、带动态模糊的复古胶片照片：黄昏空荡的旧火车站台，一个人站着，身体向左右拖出两道残影。"
+  }
+ },
+ "lines": [
+  {
+   "zh": "你所浪费的今天，是昨天死去的人所奢望的明天。",
+   "en": "The today you waste is the tomorrow those who died yesterday longed for."
+  },
+  {
+   "zh": "你所厌恶的现在，是未来的你回不到的曾经。",
+   "en": "The present you resent is the past your future self can never return to."
+  },
+  {
+   "zh": "人这一生最奇怪的，莫过于总是活在自己不愿待在的时间里。",
+   "en": "The strangest thing in life is that we always live in a time we don't want to be in."
+  },
+  {
+   "zh": "很多时候，我们人坐在这里，心却在别处。",
+   "en": "So often, we sit here, but our minds are elsewhere."
+  },
+  {
+   "zh": "吃饭时想着工作，陪家人时，又在回一条消息。",
+   "en": "Thinking of work while eating; answering a message while with family."
+  },
+  {
+   "zh": "因为人最难待住的，往往不是某个地方，而是此刻。",
+   "en": "What's hardest to stay in is often not a place, but this moment."
+  },
+  {
+   "zh": "心理学中有一个概念，叫做心智游移。",
+   "en": "Psychology has a concept called mind-wandering."
+  },
+  {
+   "zh": "它指的是注意力不由自主地离开眼前的事。",
+   "en": "It means attention drifts away from what's in front of us on its own."
+  },
+  {
+   "zh": "2010年，哈佛的基林斯沃思和吉尔伯特，",
+   "en": "In 2010, Killingsworth and Gilbert at Harvard"
+  },
+  {
+   "zh": "随机询问了两千多人，此刻在想什么。",
+   "en": "randomly asked over two thousand people what they were thinking right then."
+  },
+  {
+   "zh": "发现人们将近一半的时间，都没在想眼前的事；",
+   "en": "They found people spent nearly half their time not thinking about what they were doing,"
+  },
+  {
+   "zh": "而走神的时候，人普遍更不快乐。",
+   "en": "and when their minds wandered, they were generally less happy."
+  },
+  {
+   "zh": "也就是说，让我们不快乐的，未必是此刻本身，",
+   "en": "In other words, what makes us unhappy may not be the moment itself,"
+  },
+  {
+   "zh": "而是我们总在离开此刻。",
+   "en": "but that we keep leaving it."
+  },
+  {
+   "zh": "三百多年前，帕斯卡就写过：",
+   "en": "Over three hundred years ago, Pascal wrote:"
+  },
+  {
+   "zh": "我们从不停留在现在，",
+   "en": "we never keep to the present,"
+  },
+  {
+   "zh": "所以我们从未生活，只是希望生活。",
+   "en": "so we never live, but only hope to live."
+  },
+  {
+   "zh": "可我们总以为，等以后条件好了，再好好生活。",
+   "en": "Yet we always think we'll really live once things get better."
+  },
+  {
+   "zh": "于是今天被用来等待明天，明天又被用来怀念今天。",
+   "en": "So today is spent waiting for tomorrow, and tomorrow is spent missing today."
+  },
+  {
+   "zh": "我一直觉得，人最容易错过的，不是远方，",
+   "en": "I've always felt what we miss most easily isn't somewhere far away,"
+  },
+  {
+   "zh": "而是那些当时觉得平常、后来再也回不去的日子。",
+   "en": "but the days that felt ordinary then and can never be returned to."
+  },
+  {
+   "zh": "当然，活在当下不是不管未来，也不是假装没有过去；",
+   "en": "Of course, living in the present doesn't mean ignoring the future, or pretending there was no past;"
+  },
+  {
+   "zh": "而是在想着明天的时候，记得自己还站在今天。",
+   "en": "it means remembering you're still standing in today while thinking of tomorrow."
+  },
+  {
+   "zh": "所以不必急着逃离现在，",
+   "en": "So don't rush to escape the present."
+  },
+  {
+   "zh": "它也许并不完美，",
+   "en": "It may not be perfect,"
+  },
+  {
+   "zh": "但它是你唯一能真正活着的时间。",
+   "en": "but it's the only time you can truly be alive."
+  }
+ ],
+ "assets": {},
+ "scenes": [],
+ "publish": {
+  "title": "你所厌恶的现在，是未来的你回不到的曾经",
+  "alternatives": [
+   "你所浪费的今天，是昨天死去的人所奢望的明天",
+   "人这一生最奇怪的，莫过于总是活在自己不愿待在的时间里"
+  ],
+  "hashtags": [
+   "哲学",
+   "心理学",
+   "心智游移",
+   "活在当下",
+   "深度思考"
+  ]
+ }
+}
