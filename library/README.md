@@ -17,6 +17,9 @@
 | [jdl-shijie-kaochang](reference/jdl-shijie-kaochang/) | 江东陵 | 世界不是一个审判你的考场，更多时候，它只是一个人来人往的广场。 | 131s | 中版 | 焦点效应（聚光灯效应同题） |
 | [deyi-zhenxin-zunzhong](reference/deyi-zhenxin-zunzhong/) | 得一. | 你的真心待人为什么总是不被尊重？ | 68s | 短版 | 破窗效应 |
 | [deyi-rensheng-rongcuolv](reference/deyi-rensheng-rongcuolv/) | 得一. | 为什么曾以为天大的事后来却提都懒得提？ | 64s | 短版 | 人生容错率 |
+| [jdl-jieshou-wenti](reference/jdl-jieshou-wenti/) | 江东陵 | 人生很多问题不是用来解决的，而是用来接受的 | 156s | 长版 | 强迫性思维 |
+| [jdl-xingwei-daan](reference/jdl-xingwei-daan/) | 江东陵 | 行为就是答案，接受就继续，不接受就离开 | 173s | 长版 | 行动化 |
+| [jdl-chilai-aishang](reference/jdl-chilai-aishang/) | 江东陵 | 接住迟来的哀伤，人生才算真正开始愈合 | 185s | 长版 | 迟发性哀伤 |
 
 每个目录：
 - `meta.md`：发布标题、简介（都是“标题 + 话题”）、话题、时长、字数、语速、链接
