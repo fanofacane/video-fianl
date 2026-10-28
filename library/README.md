@@ -2,12 +2,11 @@
 
 ```
 library/
-  four_transcripts.md   对标账号（江东陵、得一）4 篇口播全文，写稿必读，学文笔
   reference/            只放用户认可的逐字稿（一期一个 .md：逐字稿 + 仿写对照表 + 基本信息）
   ours/                 我们的成片归档（按发布标题）
 ```
 
-**写逐字稿之前，必须先读 [four_transcripts.md](four_transcripts.md) 和 `reference/` 下全部认可稿**，认可稿是我们自己的标准答案，比任何拆解都重要。
+**写逐字稿之前，必须先读 `reference/` 下全部认可稿**，认可稿是我们自己的标准答案，比任何拆解都重要。
 
 ## reference/ 认可的逐字稿
 

@@ -1,10 +1,10 @@
 """分阶段制作：稿件确认 → 显式配音 → 截图确认 → 成片。
 
-    python3 -m video.episode episodes/hedgehog/episode.json --status  # 查看当前阶段和稿件ID
-    python3 -m video.episode episodes/hedgehog/episode.json --shots   # 确认稿件、显式配音后出正文截图
-    python3 -m video.episode episodes/hedgehog/episode.json           # 截图确认后出完整视频
+    python3 -m video.episode episodes/present/episode.json --status  # 查看当前阶段和稿件ID
+    python3 -m video.episode episodes/present/episode.json --shots   # 确认稿件、显式配音后出正文截图
+    python3 -m video.episode episodes/present/episode.json           # 截图确认后出完整视频
 
-配置见 episodes/hedgehog/episode.json：
+配置见 episodes/present/episode.json：
 - lines：每条字幕一行（zh 带标点用于配音，显示时去掉句末标点；en 为英文字幕）
 - opening.lines：前几行放在碎片开场里念，其余进入正文
 - scenes：正文场景，from/to 为行号（从 1 开始）；元素用 at/until 行号 + delay 秒数定时，

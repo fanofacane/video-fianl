@@ -1,7 +1,7 @@
 """正文段生成：配置 JSON → 正文 mp4（或关键帧截图）。
 
-    python3 -m video.body.build episodes/hedgehog/body_sample.json --shots   # 先出截图
-    python3 -m video.body.build episodes/hedgehog/body_sample.json           # 出视频（无声）
+    python3 -m video.body.build output/<name>/body_gen.json --shots   # 先出截图
+    python3 -m video.body.build output/<name>/body_gen.json           # 出视频（无声）
 
 配置结构：
 {

@@ -6,7 +6,6 @@
     python3 -m video.library ours episodes/<slug>/episode.json
 
 入库内容（library/，提交到仓库）：
-  four_transcripts.md           对标口播全文（写稿必读）
   reference/<发布标题>.md        用户认可的逐字稿（手动添加）
   ours/<发布标题>/              我们的成片：meta.md、script.md、cover.jpg、frames.jpg
 不入库：对标视频研究结果全部在 output/library/<slug>/（video.mp4、transcript.txt、meta.md、frames.jpg）。
