@@ -28,9 +28,17 @@ def voice_settings():
     voice = env.get('MINIMAX_VOICE_ID')
     if not voice:
         raise ValueError('缺少 MINIMAX_VOICE_ID，先配置音色。')
+    speed = env.get('MINIMAX_SPEED')
+    if speed:
+        speed = float(speed)
+        speed = int(speed) if speed.is_integer() else speed
+        if not 0.5 <= speed <= 2:
+            raise ValueError('MINIMAX_SPEED 须在 0.5–2 之间。')
+    else:
+        speed = 1  # 未配置时保持整数 1，旧配音版本 ID 不变
     return {'voice_id': voice, 'model': env.get('MINIMAX_MODEL') or 'speech-2.8-hd',
             'base_url': env.get('MINIMAX_BASE_URL') or 'https://api.minimax.cn/v1',
-            'speed': 1, 'vol': 1, 'pitch': 0}
+            'speed': speed, 'vol': 1, 'pitch': 0}
 
 
 def voice_id(ep, settings):

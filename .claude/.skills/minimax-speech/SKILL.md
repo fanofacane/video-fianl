@@ -5,7 +5,7 @@ description: 使用 MiniMax 将文本、文案或脚本合成为配音，默认�
 
 # MiniMax 语音合成与音色复刻
 
-日常优先复用已存在的音色生成配音，不重新克隆。默认模型为 `speech-2.8-hd`；当前音色为 `video_audio01_5adc3d9c2bea`，从项目根目录 `.env` 的 `MINIMAX_VOICE_ID` 读取。用户指定其他音色或模型时使用命令行覆盖。
+日常优先复用已存在的音色生成配音，不重新克隆。默认模型为 `speech-2.8-hd`；当前音色为 `video_narrator_20261026`（2026-10-26 复刻），从项目根目录 `.env` 的 `MINIMAX_VOICE_ID` 读取；整期配音语速取 `.env` 的 `MINIMAX_SPEED`（当前 1，即原速）。旧音色 `video_audio01_5adc3d9c2bea` 仍可用 `--voice-id` 指定。用户指定其他音色或模型时使用命令行覆盖。
 
 ## 配置与脚本定位
 
@@ -21,6 +21,7 @@ python -m pip install -r .claude/.skills/minimax-speech/requirements.txt
 - `MINIMAX_BASE_URL`：`https://api.minimax.cn/v1`。客户端限定这一已核实地址，不复用 OpenAI 的第三方基址。
 - `MINIMAX_MODEL`：`speech-2.8-hd`。
 - `MINIMAX_VOICE_ID`：已复刻音色 ID。
+- `MINIMAX_SPEED`：整期配音语速（`video.episode` 读取），当前 1；不配置时也为 1。
 
 缺少密钥时让用户通过本地 `.env` 配置；不要将示例中的 `<token>` 当作密钥。不要覆盖已有 OpenAI 配置。
 
@@ -64,6 +65,6 @@ python .claude/.skills/minimax-speech/scripts/client.py clone --audio "input/ref
 
 无自动重试：超时后服务端可能已处理；保留记录并说明状态。鉴权、余额、音色权限、参数或内容审核失败应报告真实错误，不替换音色、不循环发送。合成失败后可能留下空的输出/元数据占位文件，用于标识该请求状态不确定，不把它们交付为成品。
 
-2026-10-25 已在当前账号完成：上传约 149 秒参考音频、创建上述音色、复刻试听、使用 `speech-2.8-hd` 正式合成 MP3（happy 情绪及 laughs 标签）。正式请求返回 status_code=0、status=2、usage_voice_count=1。其他格式、字幕、语言、长文本与高级参数没有逐项线上验证。
+2026-10-25 已在当前账号完成：上传约 149 秒参考音频、创建上述音色、复刻试听、使用 `speech-2.8-hd` 正式合成 MP3（happy 情绪及 laughs 标签）。正式请求返回 status_code=0、status=2、usage_voice_count=1。2026-10-26 用约 10.5 秒参考音频复刻 `video_narrator_20261026`，并以 0.9 倍速正式合成试听和一期整稿（0.9 倍速约 3.9 字/秒，太慢，已改回原速），status_code=0。其他格式、字幕、语言、长文本与高级参数没有逐项线上验证。
 
 详细参数及官方来源：[references/api.md](references/api.md)。

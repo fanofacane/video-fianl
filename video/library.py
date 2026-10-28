@@ -1,17 +1,16 @@
 """参考库与成品库。
 
-    # 加入一个对标视频：解析标题/简介 → 下载 → 转写 → 场景帧截图
+    # 加入一个对标视频：解析标题/简介 → 下载 → 转写 → 转写稿写入 library/reference/对标-<slug>.md（入库）；
+    # 视频和场景帧只存本地 output/library/<slug>/
     python3 -m video.library ref <slug> <分享链接>
     # 归档我们做好的一期（按发布标题建目录）
     python3 -m video.library ours episodes/<slug>/episode.json
 
 入库内容（library/，提交到仓库）：
-  reference/<slug>/meta.md      标题、简介、话题、作者、链接、时长、字数、语速
-  reference/<slug>/frames.jpg   场景帧截图（每 3 秒一帧）
-  reference/<slug>/breakdown.md 文案结构拆解（人工撰写：结构、手法、短句摘录）
+  reference/认可稿-<发布标题>.md  用户认可的逐字稿（手动添加）
+  reference/对标-<slug>.md        对标视频转写稿（ref 命令自动生成：标题、作者、链接、时长、话题 + 转写全文）
   ours/<发布标题>/              我们的成片：meta.md、script.md、cover.jpg、frames.jpg
-不入库：对标视频完整转写稿放在 output/library/<slug>/transcript.txt，只作本地参考，
-       写逐字稿时可以学结构和手法，也可以引用、化用合适的句子。
+不入库：对标视频的 video.mp4、frames.jpg 等在 output/library/<slug>/。
 """
 import argparse
 import math
@@ -52,9 +51,8 @@ def _split_hashtags(desc):
 
 
 def add_reference(slug, link):
-    d = LIB / "reference" / slug
     local = OUTPUT / "library" / slug
-    d.mkdir(parents=True, exist_ok=True)
+    d = local
     local.mkdir(parents=True, exist_ok=True)
     info = _run_json(["node", str(PARSER), "parse", "--url", link])["data"]
     video = local / "video.mp4"
@@ -66,7 +64,7 @@ def add_reference(slug, link):
         res = _run_json(["node", str(PARSER), "transcribe", "--url", link, "--wait-seconds", "900", "--timeout", "300"])
         tr.write_text(json.dumps(res, ensure_ascii=False))
     job = json.loads(tr.read_text())["data"]["jobs"][0]
-    (local / "transcript.txt").write_text(job["text"], encoding="utf-8")
+    (d / "transcript.txt").write_text(job["text"], encoding="utf-8")
     dur = _duration(video)
     chars = len(re.sub(r"[\s，。？！；：、,.?!;:“”\"'（）()…]", "", job["text"]))
     title, tags = _split_hashtags(info.get("desc") or info.get("title", ""))
@@ -85,10 +83,26 @@ def add_reference(slug, link):
 | 语速 | 约 {chars / dur:.1f} 字/秒 |
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）
-- 文案拆解：[breakdown.md](breakdown.md)
-- 完整转写稿（不入库）：`output/library/{slug}/transcript.txt`，需要时用本命令重新生成
+- 完整转写稿：[transcript.txt](transcript.txt)（语音自动转写，未校对）
 """, encoding="utf-8")
-    print(f"已入参考库 {d}（{title}，{dur:.0f}s，{chars} 字）")
+    ref = LIB / "reference" / f"对标-{slug}.md"
+    ref.parent.mkdir(parents=True, exist_ok=True)
+    ref.write_text(f"""# {title}（对标转写稿）
+
+| 项 | 内容 |
+| --- | --- |
+| 作者 | {info['author']['nickname']} |
+| 链接 | {link} |
+| 话题 | {' '.join('#' + t for t in tags)} |
+| 时长 / 字数 | {dur:.0f} 秒 / 约 {chars} 字 |
+
+语音自动转写，未校对（同音错字、断句可能有误）。
+
+## 转写全文
+
+{job["text"]}
+""", encoding="utf-8")
+    print(f"已加入参考 {ref}（{title}，{dur:.0f}s，{chars} 字）；视频与截帧在 {d}")
 
 
 def add_ours(ep_path):
