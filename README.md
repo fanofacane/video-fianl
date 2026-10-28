@@ -11,7 +11,7 @@
 | 模块 | 状态 | 说明 |
 | --- | --- | --- |
 | 碎片开场 | ✅ 完成 | 所有视频统一使用：玻璃碎片从上方坠落，底部先落位、逐渐向上拼合成背景图，配毛笔标题与黄色双语字幕；开场本身无声，配乐与口播在整片阶段加 |
-| 参考库 / 成品库 | ✅ 完成 | `library/`：用户认可的逐字稿（reference/）、认可的成片归档（ours/） |
+| 参考库 / 成品库 | ✅ 完成 | `library/`：写稿参考 reference/（认可稿 + 对标转写稿）、认可的成片归档（ours/） |
 | 拼贴正文段 | 🚧 进行中 | 场景引擎已可用：抠图、底部撕边照片带、全屏照片、屏幕文字（可逐字打出）、对话气泡、概念清单、循环图，按口播时间轴出现；元素说明见 `docs/script-style.md` 第 5 节 |
 | 口播 / 配乐 | 🚧 进行中 | 配音用 minimax-speech 技能（已复刻音色）；`video/align.py` 用本地 Whisper 把口播对齐到每行字幕；配乐待做 |
 | 整片拼接 | 🚧 进行中 | 已拆分文案确认、显式配音、正文截图确认、成片；截图和成片入口不再自动配音 |
@@ -26,7 +26,7 @@ video/                  # 代码
   episode.py            # 整期成片入口（配音、对齐、开场、正文、拼接）
   review.py             # 按内容版本绑定文案/截图审核及配音记录
   align.py              # 口播与字幕行对齐（本地 Whisper）
-  library.py            # 成品归档；对标研究（只存本地 output/library/）
+  library.py            # 成品归档；加入对标（转写稿写进 library/reference/）
   body/build.py         # 正文段：配置 JSON（素材 + 元素时间轴 + 字幕）→ 正文 mp4 / 关键帧截图
   opening/              # 碎片开场
     build.py            # 入口：配置 JSON → 开场 mp4
@@ -34,7 +34,7 @@ video/                  # 代码
     cuts.py             # 碎片切分（按裂纹遮罩图分块；可从红线标注图生成遮罩）
     assets/cuts_mask.png# 默认切法：中间一大块托住标题，四周逐渐变小
 episodes/<slug>/        # 每期内容：episode.json（逐字稿、开场、场景、素材、发布标题）
-library/                # reference/（用户认可的逐字稿）、ours/（成片归档）
+library/                # reference/（认可稿 + 对标转写稿）、ours/（成片归档）
 docs/script-style.md    # 逐字稿、标题、封面、简介的写法参考（不是模板）
 docs/hooks.md           # 好开头举例（对标与认可稿原句，参考用）
 docs/body-writing.md    # 正文画面：场景层、大元素、逐句叠加、退场（对标逐秒拆解总结）
@@ -48,7 +48,7 @@ output/                 # 成片与渲染缓存（不入库）
 ## 每期制作流程（必须按顺序，每个审核点等用户确认）
 
 1. **用户给话题**。
-2. **读规范和参考**：先读 [docs/script-style.md](docs/script-style.md)（第 0 节必做）、[docs/hooks.md](docs/hooks.md)、[docs/body-writing.md](docs/body-writing.md)；再读 `library/reference/` 下全部认可稿，**写出仿写对照表**。
+2. **读规范和参考**：先读 [docs/script-style.md](docs/script-style.md)（第 0 节必做）、[docs/hooks.md](docs/hooks.md)、[docs/body-writing.md](docs/body-writing.md)；再读 `library/reference/` 下全部认可稿和 1–2 篇相近对标转写稿（没有就用 `python3 -m video.library ref` 加入，转写稿自动写进 `library/reference/`），**写出仿写对照表**。
 3. **交第一稿（审核点 1）**：
    - 逐字稿 + 仿写对照表：按 [docs/script-style.md](docs/script-style.md) 写 90 秒版（约 370–410 字，不含标点，允许上下浮动），可适当引用、化用对标视频的好句子；
    - 发布标题 3 个备选 + 话题标签（简介 = 标题 + 话题）；
