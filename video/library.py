@@ -1,18 +1,15 @@
 """参考库与成品库。
 
-    # 加入一个对标视频：解析标题/简介 → 下载 → 转写 → 场景帧截图
+    # 研究一个对标视频：解析标题/简介 → 下载 → 转写 → 场景帧截图（只存本地 output/library/<slug>/，不入库）
     python3 -m video.library ref <slug> <分享链接>
     # 归档我们做好的一期（按发布标题建目录）
     python3 -m video.library ours episodes/<slug>/episode.json
 
 入库内容（library/，提交到仓库）：
-  reference/<slug>/meta.md      标题、简介、话题、作者、链接、时长、字数、语速
-  reference/<slug>/frames.jpg   场景帧截图（每 3 秒一帧）
-  reference/<slug>/breakdown.md 文案结构拆解（人工撰写：结构、手法、短句摘录）
-  reference/<slug>/transcript.txt 完整转写稿（语音自动转写，未校对）：写逐字稿时学文笔、结构和手法，
-                                 也可以引用、化用合适的句子
+  four_transcripts.md           对标口播全文（写稿必读）
+  reference/<发布标题>.md        用户认可的逐字稿（手动添加）
   ours/<发布标题>/              我们的成片：meta.md、script.md、cover.jpg、frames.jpg
-视频和转写原始 JSON 缓存在 output/library/<slug>/（不入库）。
+不入库：对标视频研究结果全部在 output/library/<slug>/（video.mp4、transcript.txt、meta.md、frames.jpg）。
 """
 import argparse
 import math
@@ -53,9 +50,8 @@ def _split_hashtags(desc):
 
 
 def add_reference(slug, link):
-    d = LIB / "reference" / slug
     local = OUTPUT / "library" / slug
-    d.mkdir(parents=True, exist_ok=True)
+    d = local
     local.mkdir(parents=True, exist_ok=True)
     info = _run_json(["node", str(PARSER), "parse", "--url", link])["data"]
     video = local / "video.mp4"
@@ -86,10 +82,9 @@ def add_reference(slug, link):
 | 语速 | 约 {chars / dur:.1f} 字/秒 |
 
 - 场景帧：[frames.jpg](frames.jpg)（每 3 秒一帧）
-- 文案拆解：[breakdown.md](breakdown.md)
 - 完整转写稿：[transcript.txt](transcript.txt)（语音自动转写，未校对）
 """, encoding="utf-8")
-    print(f"已入参考库 {d}（{title}，{dur:.0f}s，{chars} 字）")
+    print(f"已下载到本地 {d}（{title}，{dur:.0f}s，{chars} 字）")
 
 
 def add_ours(ep_path):

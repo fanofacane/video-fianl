@@ -1,6 +1,6 @@
 # 开头怎么写
 
-依据：江东陵、得一的完整口播转写（`library/four_transcripts.md` 与各对标的 `transcript.txt`）。完整写法和段落骨架见 [script-style.md](script-style.md)，本文只讲开头 2 句和前 30%。
+依据：江东陵、得一的完整口播转写（`library/four_transcripts.md`）和 `library/reference/` 认可稿。完整写法和段落骨架见 [script-style.md](script-style.md)，本文只讲开头 2 句和前 30%。
 
 > 旧版本文列了“六步链”和“6 种开场句式”（反常识断言、悖论、比喻换算……），并要求处境三连写夸张心理、带内心独白。照着写出来像段子，已作废。
 

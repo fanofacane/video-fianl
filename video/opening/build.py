@@ -1,7 +1,7 @@
 """碎片开场一键生成：配置 JSON → 开场 mp4。
 
-    python3 -m video.opening.build examples/opening_solitude.json            # 出视频
-    python3 -m video.opening.build examples/opening_solitude.json --shots    # 只出关键帧截图，先确认效果
+    python3 -m video.opening.build output/<name>/opening_gen.json            # 出视频
+    python3 -m video.opening.build output/<name>/opening_gen.json --shots    # 只出关键帧截图，先确认效果
 
 流程：背景图（没有就按 prompt 生图）→ Blender 渲染碎片帧（按内容缓存，改文字不用重渲）
      → 叠加标题 / 水印 / 双语字幕 → 输出 output/<name>/opening.mp4（无声，配乐与口播在整片阶段加）
