@@ -117,7 +117,6 @@
  "assets": {
   "paper": {
    "size": "1536x864",
-   "image_from": "output/marginal-utility/assets/paper.png",
    "prompt": "生成一张全新的图片：米白色旧纸张纹理，16:9，只有纸张本身。"
   },
   "clock_big": {
