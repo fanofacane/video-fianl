@@ -35,8 +35,8 @@ video/                  # 代码
     assets/cuts_mask.png# 默认切法：中间一大块托住标题，四周逐渐变小
 episodes/<slug>/        # 每期内容：episode.json（逐字稿、开场、场景、素材、发布标题）
 library/                # reference/（用户认可的逐字稿）、ours/（成片归档）
-docs/script-style.md    # 逐字稿、标题、封面、简介写作规范
-docs/hooks.md           # 开头 2 句与前 30% 的写法（对标原句对照）
+docs/script-style.md    # 逐字稿、标题、封面、简介的写法参考（不是模板）
+docs/hooks.md           # 好开头举例（对标与认可稿原句，参考用）
 docs/body-writing.md    # 正文画面：场景层、大元素、逐句叠加、退场（对标逐秒拆解总结）
 docs/lessons.md         # 制作经验沉淀
 scripts/fetch_fonts.sh  # 下载字体
